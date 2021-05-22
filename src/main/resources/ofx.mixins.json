@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.offeex.ofx.api.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinClientConnection",
+    "MixinClientPlayerEntity",
+    "MixinGameRenderer",
+    "MixinIngameHud",
+    "MixinKeyboard",
+    "MixinMinecraftClient"
+  ],
+  "client": [
+    "MixinClientConnection",
+    "MixinGameRenderer",
+    "MixinIngameHud",
+    "MixinKeyboard"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
