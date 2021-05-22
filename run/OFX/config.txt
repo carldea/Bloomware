@@ -1,0 +1,17 @@
+MOD:example miscellaneous module:false:74
+MOD:example combat module:false:75
+MOD:example render module:false:71
+MOD:example player module:false:72
+MOD:HudEditor:false:345
+MOD:ClickGUI:false:344
+MOD:Sprint:true:0
+MOD:Speed:true:0
+COMP:WaterMark:false
+COMP:ArrayList:false
+COMP:Coords:true
+COMP:Speed:false
+POS:WaterMark10:10
+POS:ArrayList10:10
+POS:Coords1268:670
+POS:Speed10:10
+COMMANDPREFIX:$
