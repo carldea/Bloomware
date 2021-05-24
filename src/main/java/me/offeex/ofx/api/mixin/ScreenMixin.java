@@ -1,11 +1,4 @@
-/*
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# Project: Cornos
-# File: ScreenMixin
-# Created by constantin at 09:56, Mär 12 2021
-PLEASE READ THE COPYRIGHT NOTICE IN THE PROJECT ROOT, IF EXISTENT
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-*/
+
 package me.offeex.ofx.api.mixin;
 
 import me.offeex.ofx.gui.CustomMainMenu;
