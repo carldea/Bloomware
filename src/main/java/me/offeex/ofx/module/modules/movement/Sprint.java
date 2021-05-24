@@ -29,7 +29,8 @@ public class Sprint extends Module {
 
     public void onDisable() {
         onEnable();
-            mc.player.setSprinting(false);
+        assert mc.player != null;
+        mc.player.setSprinting(false);
         Main.EVENTBUS.unsubscribe(listener);
     }
 }
