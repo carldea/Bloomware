@@ -1,13 +1,14 @@
 package me.offeex.ofx;
 
+import me.offeex.ofx.api.config.FakePlayerSaver;
 import me.offeex.ofx.gui.api.RenderHelper;
 import me.offeex.ofx.gui.impl.GuiScreen;
 import me.offeex.ofx.gui.impl.GuiScreenManager;
 import me.offeex.ofx.hud.HUD;
 import me.offeex.ofx.hud.HudScreen;
 import me.offeex.ofx.hud.HudScreenManager;
-import me.offeex.ofx.hud.component.Component;
 import me.offeex.ofx.hud.component.ComponentManager;
+import me.offeex.ofx.hud.component.components.ModuleNotifier;
 import me.offeex.ofx.hud.font.StringRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import org.apache.logging.log4j.LogManager;
@@ -44,6 +45,8 @@ public class Main implements ClientModInitializer {
 	public static SaveLoad saveLoad;
 	public static EventProcessor eventProcessor;
 	public static CommandManager commandManager;
+	public static FakePlayerSaver fakePlayer;
+	public static ModuleNotifier moduleNotifier;
 	
 	public Object syncronize = new Object();
 	public void printLog(String text) {
@@ -82,6 +85,11 @@ public class Main implements ClientModInitializer {
 		
 		settingManager = new SettingManager();
 		printLog("setting system initialized.");
+
+		fakePlayer = new FakePlayerSaver();
+		fakePlayer.fileManager();
+
+		moduleNotifier = new ModuleNotifier();
 
 		gui = new GuiScreenManager(new GuiScreen());
 		hudd = new HudScreenManager(new HudScreen());

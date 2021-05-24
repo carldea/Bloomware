@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import me.offeex.ofx.Main;
+import me.offeex.ofx.hud.component.components.ModuleNotifier;
 import me.offeex.ofx.setting.Setting;
 import me.offeex.ofx.setting.settings.KeybindSetting;
 import net.minecraft.client.MinecraftClient;
@@ -137,11 +138,13 @@ public class Module {
 	}
 
 	public void enable() {
+		Main.moduleNotifier.setMessage(this.name + " enabled!");
 		setEnabled(true);
 		onEnable();
 	}
 
 	public void disable() {
+		Main.moduleNotifier.setMessage(this.name + " disabled!");
 		setEnabled(false);
 		onDisable();
 	}

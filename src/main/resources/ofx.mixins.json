@@ -9,13 +9,17 @@
     "MixinGameRenderer",
     "MixinIngameHud",
     "MixinKeyboard",
-    "MixinMinecraftClient"
+    "MixinMinecraftClient",
+    "ScreenMixin",
+    "TitleScreenMixin"
   ],
   "client": [
     "MixinClientConnection",
     "MixinGameRenderer",
     "MixinIngameHud",
-    "MixinKeyboard"
+    "MixinKeyboard",
+    "ScreenMixin",
+    "TitleScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
