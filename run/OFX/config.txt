@@ -1,17 +1,34 @@
 MOD:example miscellaneous module:false:74
-MOD:example combat module:false:75
 MOD:example render module:false:71
+MOD:example combat module:false:75
 MOD:example player module:false:72
+MOD:Rich Presence:false:-1
+MOD:Auto Respawn:false:-1
+MOD:Fake Player:false:-1
+MOD:Full Bright:false:66
 MOD:HudEditor:false:345
 MOD:ClickGUI:false:344
-MOD:Sprint:true:0
+MOD:Sprint:false:88
 MOD:Speed:true:0
-COMP:WaterMark:false
-COMP:ArrayList:false
-COMP:Coords:true
+MOD:Zoom:false:-1
+COMP:FPS:false
+COMP:Welcomer:false
 COMP:Speed:false
-POS:WaterMark10:10
-POS:ArrayList10:10
-POS:Coords1268:670
+COMP:Current server:false
+COMP:Ping:false
+COMP:ArrayList:false
+COMP:WaterMark:false
+COMP:Coords:false
+COMP:Time:false
+COMP:Module Notifier:false
+POS:FPS10:40
+POS:Welcomer10:30
 POS:Speed10:10
+POS:Current server10:20
+POS:Ping10:60
+POS:ArrayList10:10
+POS:WaterMark10:10
+POS:Coords10:10
+POS:Time10:50
+POS:Module Notifier10:50
 COMMANDPREFIX:$

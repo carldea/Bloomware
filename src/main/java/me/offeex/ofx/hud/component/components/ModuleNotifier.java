@@ -14,7 +14,6 @@ public class ModuleNotifier extends Component {
     }
 
     String message = "";
-    private static MinecraftClient mc = MinecraftClient.getInstance();
 
     public void setMessage(String msg) {
         Thread t = new Thread(() -> {
