@@ -51,7 +51,10 @@ public class Module {
 		this.settings.addAll(Arrays.asList(settings));
 		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
 	}
-	
+
+	public void onTick() {
+	}
+
 	public enum Category {
 		COMBAT("Combat", Color.decode("#ff2e2e"), 0),
 		MOVEMENT("Movement", Color.decode("#edd628"),1),
@@ -139,12 +142,14 @@ public class Module {
 
 	public void enable() {
 		Main.moduleNotifier.setMessage(this.name + " enabled!");
+		Main.chatNotifier.sendMsg(this.name + " enabled!");
 		setEnabled(true);
 		onEnable();
 	}
 
 	public void disable() {
 		Main.moduleNotifier.setMessage(this.name + " disabled!");
+		Main.chatNotifier.sendMsg(this.name + " disabled!");
 		setEnabled(false);
 		onDisable();
 	}

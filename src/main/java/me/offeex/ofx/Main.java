@@ -1,6 +1,8 @@
 package me.offeex.ofx;
 
 import me.offeex.ofx.api.config.FakePlayerSaver;
+//import me.offeex.ofx.gui.StreamerModeWindow;
+import me.offeex.ofx.api.util.CapeUtil;
 import me.offeex.ofx.gui.api.RenderHelper;
 import me.offeex.ofx.gui.impl.GuiScreen;
 import me.offeex.ofx.gui.impl.GuiScreenManager;
@@ -10,6 +12,7 @@ import me.offeex.ofx.hud.HudScreenManager;
 import me.offeex.ofx.hud.component.ComponentManager;
 import me.offeex.ofx.hud.component.components.ModuleNotifier;
 import me.offeex.ofx.hud.font.StringRenderer;
+import me.offeex.ofx.module.modules.client.ChatNotifier;
 import net.fabricmc.api.ClientModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +24,9 @@ import me.offeex.ofx.module.ModuleManager;
 import me.offeex.ofx.setting.SettingManager;
 import me.zero.alpine.bus.EventBus;
 import me.zero.alpine.bus.EventManager;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Main implements ClientModInitializer {
 
@@ -37,16 +43,22 @@ public class Main implements ClientModInitializer {
 	public static RenderHelper rh;
 
 	public static StringRenderer pFontRenderer;
+	public static ChatNotifier chatNotifier;
 	public static StringRenderer sFontRenderer;
 
 	public static ModuleManager moduleManager;
+	public static CapeUtil capeUtil;
 	public static ComponentManager componentManager;
 	public static SettingManager settingManager;
 	public static SaveLoad saveLoad;
 	public static EventProcessor eventProcessor;
 	public static CommandManager commandManager;
 	public static FakePlayerSaver fakePlayer;
+	public static JFrame streamerWindow;
+	public JTextArea titleText;
+	Font coolFont;
 	public static ModuleNotifier moduleNotifier;
+	//public static StreamerModeWindow streamerWin;
 	
 	public Object syncronize = new Object();
 	public void printLog(String text) {
@@ -90,10 +102,16 @@ public class Main implements ClientModInitializer {
 		fakePlayer.fileManager();
 
 		moduleNotifier = new ModuleNotifier();
+		chatNotifier = new ChatNotifier();
 
 		gui = new GuiScreenManager(new GuiScreen());
 		hudd = new HudScreenManager(new HudScreen());
 		rh = new RenderHelper();
+
+
+		//streamerWin = new StreamerModeWindow();
+
+		capeUtil = new CapeUtil();
 
 		hud = new HUD();
 		printLog("HUD initialized.");

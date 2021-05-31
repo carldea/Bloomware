@@ -3,6 +3,15 @@ package me.offeex.ofx.module;
 import java.util.*;
 
 import me.offeex.ofx.Main;
+import me.offeex.ofx.module.modules.client.ClickGui;
+import me.offeex.ofx.module.modules.client.HudEditor;
+import me.offeex.ofx.module.modules.combat.ExampleCombatModule;
+import me.offeex.ofx.module.modules.miscellaneous.FakePlayer;
+import me.offeex.ofx.module.modules.miscellaneous.RichPresence;
+import me.offeex.ofx.module.modules.movement.Sprint;
+import me.offeex.ofx.module.modules.player.AutoRespawn;
+import me.offeex.ofx.module.modules.render.FullBright;
+import me.offeex.ofx.module.modules.render.Zoom;
 import org.lwjgl.glfw.GLFW;
 
 import me.offeex.ofx.api.event.events.EventKeyPress;
@@ -33,6 +42,7 @@ public class ModuleManager {
 				e.printStackTrace();
 			}
 		});
+
 	}
 	
 	public static boolean isModuleEnabled(String name) {
@@ -65,7 +75,13 @@ public class ModuleManager {
 		}
 		return modules;
 	}
-	
+
+	public static void onTick(){
+		for(Module mod : modules){
+			if(mod.isEnabled()) mod.onTick();
+		}
+	}
+
 	public static Module getModuleByName(String name) {
 		return modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}

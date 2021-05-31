@@ -1,4 +1,3 @@
-
 package me.offeex.ofx.api.mixin;
 
 import me.offeex.ofx.gui.CustomMainMenu;

@@ -1,9 +1,12 @@
 package me.offeex.ofx.gui.impl;
 
 import me.offeex.ofx.Main;
+import me.offeex.ofx.command.CommandManager;
 import me.offeex.ofx.gui.api.AbstractButton;
 import me.offeex.ofx.gui.api.ColorUtils;
 import me.offeex.ofx.module.Module;
+import me.offeex.ofx.setting.Setting;
+import me.offeex.ofx.setting.SettingManager;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -33,7 +36,15 @@ public class GuiModule extends AbstractButton {
         }
 
         if (isSettingOpened) {
-//            setting.draw(stack, mouseX, mouseY, tickDelta);
+            if (Main.settingManager.getSettingsByMod(module) == null) {
+                CommandManager.addChatMessage("popbob");
+                return;
+            } else {
+                for (Setting setting : Main.settingManager.getSettingsByMod(module)) {
+                    Screen.fill(stack, x, y + 50, x + width, y + height, ColorUtils.withTransparency(ColorUtils.Colors.PRIMARY_DARKER, 120));
+                    Main.sFontRenderer.drawString(setting.getName(), x + 2, y + 50, ColorUtils.Colors.PRIMARY.getRGB(), true);
+                }
+            }
         }
 
         if (module.isEnabled())

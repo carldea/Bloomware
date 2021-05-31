@@ -1,3 +1,6 @@
 v1	named	intermediary
 FIELD	me/offeex/ofx/api/mixin/MixinClientConnection	Lio/netty/channel/Channel;	channel	field_11651
+FIELD	me/offeex/ofx/api/mixin/MixinMinecraftClient	Lnet/minecraft/client/network/ClientPlayerEntity;	player	field_1724
+FIELD	me/offeex/ofx/api/mixin/MixinMinecraftClient	Lnet/minecraft/client/world/ClientWorld;	world	field_1687
+FIELD	me/offeex/ofx/api/mixin/MixinMinecraftClient	Lnet/minecraft/client/util/Session;	session	field_1726
 METHOD	me/offeex/ofx/api/mixin/MixinClientConnection	(Lnet/minecraft/network/Packet;Lio/netty/util/concurrent/GenericFutureListener;)V	sendImmediately	method_10764

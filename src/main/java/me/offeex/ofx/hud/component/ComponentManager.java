@@ -3,6 +3,7 @@ package me.offeex.ofx.hud.component;
 import me.offeex.ofx.Main;
 import me.offeex.ofx.api.event.events.EventKeyPress;
 import me.offeex.ofx.api.util.TextFormatting;
+import me.offeex.ofx.command.CommandManager;
 import me.offeex.ofx.module.Module;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
@@ -60,8 +61,8 @@ public class ComponentManager {
 	
 	public static void addChatMessage(String message) {
 		Text textComponentString = new LiteralText(message);
-		message = TextFormatting.AQUA + "@" + TextFormatting.ITALIC + Main.name + TextFormatting.GRAY + ": " + message;
-		MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(new LiteralText("" + TextFormatting.AQUA + TextFormatting.ITALIC + "@" + TextFormatting.RESET + TextFormatting.ITALIC + Main.name + " " + TextFormatting.GRAY).append(textComponentString));
+		//message = TextFormatting.AQUA + "@" + TextFormatting.ITALIC + Main.name + TextFormatting.GRAY + ": " + message;
+		MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(new LiteralText(CommandManager.getPrefix()).append(textComponentString));
 		
 		
 	}

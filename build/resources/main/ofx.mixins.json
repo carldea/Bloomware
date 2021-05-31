@@ -4,6 +4,7 @@
   "package": "me.offeex.ofx.api.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinAbstractClientPlayerEntity",
     "MixinClientConnection",
     "MixinClientPlayerEntity",
     "MixinGameRenderer",
@@ -19,7 +20,8 @@
     "MixinIngameHud",
     "MixinKeyboard",
     "ScreenMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "MixinAbstractClientPlayerEntity"
   ],
   "injectors": {
     "defaultRequire": 1

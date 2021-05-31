@@ -7,6 +7,8 @@ import me.offeex.ofx.module.Module;
 import me.offeex.ofx.module.ModuleManager;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.Locale;
+
 public class Bind extends Command {
     public Bind() {
         super("bind", "set bind of module", "module", "b");
@@ -31,10 +33,10 @@ public class Bind extends Command {
             }
                 if (bug)
                     CommandManager.addChatMessage(TextFormatting.DARK_RED + "module is not exist");
-        }
-            if (args.length != 3 || !args[0].equalsIgnoreCase("set"))
-                CommandManager.addChatMessage(CommandManager.USAGE + TextFormatting.RESET + TextFormatting.GOLD + CommandManager.getPrefix() + "bind set <module> <key>");
 
+                if (args.length != 3 || !args[0].equalsIgnoreCase("set"))
+                    CommandManager.addChatMessage(CommandManager.USAGE + TextFormatting.RESET + TextFormatting.GOLD + CommandManager.getPrefix() + "bind set <module> <key>");
+        }
             if (args[0].equals("reset")) {
                 if (args.length == 2) {
                 boolean bug = true;
