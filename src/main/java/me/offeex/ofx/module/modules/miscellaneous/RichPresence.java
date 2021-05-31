@@ -34,7 +34,7 @@ public class RichPresence extends Module {
                 } else if (mc.isInSingleplayer()) {
                     rpc.details = "Playing on singleplayer";
                 } else {
-                    rpc.details = "On main menuuuu";
+                    rpc.details = "On main menu";
                 }
                 lib.Discord_UpdatePresence(rpc);
 
