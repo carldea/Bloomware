@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96e12c75-d5e7-43d1-9259-5225cc7d06a5" name="Default Changelist" comment="" />
+    <list default="true" id="96e12c75-d5e7-43d1-9259-5225cc7d06a5" name="Default Changelist" comment="Test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ofx-refmap.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ofx-refmap.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/OFX/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/OFX/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/cachedImages/skins/temp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/config/fabric/indigo-renderer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/run/config/fabric/indigo-renderer.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/config/multiconnect/servers_ext.json" beforeDir="false" afterPath="$PROJECT_DIR$/run/config/multiconnect/servers_ext.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/options.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/options.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/combat/ExampleCombatModule.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/miscellaneous/ExampleMiscellaneousModule.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/miscellaneous/RichPresence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/miscellaneous/RichPresence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/player/ExamplePlayerModule.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/render/ExampleRenderModule.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +59,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1t4y5ztxFM2SVUtHBTv8MpEQS16" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -92,5 +110,20 @@
       <updated>1622042479403</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test" />
   </component>
 </project>
