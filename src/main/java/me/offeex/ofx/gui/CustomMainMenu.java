@@ -36,8 +36,8 @@ public class CustomMainMenu extends Screen {
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        // mc.getTextureManager().bindTexture(background);
-        // DrawableHelper.drawTexture(matrices, 0, 0, 0, 0, 0, width, height, height, width);
+        mc.getTextureManager().bindTexture(background);
+        DrawableHelper.drawTexture(matrices, 0, 0, 0, 0, 0, width, height, height, width);
         super.render(matrices, mouseX, mouseY, delta);
     }
 }

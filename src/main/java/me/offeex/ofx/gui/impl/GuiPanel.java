@@ -60,6 +60,8 @@ public class GuiPanel extends AbstractDraggable {
                 offsetY += 13;
             }
         }
+
+        
     }
 
     public void mouseClicked(double mouseX, double mouseY, int mouseButton) {

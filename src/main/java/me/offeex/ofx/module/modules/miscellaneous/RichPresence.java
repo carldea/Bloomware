@@ -3,6 +3,7 @@ package me.offeex.ofx.module.modules.miscellaneous;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
+import me.offeex.ofx.Main;
 import me.offeex.ofx.module.Module;
 import org.lwjgl.glfw.GLFW;
 
@@ -25,6 +26,7 @@ public class RichPresence extends Module {
         rpc.largeImageKey = "logo";
         assert mc.player != null;
         rpc.state = "IGN: " + mc.getSession().getUsername();
+        rpc.startTimestamp = System.currentTimeMillis() / 1000L;
         lib.Discord_UpdatePresence(rpc);
         Thread t = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
@@ -39,7 +41,7 @@ public class RichPresence extends Module {
                 lib.Discord_UpdatePresence(rpc);
 
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(2000L);
                 } catch (InterruptedException e) {
                     lib.Discord_Shutdown();
                     break;

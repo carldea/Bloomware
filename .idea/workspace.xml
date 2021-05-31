@@ -4,8 +4,139 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96e12c75-d5e7-43d1-9259-5225cc7d06a5" name="Default Changelist" comment="Test">
-      <change beforePath="$PROJECT_DIR$/run/config/fabric/indigo-renderer.properties" beforeDir="false" afterPath="$PROJECT_DIR$/run/config/fabric/indigo-renderer.properties" afterDir="false" />
+    <list default="true" id="4182aa56-4087-4a80-a587-d1f23b5263d4" name="Default Changelist" comment="new!">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/ofx-client.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/ofx-client.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinAbstractPlayerEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/util/CapeUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/util/PlayerDataUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/StreamerModeWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/TanyaMazurenko.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/client/Capes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/client/ChatNotifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/client/MainMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/combat/AutoTotem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/combat/ExampleCombatModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/render/NightTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/ofx/ez.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/ofx/jex_cape.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/ofx/maincape.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Client.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Client.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/api/mixin/MixinMinecraftClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/api/mixin/MixinMinecraftClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/api/mixin/ScreenMixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/api/mixin/ScreenMixin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/api/mixin/TitleScreenMixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/api/mixin/TitleScreenMixin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/command/commands/Bind.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/command/commands/Bind.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/gui/CustomMainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/gui/CustomMainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/gui/impl/GuiModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/gui/impl/GuiModule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/gui/impl/GuiPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/gui/impl/GuiPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/hud/component/ComponentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/hud/component/ComponentManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/hud/component/components/ModuleNotifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/hud/component/components/ModuleNotifier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/hud/component/components/Ping.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/hud/component/components/Ping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/Module$Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/Module$Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/Module.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/Module.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/ModuleManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/ModuleManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/miscellaneous/ExampleMiscellaneousModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/miscellaneous/FakePlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/miscellaneous/FakePlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/miscellaneous/RichPresence.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/miscellaneous/RichPresence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/movement/Speed.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/movement/Speed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/player/ExamplePlayerModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/render/ExampleRenderModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/render/FullBright.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/offeex/ofx/module/modules/render/FullBright.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/ofx-refmap.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/ofx-refmap.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/loom-cache/mixin-map-1.16.5-1.16.5+build.5-v2.0.tiny" beforeDir="false" afterPath="$PROJECT_DIR$/build/loom-cache/mixin-map-1.16.5-1.16.5+build.5-v2.0.tiny" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/fonts/JetBrainsMonoNL-Bold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/fonts/JetBrainsMonoNL-Bold.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/ofx/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/ofx/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/ofx.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/ofx.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/config/SaveLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/config/SaveLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/EventProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/EventProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventDrawOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventDrawOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventKeyPress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventKeyPress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventLivingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventLivingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventPlayerMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventPlayerMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventWorldRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/EventWorldRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/PacketEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/event/events/PacketEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinClientConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinClientPlayerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinClientPlayerEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinGameRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinGameRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinIngameHud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinIngameHud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinKeyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinKeyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinMinecraftClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/MixinMinecraftClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/ScreenMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/ScreenMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/TitleScreenMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin/TitleScreenMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/util/Dir.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/util/Dir.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/util/MovementUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/util/MovementUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/util/TextFormatting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/util/TextFormatting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Bind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Bind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Changelog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Changelog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Coords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Coords.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/ModuleList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/ModuleList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Prefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Prefix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Toggle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/command/commands/Toggle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/CustomMainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/CustomMainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/AbstractButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/AbstractButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/AbstractComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/AbstractComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/AbstractDraggable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/AbstractDraggable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/AbstractOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/AbstractOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/ColorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/ColorUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/IClickable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/IClickable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/IRenderable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/IRenderable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/ITypeable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/ITypeable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/RenderHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/api/RenderHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiScreenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiScreenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/GuiSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/settings/GuiBooleanSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/settings/GuiBooleanSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/settings/GuiSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/gui/impl/settings/GuiSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HudComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HudComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HudPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HudPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HudScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HudScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HudScreenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/HudScreenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/ComponentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/ComponentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Arraylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Arraylist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/ModuleNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/ModuleNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Ping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Ping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Speed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Speed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Watermark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/component/components/Watermark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/Glyph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/Glyph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/GlyphCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/GlyphCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/IBFFontRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/IBFFontRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/StringCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/StringCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/StringRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/hud/font/StringRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/ModuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/ModuleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/client/ClickGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/client/ClickGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/client/HudEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/client/HudEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/miscellaneous/FakePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/miscellaneous/FakePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/miscellaneous/RichPresence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/miscellaneous/RichPresence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/movement/Speed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/movement/Speed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/movement/Sprint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/movement/Sprint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/render/FullBright.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/module/modules/render/FullBright.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/Setting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/Setting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/SettingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/SettingManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/settings/BooleanSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/settings/BooleanSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/settings/KeybindSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/settings/KeybindSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/settings/ModeSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/settings/ModeSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/settings/NumberSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/offeex/ofx/setting/settings/NumberSetting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fonts/JetBrainsMonoNL-Bold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fonts/JetBrainsMonoNL-Bold.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/ofx/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/ofx/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ofx.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ofx.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,88 +151,118 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
+        <task path="">
           <activation />
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ofx" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ofx" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/dev" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1t4y5ztxFM2SVUtHBTv8MpEQS16" />
-  <component name="ProjectLevelVcsManager">
-    <OptionsSetting value="false" id="Update" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
+  <component name="ProjectId" id="1stfvZowarfmVdoKNm3aFOaGfi2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="autoscrollFromSource" value="true" />
-    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.119617224" />
+    <property name="project.structure.side.proportion" value="0.35714287" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Application.Minecraft Client">
-    <configuration name="ofx [genSources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="genSources" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.ofx [genSources]" />
-      </list>
-    </recent_temporary>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/mixin" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/ofx" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/run" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/ofx" />
+      <recent name="$PROJECT_DIR$/src/main/java/me/offeex/ofx/api/pictures" />
+    </key>
   </component>
+  <component name="RunManager" selected="Application.Minecraft Client" />
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$PROJECT_DIR$/../.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="96e12c75-d5e7-43d1-9259-5225cc7d06a5" name="Default Changelist" comment="" />
-      <created>1622042479403</created>
+      <changelist id="4182aa56-4087-4a80-a587-d1f23b5263d4" name="Default Changelist" comment="" />
+      <created>1621697040124</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1622042479403</updated>
+      <updated>1621697040124</updated>
     </task>
-    <task id="LOCAL-00001" summary="Test">
-      <created>1622474914470</created>
+    <task id="LOCAL-00001" summary="popbob">
+      <created>1622477473578</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1622474914471</updated>
+      <updated>1622477473578</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -111,14 +272,22 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test" />
+    <MESSAGE value="popbob" />
+    <MESSAGE value="new!" />
+    <option name="LAST_COMMIT_MESSAGE" value="new!" />
   </component>
 </project>

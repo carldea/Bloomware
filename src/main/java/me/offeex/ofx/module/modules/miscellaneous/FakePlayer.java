@@ -20,7 +20,7 @@ public class FakePlayer extends Module {
     private File dir, dataFile;
     private String lineN;
 
-    public String nickname = "TheRealDiOnFire", UUID_Data = "ab47040f-6bcb-4c00-9424-238be6eec731";
+    public String nickname = "TheFakeDiOnFire", UUID_Data = "ab47040f-6bcb-4c00-9424-238be6eec731";
 
     @Override
     public void onEnable() {
@@ -33,8 +33,6 @@ public class FakePlayer extends Module {
                 lineN = line;
                 line = reader.readLine();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

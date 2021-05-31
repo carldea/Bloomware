@@ -4,8 +4,15 @@
       "init": "Lnet/minecraft/class_442;method_25426()V",
       "render": "Lnet/minecraft/class_442;method_25394(Lnet/minecraft/class_4587;IIF)V"
     },
+    "me/offeex/ofx/api/mixin/MixinAbstractClientPlayerEntity": {
+      "getCapeTexture": "Lnet/minecraft/class_742;method_3119()Lnet/minecraft/class_2960;"
+    },
     "me/offeex/ofx/api/mixin/MixinClientPlayerEntity": {
       "move": "Lnet/minecraft/class_746;method_5784(Lnet/minecraft/class_1313;Lnet/minecraft/class_243;)V"
+    },
+    "me/offeex/ofx/api/mixin/MixinMinecraftClient": {
+      "getWindowTitle": "Lnet/minecraft/class_310;method_24287()Ljava/lang/String;",
+      "tick": "Lnet/minecraft/class_310;method_1574()V"
     },
     "me/offeex/ofx/api/mixin/MixinClientConnection": {
       "send(Lnet/minecraft/network/Packet;Lio/netty/util/concurrent/GenericFutureListener;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lio/netty/util/concurrent/GenericFutureListener;)V"
@@ -30,8 +37,15 @@
         "init": "Lnet/minecraft/class_442;method_25426()V",
         "render": "Lnet/minecraft/class_442;method_25394(Lnet/minecraft/class_4587;IIF)V"
       },
+      "me/offeex/ofx/api/mixin/MixinAbstractClientPlayerEntity": {
+        "getCapeTexture": "Lnet/minecraft/class_742;method_3119()Lnet/minecraft/class_2960;"
+      },
       "me/offeex/ofx/api/mixin/MixinClientPlayerEntity": {
         "move": "Lnet/minecraft/class_746;method_5784(Lnet/minecraft/class_1313;Lnet/minecraft/class_243;)V"
+      },
+      "me/offeex/ofx/api/mixin/MixinMinecraftClient": {
+        "getWindowTitle": "Lnet/minecraft/class_310;method_24287()Ljava/lang/String;",
+        "tick": "Lnet/minecraft/class_310;method_1574()V"
       },
       "me/offeex/ofx/api/mixin/MixinClientConnection": {
         "send(Lnet/minecraft/network/Packet;Lio/netty/util/concurrent/GenericFutureListener;)V": "Lnet/minecraft/class_2535;method_10752(Lnet/minecraft/class_2596;Lio/netty/util/concurrent/GenericFutureListener;)V"

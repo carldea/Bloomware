@@ -2,20 +2,21 @@ package me.offeex.ofx.api.mixin;
 
 import me.offeex.ofx.Main;
 import me.offeex.ofx.gui.CustomMainMenu;
+import me.offeex.ofx.module.modules.client.MainMenu;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.awt.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 @Mixin(TitleScreen.class)
 public abstract class TitleScreenMixin extends Screen {
@@ -23,13 +24,36 @@ public abstract class TitleScreenMixin extends Screen {
         super(title);
     }
 
+    private boolean enabled() {
+        boolean nigger = false;
+        File dir = new File(MinecraftClient.getInstance().runDirectory, Main.name);
+        File dataFile = new File(dir, "config.txt");
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(dataFile));
+            String line = reader.readLine();
+            while(line != null) {
+                String lineN = line;
+                line = reader.readLine();
+                String[] args = lineN.split(":");
+                if (args[1].equals("Main Menu")) {
+                    nigger = args[2].equals("true");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return nigger;
+    }
+
     MinecraftClient mc = MinecraftClient.getInstance();
     int text1Length;
 
-    @Inject(method = "init", at = @At("TAIL"))
+    @Inject(method = "init", at = @At("TAIL"), cancellable = true)
     private void onInit(CallbackInfo info) {
-
-        text1Length = textRenderer.getWidth("BloomWare client made by OffeeX, Rikonardo & DiOnFire");
+        if (enabled()) {
+            mc.openScreen(new CustomMainMenu());
+            info.cancel();
+        }
     }
 
     @Inject(method = "render", cancellable = true, at = @At("TAIL"))
