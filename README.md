@@ -25,6 +25,7 @@ A free minecraft utility mod for 1.16.5+ versions, designed for anarchy serverы
 - [X] Commands
 - [ ] Capes
 - [ ] Animations
+- [ ] Friends
 - [ ] Settings
   - [ ] using Commands
   - [ ] using ClickGUI
