@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import me.offeex.ofx.Main;
-import me.offeex.ofx.hud.component.components.ModuleNotifier;
 import me.offeex.ofx.setting.Setting;
 import me.offeex.ofx.setting.settings.KeybindSetting;
 import net.minecraft.client.MinecraftClient;

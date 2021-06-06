@@ -1,7 +1,6 @@
 package me.offeex.ofx.module.modules.client;
 
-import me.offeex.ofx.Main;
-import me.offeex.ofx.hud.component.ComponentManager;
+import me.offeex.ofx.gui.impl.hud.component.ComponentManager;
 import me.offeex.ofx.module.Module;
 import me.offeex.ofx.module.ModuleManager;
 import org.lwjgl.glfw.GLFW;

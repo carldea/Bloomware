@@ -1,7 +1,7 @@
 package me.offeex.ofx.api.mixin;
 
 import me.offeex.ofx.Main;
-import me.offeex.ofx.hud.font.StringRenderer;
+import me.offeex.ofx.gui.api.font.StringRenderer;
 import me.offeex.ofx.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;

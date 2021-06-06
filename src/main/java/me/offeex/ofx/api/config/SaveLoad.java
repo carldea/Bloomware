@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 import me.offeex.ofx.Main;
 import me.offeex.ofx.command.CommandManager;
-import me.offeex.ofx.hud.component.Component;
-import me.offeex.ofx.hud.component.ComponentManager;
+import me.offeex.ofx.gui.impl.hud.component.Component;
+import me.offeex.ofx.gui.impl.hud.component.ComponentManager;
 import me.offeex.ofx.setting.Setting;
 import me.offeex.ofx.setting.settings.BooleanSetting;
 import me.offeex.ofx.setting.settings.ModeSetting;

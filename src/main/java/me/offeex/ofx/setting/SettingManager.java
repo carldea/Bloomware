@@ -39,7 +39,7 @@ public class SettingManager {
 		for (Setting set : m.settings) {
 			if (set.getName().equalsIgnoreCase(name) && set.getParentMod() == mod) {
 				return set;
-			}
+				}
 			}
 		}
 		System.err.println("[postman] Error Setting NOT found: '" + name +"'!");

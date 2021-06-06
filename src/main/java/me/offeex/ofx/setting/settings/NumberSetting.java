@@ -10,11 +10,11 @@ public class NumberSetting extends Setting {
 	public double maximum;
 	public double increment;
 	  
-	public NumberSetting(String name, Module parent, double value, double minimun, double maximum, double increment) {
+	public NumberSetting(String name, Module parent, double value, double minimum, double maximum, double increment) {
 		this.setName(name);
 	    this.setParentMod(parent);
 	    this.value = value;
-	    this.minimum = minimun;
+	    this.minimum = minimum;
 	    this.maximum = maximum;
 	    this.increment = increment;
 	  }

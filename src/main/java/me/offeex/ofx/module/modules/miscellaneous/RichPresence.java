@@ -3,7 +3,6 @@ package me.offeex.ofx.module.modules.miscellaneous;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
-import me.offeex.ofx.Main;
 import me.offeex.ofx.module.Module;
 import org.lwjgl.glfw.GLFW;
 
