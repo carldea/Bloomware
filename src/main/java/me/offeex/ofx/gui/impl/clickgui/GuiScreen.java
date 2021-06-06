@@ -24,11 +24,14 @@ public class GuiScreen extends Screen {
 
 	int key;
 	public final ArrayList<AbstractDraggable> panels;
+	private static GuiScreen instance;
+	private AbstractDraggable dragging = null;
 
 //	private final TestComp comp;
 
 	public GuiScreen() {
 		super(new LiteralText("OFX ClickGUI"));
+		instance = this;
 		this.panels = new ArrayList<>();
 		int offsetX = 0;
 		for (Module.Category category : Module.Category.values()) {
@@ -41,9 +44,9 @@ public class GuiScreen extends Screen {
 
 	@Override
 	public void render(MatrixStack matricies, int mouseX, int mouseY, float tickDelta) {
+		if(dragging != null) dragging.updateDragLogic(mouseX, mouseY);
 		for (AbstractDraggable panel : panels) {
 			panel.draw(matricies, mouseX, mouseY, tickDelta);
-			panel.updateDragLogic(mouseX, mouseY);
 		}
 	}
 
@@ -55,6 +58,10 @@ public class GuiScreen extends Screen {
 				AbstractDraggable panel = panels.get(i);
 				panels.remove(i);
 				panels.add(panel);
+				if(panel.isMouseInside(panel.x, panel.y, panel.width, 13, mouseX, mouseY)){
+					dragging = panel;
+					panel.startDragging(mouseX, mouseY, mouseButton);
+				}
 				return true;
 			}
 		}
@@ -63,6 +70,7 @@ public class GuiScreen extends Screen {
 
 	@Override
 	public boolean mouseReleased(double mouseX, double mouseY, int mouseButton) {
+		dragging = null;
 		for (int i = panels.size() - 1; i >= 0; i--) {
 			if (panels.get(i).isMouseWithin(mouseX, mouseY)) {
 				panels.get(i).mouseReleased(mouseX, mouseY, mouseButton);
@@ -83,4 +91,17 @@ public class GuiScreen extends Screen {
 		key = e.getKey();
 	});
 
+	@Override
+	public void onClose() {
+		super.onClose();
+		dragging = null;
+	}
+
+	public static GuiScreen getInstance(){
+		return instance;
+	}
+
+	public AbstractDraggable getDragging(){
+		return dragging;
+	}
 }

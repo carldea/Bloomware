@@ -29,7 +29,7 @@ public class HudPanel extends AbstractDraggable {
 
     @Override
     public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
-        if (this.dragging)
+        if (HudScreen.getInstance().getDragging() == this)
             Screen.fill(stack, x, y, x + width, y + height, new Color(80, 80, 80, 200).getRGB());
         else
             Screen.fill(stack, x, y, x + width, y + height, new Color(0, 0, 0, 150).getRGB());

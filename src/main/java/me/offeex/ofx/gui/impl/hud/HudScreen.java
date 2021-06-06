@@ -13,10 +13,13 @@ import java.util.ArrayList;
 public class HudScreen extends Screen {
     public static HudPanel panel;
     ArrayList<Component> components;
+    private static HudScreen instance;
+    private AbstractDraggable dragging = null;
 //    Component component;
 
     public HudScreen() {
         super(new LiteralText("OFX HudEditor"));
+        instance = this;
         panel = new HudPanel(10, 20, 150, 220);
         components = ComponentManager.getComponents();
 //        component = ComponentManager.getComponentByName("Coords");
@@ -24,11 +27,8 @@ public class HudScreen extends Screen {
 
     @Override
     public void render(MatrixStack matricies, int mouseX, int mouseY, float tickDelta) {
-            panel.draw(matricies, mouseX, mouseY, tickDelta);
-            panel.updateDragLogic(mouseX, mouseY);
-            for (Component c : components) {
-                c.updateDragLogic(mouseX, mouseY);
-            }
+        panel.draw(matricies, mouseX, mouseY, tickDelta);
+        if(dragging != null) dragging.updateDragLogic(mouseX, mouseY);
     }
 
     @Override
@@ -36,11 +36,18 @@ public class HudScreen extends Screen {
 //        Проверка на MouseClicked
         if (panel.isMouseWithin(mouseX, mouseY)) {
             panel.mouseClicked(mouseX, mouseY, mouseButton);
+//            Проверка на Draggable
+            if(panel.isMouseInside(panel.x, panel.y, panel.width, 13, mouseX, mouseY)){
+                dragging = panel;
+                panel.startDragging(mouseX, mouseY, mouseButton);
+            }
             return true;
         }
         for (Component c : components) {
             if (c.isMouseWithin(mouseX, mouseY)) {
                 c.mouseClicked(mouseX, mouseY, mouseButton);
+                dragging = c;
+                c.startDragging(mouseX, mouseY, mouseButton);
                 return true;
             }
         }
@@ -50,13 +57,12 @@ public class HudScreen extends Screen {
 
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int mouseButton) {
-        panel.stopDragging(mouseX, mouseY, mouseButton);
+        dragging = null;
         if (panel.isMouseWithin(mouseX, mouseY)) {
             panel.mouseReleased(mouseX, mouseY, mouseButton);
             return true;
         }
         for (Component c : components) {
-            c.stopDragging(mouseX, mouseY, mouseButton);
             if (c.isMouseWithin(mouseX, mouseY)) {
                 c.mouseReleased(mouseX, mouseY, mouseButton);
                 return true;
@@ -69,11 +75,19 @@ public class HudScreen extends Screen {
     public void onClose() {
         super.onClose();
         HudEditor.openScreen = false;
-
+        dragging = null;
     }
 
     @Override
     public boolean isPauseScreen() {
         return true;
+    }
+
+    public static HudScreen getInstance(){
+        return instance;
+    }
+
+    public AbstractDraggable getDragging(){
+        return dragging;
     }
 }
