@@ -2,6 +2,7 @@ package me.offeex.ofx;
 
 import me.offeex.ofx.api.config.FakePlayerSaver;
 //import me.offeex.ofx.gui.StreamerModeWindow;
+import me.offeex.ofx.api.friends.FriendManager;
 import me.offeex.ofx.api.util.CapeUtil;
 import me.offeex.ofx.gui.api.RenderHelper;
 import me.offeex.ofx.gui.impl.clickgui.GuiScreen;
@@ -52,6 +53,7 @@ public class Main implements ClientModInitializer {
 	public static SettingManager settingManager;
 	public static SaveLoad saveLoad;
 	public static EventProcessor eventProcessor;
+	public static FriendManager friendManager;
 	public static CommandManager commandManager;
 	public static FakePlayerSaver fakePlayer;
 	public static JFrame streamerWindow;
@@ -83,45 +85,29 @@ public class Main implements ClientModInitializer {
 				"`:;;;;;:' :;       `:; ;:' ");
 		
 		// inits
-		
 		eventProcessor = new EventProcessor();
 		printLog("event system initialized.");
-		
 		commandManager = new CommandManager();
 		printLog("command system initialized.");
-
 		moduleManager = new ModuleManager();
 		printLog("module system initialized.");
-
 		componentManager = new ComponentManager();
-		
 		settingManager = new SettingManager();
 		printLog("setting system initialized.");
-
 		fakePlayer = new FakePlayerSaver();
 		fakePlayer.fileManager();
-
 		moduleNotifier = new ModuleNotifier();
 		chatNotifier = new ChatNotifier();
-
 		gui = new GuiScreenManager(new GuiScreen());
 		hudd = new HudScreenManager(new HudScreen());
 		rh = new RenderHelper();
-
-
+		friendManager = new FriendManager();
 		//streamerWin = new StreamerModeWindow();
-
 		capeUtil = new CapeUtil();
-
 		hud = new HUD();
 		printLog("HUD initialized.");
-		
 		saveLoad = new SaveLoad();
 		printLog("config initialized.");
-
-		//
-		
 		printLog(Main.name + " has finished initialization :)");
 	}
-
 }
