@@ -4,6 +4,7 @@ import me.offeex.ofx.Main;
 import me.offeex.ofx.gui.api.AbstractButton;
 import me.offeex.ofx.gui.api.AbstractDraggable;
 import me.offeex.ofx.gui.api.ColorUtils;
+import me.offeex.ofx.gui.impl.hud.component.Component;
 import me.offeex.ofx.gui.impl.settings.SettingWindow;
 import me.offeex.ofx.module.Module;
 import net.minecraft.client.gui.screen.Screen;
@@ -22,6 +23,7 @@ public class GuiModule extends AbstractButton {
         super(x, y, panel.width, 13);
         this.module = module;
         this.panel = panel;
+
 //        setting = new GuiSettings(this, x, y);
     }
 
@@ -49,7 +51,7 @@ public class GuiModule extends AbstractButton {
             }
         }
         if (mouseButton == 1) { //Проверка на ПКМ
-            Iterator<AbstractDraggable> i = GuiScreen.getInstance().panels.iterator();
+            Iterator<AbstractDraggable> i = Main.guiscreen.panels.iterator();
             while (i.hasNext()) {
                 AbstractDraggable ad = i.next();
                 if (ad instanceof SettingWindow) {
@@ -59,7 +61,7 @@ public class GuiModule extends AbstractButton {
                 }
             }
             SettingWindow sw = new SettingWindow(module, (int) mouseX, (int) mouseY);
-            GuiScreen.getInstance().panels.add(sw);
+            Main.guiscreen.panels.add(sw);
         }
 
     }

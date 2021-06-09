@@ -3,7 +3,6 @@ package me.offeex.ofx.gui.impl.hud;
 import me.offeex.ofx.Main;
 import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.gui.api.font.StringRenderer;
-import me.offeex.ofx.gui.impl.clickgui.GuiScreen;
 import me.offeex.ofx.module.Module;
 import me.offeex.ofx.module.ModuleManager;
 import me.zero.alpine.listener.EventHandler;
@@ -12,7 +11,6 @@ import net.minecraft.client.MinecraftClient;
 
 public class HUD {
 	private final MinecraftClient mc = MinecraftClient.getInstance();
-	GuiScreen screen = Main.gui.getGuiScreen();
 
 	public HUD() {
 		Main.EVENTBUS.subscribe(listener);
@@ -27,7 +25,7 @@ public class HUD {
 
 		for (Module module : ModuleManager.getModules()) {
 			if (module.isEnabled() && !module.isHidden()) {
-				fontRenderer.drawString(module.getName(), windowX - fontRenderer.getStringWidth(module.getName(), 23) - 3, windowY, module.category.color.getRGB(), true);
+				fontRenderer.drawString(module.getName(), windowX - fontRenderer.getStringWidth(module.getName(), 23) - 3, windowY, module.getCategory().getColor().getRGB(), true);
 				windowY += -10;
 			}
 		}

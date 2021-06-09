@@ -3,7 +3,6 @@ package me.offeex.ofx.gui.impl.clickgui;
 import me.offeex.ofx.Main;
 import me.offeex.ofx.gui.api.AbstractDraggable;
 import me.offeex.ofx.gui.api.ColorUtils;
-import me.offeex.ofx.gui.impl.hud.HudScreen;
 import me.offeex.ofx.module.Module;
 import me.offeex.ofx.module.ModuleManager;
 import net.minecraft.client.gui.screen.Screen;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
  */
 public class GuiPanel extends AbstractDraggable {
 
-    Module.Category category;
+    private final Module.Category category;
     ArrayList<GuiModule> modules;
     boolean isMinimized;
 
@@ -42,7 +41,7 @@ public class GuiPanel extends AbstractDraggable {
         int totalHeight = this.height;
         if (isMinimized)
             totalHeight = 13;
-        if (GuiScreen.getInstance().getDragging() == this)
+        if (Main.guiscreen.getDragging() == this)
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(80, 80, 80, 200).getRGB());
         else
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(0, 0, 0, 150).getRGB());
@@ -50,7 +49,7 @@ public class GuiPanel extends AbstractDraggable {
         Screen.fill(stack, x, y, x + width, y + 14, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 200));
         Screen.fill(stack, x, y + 13, x + width, y + 14, ColorUtils.withTransparency(ColorUtils.Colors.PRIMARY, 120));
 
-        Main.pFontRenderer.drawString(category.name, x + (width / 2f - Main.pFontRenderer.getStringWidth(category.name, Main.pFontRenderer.getFontsize()) / 2f), y + 3, ColorUtils.Colors.PRIMARY.getRGB(), true);
+        Main.pFontRenderer.drawString(category.getName(), x + (width / 2f - Main.pFontRenderer.getStringWidth(category.getName(), Main.pFontRenderer.getFontsize()) / 2f), y + 3, ColorUtils.Colors.PRIMARY.getRGB(), true);
         int offsetY = 13;
 
         if (!isMinimized) {
@@ -61,8 +60,6 @@ public class GuiPanel extends AbstractDraggable {
                 offsetY += 13;
             }
         }
-
-        
     }
 
     public void mouseClicked(double mouseX, double mouseY, int mouseButton) {
@@ -84,5 +81,9 @@ public class GuiPanel extends AbstractDraggable {
         for (GuiModule module : modules) {
             module.isPressed = false;
         }
+    }
+
+    public Module.Category getCategory() {
+        return category;
     }
 }

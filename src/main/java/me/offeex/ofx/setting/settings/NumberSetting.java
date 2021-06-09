@@ -28,9 +28,9 @@ public class NumberSetting extends Setting {
 	    //this.value = value;
 	    this.value = Math.round(Math.max(this.minimum, Math.min(this.maximum, value)) * precision) / precision;
 	    
-	    if(Main.saveLoad != null) {
-			Main.saveLoad.save();
-	    }
+//	    if(Main.saveLoad != null) {
+//			Main.saveLoad.save();
+//	    }
 	}
 	 
 	public void increment(boolean positive) {

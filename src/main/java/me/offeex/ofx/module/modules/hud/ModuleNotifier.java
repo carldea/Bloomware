@@ -1,20 +1,18 @@
-package me.offeex.ofx.gui.impl.hud.component.components;
+package me.offeex.ofx.module.modules.hud;
 
 import me.offeex.ofx.Main;
 import me.offeex.ofx.gui.api.ColorUtils;
-import me.offeex.ofx.gui.impl.hud.component.Component;
-import me.offeex.ofx.module.modules.client.HudEditor;
-import net.minecraft.client.MinecraftClient;
+import me.offeex.ofx.module.Module;
+import me.offeex.ofx.module.modules.client.ClickGui;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class ModuleNotifier extends Component {
+public class ModuleNotifier extends Module {
     public ModuleNotifier() {
-        super("Module Notifier", "Adds the window with the notifications about toggling modules", 10, 50, 10, 18);
+        super("Module Notifier", "Adds the window with the notifications about toggling modules", KEY_UNBOUND, Category.HUD, false);
     }
 
     String message = "";
-    private static MinecraftClient mc = MinecraftClient.getInstance();
 
     public void setMessage(String msg) {
         Thread t = new Thread(() -> {
@@ -37,18 +35,10 @@ public class ModuleNotifier extends Component {
     public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
         if (isEnabled()) {
             width = Main.sFontRenderer.getStringWidth(Main.moduleNotifier.getMessage(), Main.sFontRenderer.getFontsize()) + 8;
-            if (HudEditor.openScreen) {
+            if (ClickGui.getCurrentScreen() == 2) {
                 Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
             }
             Main.sFontRenderer.drawString(Main.moduleNotifier.getMessage(), x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
         }
-    }
-
-    @Override
-    public void mouseClicked(double mouseX, double mouseY, int mouseButton) {
-    }
-
-    @Override
-    public void mouseReleased(double mouseX, double mouseY, int mouseButton) {
     }
 }

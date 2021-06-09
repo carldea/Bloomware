@@ -37,20 +37,12 @@ public class MixinMinecraftClient {
     @Final
     private Session session;
 
-    @Inject(
-            at = {@At("INVOKE")},
-            method = {"tick"},
-            cancellable = true
-    )
+    @Inject(at = @At("INVOKE"), method = "tick", cancellable = true)
     public void tick(CallbackInfo callbackInfo) {
         if (player != null && world != null) ModuleManager.onTick();
     }
 
-    @Inject(
-            at = @At("TAIL"),
-            method = {"getWindowTitle"},
-            cancellable = true
-    )
+    @Inject(at = @At("TAIL"), method = "getWindowTitle", cancellable = true)
     public void getWindowTitle(CallbackInfoReturnable<String> cir) {
         cir.setReturnValue(Main.name + " v" + Main.version);
     }

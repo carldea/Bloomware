@@ -17,17 +17,17 @@ public class ModuleList extends Command {
 		if(args.length == 0) {
 			StringBuilder list = new StringBuilder();
 			for (Module module : ModuleManager.getModules()) {
-				if (module.category.equals(Module.Category.COMBAT))
+				if (module.getCategory().equals(Module.Category.COMBAT))
 					list.append(TextFormatting.RED).append(module.getName()).append(", ");
-				if (module.category.equals(Module.Category.MOVEMENT))
+				if (module.getCategory().equals(Module.Category.MOVEMENT))
 					list.append(TextFormatting.YELLOW).append(module.getName()).append(", ");
-				if (module.category.equals(Module.Category.PLAYER))
+				if (module.getCategory().equals(Module.Category.PLAYER))
 					list.append(TextFormatting.GREEN).append(module.getName()).append(", ");
-				if (module.category.equals(Module.Category.RENDER))
+				if (module.getCategory().equals(Module.Category.RENDER))
 					list.append(TextFormatting.AQUA).append(module.getName()).append(", ");
-				if (module.category.equals(Module.Category.MISCELLANEOUS))
+				if (module.getCategory().equals(Module.Category.MISCELLANEOUS))
 					list.append(TextFormatting.BLUE).append(module.getName()).append(", ");
-				if (module.category.equals(Module.Category.CLIENT))
+				if (module.getCategory().equals(Module.Category.CLIENT))
 					list.append(TextFormatting.GRAY).append(module.getName()).append(", ");
 			}
 			CommandManager.addChatMessage(TextFormatting.RED + list.toString());

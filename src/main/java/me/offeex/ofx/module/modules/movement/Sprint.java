@@ -3,6 +3,7 @@ package me.offeex.ofx.module.modules.movement;
 import me.offeex.ofx.Main;
 import me.offeex.ofx.api.event.events.EventPlayerMove;
 import me.offeex.ofx.api.util.MovementUtil;
+import me.offeex.ofx.gui.impl.hud.component.Component;
 import me.offeex.ofx.module.Module;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
@@ -12,7 +13,7 @@ import org.lwjgl.glfw.GLFW;
 public class Sprint extends Module {
 
     public Sprint() {
-        super("Sprint", "Sprinting you", GLFW.GLFW_KEY_X, Category.MOVEMENT, false, 0.1);
+        super("Sprint", "Sprinting you", GLFW.GLFW_KEY_X, Category.MOVEMENT, false);
     }
         @EventHandler
         private final Listener<EventPlayerMove> listener = new Listener<>(e -> {

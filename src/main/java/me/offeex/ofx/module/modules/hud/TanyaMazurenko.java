@@ -1,17 +1,17 @@
-package me.offeex.ofx.gui.impl.hud.component.components;
+package me.offeex.ofx.module.modules.hud;
 
 import me.offeex.ofx.gui.impl.hud.component.Component;
+import me.offeex.ofx.module.Module;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
-public class TanyaMazurenko extends Component {
+public class TanyaMazurenko extends Module {
     public TanyaMazurenko() {
-        super("Tanya Mazurenko", "oops :^)", 10, 100, 80, 50);
+        super("Tanya Mazurenko", "oops :^)", KEY_UNBOUND, Category.HUD, false);
     }
 
-    private static MinecraftClient mc = MinecraftClient.getInstance();
     Identifier tanya = new Identifier("ofx", "ez.gif");
 
     @Override
@@ -20,13 +20,5 @@ public class TanyaMazurenko extends Component {
             mc.getTextureManager().bindTexture(tanya);
             DrawableHelper.drawTexture(stack, (int) (1.5 + 30), 64, 0, 0, 0, 92, 64, 64, 92);
         }
-    }
-
-    @Override
-    public void mouseClicked(double mouseX, double mouseY, int mouseButton) {
-    }
-
-    @Override
-    public void mouseReleased(double mouseX, double mouseY, int mouseButton) {
     }
 }
