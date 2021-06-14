@@ -3,7 +3,6 @@ package me.offeex.ofx.module.modules.movement;
 import me.offeex.ofx.Main;
 import me.offeex.ofx.api.event.events.EventPlayerMove;
 import me.offeex.ofx.api.util.MovementUtil;
-import me.offeex.ofx.gui.impl.hud.component.Component;
 import me.offeex.ofx.module.Module;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;

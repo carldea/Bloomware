@@ -10,7 +10,7 @@
 //
 //import me.offeex.ofx.Main;
 //import me.offeex.ofx.command.CommandManager;
-//import me.offeex.ofx.gui.impl.hud.component.Component;
+//import me.offeex.ofx.gui.impl.hud.element.HudElement;
 //import me.offeex.ofx.setting.Setting;
 //import me.offeex.ofx.setting.settings.BooleanSetting;
 //import me.offeex.ofx.setting.settings.ModeSetting;
@@ -51,7 +51,7 @@
 //			toSave.add("MOD:" + mod.getName() + ":" + mod.isEnabled() + ":" + mod.getKey());
 //		}
 //
-//		for(Component c : ComponentManager.getComponents()) {
+//		for(HudElement c : ComponentManager.getComponents()) {
 //			toSave.add("COMP:" + c.getName() + ":" + c.isEnabled());
 //		}
 //
@@ -75,7 +75,7 @@
 //			}
 //		}
 //
-//		for(Component c : ComponentManager.getComponents()) {
+//		for(HudElement c : ComponentManager.getComponents()) {
 //			for(Setting setting : c.settings) {
 //
 //				if(setting instanceof BooleanSetting) {
@@ -154,7 +154,7 @@
 //					}
 //				}
 //			} else if (s.toLowerCase().startsWith("pos:")) {
-//				Component c = Main.componentManager.getComponent(args[1]);
+//				HudElement c = Main.componentManager.getComponent(args[1]);
 //				if (c != null) {
 //					c.setX(Integer.parseInt(args[2]));
 //					c.setY(Integer.parseInt(args[3]));

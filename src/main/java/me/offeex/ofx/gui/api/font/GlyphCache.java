@@ -378,7 +378,7 @@ public class GlyphCache
 
         /*
          * Full white (1.0, 1.0, 1.0, 1.0) can be modulated by vertex color to produce a full gamut of text colors, although with
-         * a GL_ALPHA8 texture, only the alpha component of the color will actually get loaded into the texture.
+         * a GL_ALPHA8 texture, only the alpha element of the color will actually get loaded into the texture.
          */
         stringGraphics.setPaint(Color.WHITE);
     }

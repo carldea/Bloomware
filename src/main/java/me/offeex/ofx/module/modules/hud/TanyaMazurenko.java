@@ -1,8 +1,6 @@
 package me.offeex.ofx.module.modules.hud;
 
-import me.offeex.ofx.gui.impl.hud.component.Component;
 import me.offeex.ofx.module.Module;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;

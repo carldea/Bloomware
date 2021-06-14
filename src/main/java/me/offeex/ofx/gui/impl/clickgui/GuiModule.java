@@ -4,9 +4,10 @@ import me.offeex.ofx.Main;
 import me.offeex.ofx.gui.api.AbstractButton;
 import me.offeex.ofx.gui.api.AbstractDraggable;
 import me.offeex.ofx.gui.api.ColorUtils;
-import me.offeex.ofx.gui.impl.hud.component.Component;
+import me.offeex.ofx.gui.impl.hud.element.HudElement;
 import me.offeex.ofx.gui.impl.settings.SettingWindow;
 import me.offeex.ofx.module.Module;
+import me.offeex.ofx.module.modules.client.HudEditor;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -16,15 +17,12 @@ import java.util.Iterator;
 public class GuiModule extends AbstractButton {
     Module module;
     GuiPanel panel;
-//    GuiSettings setting;
     public boolean isPressed;
 
     public GuiModule(int x, int y, Module module, GuiPanel panel) {
         super(x, y, panel.width, 13);
         this.module = module;
         this.panel = panel;
-
-//        setting = new GuiSettings(this, x, y);
     }
 
     public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
@@ -44,13 +42,13 @@ public class GuiModule extends AbstractButton {
 
     @Override
     public void mouseClicked(double mouseX, double mouseY, int mouseButton) {
-        if (mouseButton == 0) { //Проверка на ЛКМ
+        if (mouseButton == 0) {
             if (this.isMouseWithin(mouseX, mouseY) && !panel.isMinimized) {
                 isPressed = true;
                 module.toggle();
             }
         }
-        if (mouseButton == 1) { //Проверка на ПКМ
+        if (mouseButton == 1) {
             Iterator<AbstractDraggable> i = Main.guiscreen.panels.iterator();
             while (i.hasNext()) {
                 AbstractDraggable ad = i.next();

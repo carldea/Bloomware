@@ -68,7 +68,7 @@ public class StringCache
      * Pre-cached glyphs for the ASCII digits 0-9 (in that order). Used by renderString() to substiture digit glyphs on the fly
      * as a performance boost. The speed up is most noticable on the F3 screen which rapidly displays lots of changing numbers.
      * The 4 element array is index by the font style (combination of Font.PLAIN, Font.BOLD, and Font.ITALIC), and each of the
-     * nested elements is index by the digit value 0-9.
+     * nested components is index by the digit value 0-9.
      */
     Glyph[][] digitGlyphs = new Glyph[4][];
 

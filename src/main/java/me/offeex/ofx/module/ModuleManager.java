@@ -3,7 +3,7 @@ package me.offeex.ofx.module;
 import java.util.*;
 
 import me.offeex.ofx.Main;
-import me.offeex.ofx.gui.impl.hud.component.Component;
+import me.offeex.ofx.gui.impl.hud.element.HudElement;
 import org.lwjgl.glfw.GLFW;
 
 import me.offeex.ofx.api.event.events.EventKeyPress;
@@ -16,13 +16,11 @@ import org.reflections.Reflections;
 public class ModuleManager {
 
 	public static ArrayList<Module> modules;
-	public static ArrayList<Component> components;
-	
+
 	public ModuleManager() {
 		Main.EVENTBUS.subscribe(listener);
 		
 		modules = new ArrayList<>();
-		components = new ArrayList<>();
 
 		// Iterating every module and adding it in "modules" list
 		Set<Class<? extends Module>> reflections = new Reflections("me.offeex.ofx.module.modules").getSubTypesOf(Module.class);
@@ -30,7 +28,6 @@ public class ModuleManager {
 			try {
 				Module m = aClass.newInstance();
 				modules.add(m);
-				components.add(m.getComponent());
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}

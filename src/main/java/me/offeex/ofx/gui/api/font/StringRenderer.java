@@ -78,7 +78,7 @@ public class StringRenderer
      * @param str          the string being rendered; it can contain color codes
      * @param startX       the x coordinate to draw at
      * @param startY       the y coordinate to draw at
-     * @param initialColor the initial RGBA color to use when drawing the string; embedded color codes can override the RGB component
+     * @param initialColor the initial RGBA color to use when drawing the string; embedded color codes can override the RGB element
      * @param shadowFlag   if true, color codes are replaces by a darker version used for drop shadows
      * @return the total advance (horizontal distance) of this string
      */
@@ -141,7 +141,7 @@ public class StringRenderer
         {
             /*
             * If the original string had a color code at this glyph's position, then change the current GL color that gets added
-            * to the vertex array. Note that only the RGB component of the color is replaced by a color code; the alpha component
+            * to the vertex array. Note that only the RGB element of the color is replaced by a color code; the alpha element
             * of the original color passed into this function will remain. The while loop handles multiple consecutive color codes,
             * in which case only the last such color code takes effect.
             */
@@ -417,8 +417,8 @@ public class StringRenderer
     }
 
     /**
-     * Apply a new vertex color to the Tessellator instance based on the numeric chat color code. Only the RGB component of the
-     * color is replaced by a color code; the alpha component of the original default color will remain.
+     * Apply a new vertex color to the Tessellator instance based on the numeric chat color code. Only the RGB element of the
+     * color is replaced by a color code; the alpha element of the original default color will remain.
      *
      * @param colorCode  the chat color code as a number 0-15 or -1 to reset the default color
      * @param color      the default color used when the colorCode is -1

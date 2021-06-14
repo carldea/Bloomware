@@ -7,12 +7,10 @@ import java.util.Comparator;
 import java.util.List;
 
 import me.offeex.ofx.Main;
-import me.offeex.ofx.api.event.events.EventDrawOverlay;
-import me.offeex.ofx.gui.impl.hud.component.Component;
+import me.offeex.ofx.gui.impl.hud.element.HudElement;
+import me.offeex.ofx.gui.impl.settings.SettingWindow;
 import me.offeex.ofx.setting.Setting;
 import me.offeex.ofx.setting.settings.KeybindSetting;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -27,8 +25,7 @@ public class Module {
 	private final Category category;
 	private boolean enabled, hidden;
 	public List<Setting> settings = new ArrayList<Setting>();
-	private Component component = null;
-	public int x = 10, y = 100, width, height = y + 4;
+	public int x = 10, y = 10, width, height = 18;
 
 	public Module(String name, String description, int key, Category category, boolean hidden) {
 		this.name = name;
@@ -38,9 +35,6 @@ public class Module {
 		this.category = category;
 		this.enabled = false;
 		this.hidden = hidden;
-		if (getCategory().equals(Category.HUD)) {
-			component = new Component(this, x, y, width, height);
-		}
 	}
 	
 	public void addSettings(Setting... settings) {
@@ -172,9 +166,4 @@ public class Module {
 	public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {}
 //	public void mouseClicked(double mouseX, double mouseY, int mouseButton) {}
 //	public void mouseReleased(double mouseX, double mouseY, int mouseButton) {}
-
-
-	public Component getComponent() {
-		return component;
-	}
 }
