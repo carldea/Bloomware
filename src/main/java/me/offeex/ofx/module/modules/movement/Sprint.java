@@ -12,7 +12,7 @@ import org.lwjgl.glfw.GLFW;
 public class Sprint extends Module {
 
     public Sprint() {
-        super("Sprint", "Sprinting you", GLFW.GLFW_KEY_X, Category.MOVEMENT, false, 0.1);
+        super("Sprint", "Sprinting you", GLFW.GLFW_KEY_X, Category.MOVEMENT, false);
     }
         @EventHandler
         private final Listener<EventPlayerMove> listener = new Listener<>(e -> {

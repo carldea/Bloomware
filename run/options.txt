@@ -18,8 +18,8 @@ fullscreen:false
 bobView:true
 toggleCrouch:false
 toggleSprint:false
-mouseSensitivity:0.5
-fov:-1.0
+mouseSensitivity:0.3838028311729431
+fov:0.525
 screenEffectScale:1.0
 fovEffectScale:1.0
 gamma:1.0
@@ -27,7 +27,7 @@ renderDistance:16
 entityDistanceScaling:1.0
 guiScale:2
 particles:0
-maxFps:70
+maxFps:170
 difficulty:2
 graphicsMode:1
 ao:2

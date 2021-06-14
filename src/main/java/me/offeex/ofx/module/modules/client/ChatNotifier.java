@@ -1,7 +1,6 @@
 package me.offeex.ofx.module.modules.client;
 
-import me.offeex.ofx.Main;
-import me.offeex.ofx.hud.component.ComponentManager;
+import me.offeex.ofx.command.CommandManager;
 import me.offeex.ofx.module.Module;
 import me.offeex.ofx.module.ModuleManager;
 import org.lwjgl.glfw.GLFW;
@@ -13,7 +12,7 @@ public class ChatNotifier extends Module {
 
     public void sendMsg(String msg) {
         if (ModuleManager.isModuleEnabled("Chat Notifier")) {
-            ComponentManager.addChatMessage(msg);
+            CommandManager.addChatMessage(msg);
         }
     }
 }

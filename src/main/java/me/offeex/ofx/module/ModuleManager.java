@@ -3,31 +3,20 @@ package me.offeex.ofx.module;
 import java.util.*;
 
 import me.offeex.ofx.Main;
-import me.offeex.ofx.module.modules.client.ClickGui;
-import me.offeex.ofx.module.modules.client.HudEditor;
-import me.offeex.ofx.module.modules.combat.ExampleCombatModule;
-import me.offeex.ofx.module.modules.miscellaneous.FakePlayer;
-import me.offeex.ofx.module.modules.miscellaneous.RichPresence;
-import me.offeex.ofx.module.modules.movement.Sprint;
-import me.offeex.ofx.module.modules.player.AutoRespawn;
-import me.offeex.ofx.module.modules.render.FullBright;
-import me.offeex.ofx.module.modules.render.Zoom;
+import me.offeex.ofx.gui.impl.hud.element.HudElement;
 import org.lwjgl.glfw.GLFW;
 
 import me.offeex.ofx.api.event.events.EventKeyPress;
-import me.offeex.ofx.api.util.TextFormatting;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.Text;
 import org.reflections.Reflections;
 
 public class ModuleManager {
 
 	public static ArrayList<Module> modules;
-	
+
 	public ModuleManager() {
 		Main.EVENTBUS.subscribe(listener);
 		
@@ -37,7 +26,8 @@ public class ModuleManager {
 		Set<Class<? extends Module>> reflections = new Reflections("me.offeex.ofx.module.modules").getSubTypesOf(Module.class);
 		reflections.forEach(aClass -> {
 			try {
-					ModuleManager.modules.add(aClass.newInstance());
+				Module m = aClass.newInstance();
+				modules.add(m);
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}

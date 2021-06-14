@@ -1,7 +1,7 @@
 {
   "servers": {
     "2b2t.dev:25565": {
-      "forcedProtocol": -1
+      "forcedProtocol": 340
     }
   }
 }

@@ -12,7 +12,6 @@ import net.minecraft.client.util.math.MatrixStack;
 public abstract class AbstractDraggable extends AbstractComponent implements IRenderable {
 
 	protected int dragX, dragY;
-	protected boolean dragging;
 	MinecraftClient mc = MinecraftClient.getInstance();
 	
 	public AbstractDraggable(int x, int y, int width, int height) {
@@ -27,26 +26,17 @@ public abstract class AbstractDraggable extends AbstractComponent implements IRe
 	
 	public abstract void mouseReleased(double mouseX, double mouseY, int mouseButton);
 	
-	protected void startDragging(double mouseX, double mouseY, int mouseButton) {
-		if (isMouseWithin(mouseX, mouseY)) {
-			dragging = true;
-			this.dragX = (int) mouseX - this.x;
-			this.dragY = (int) mouseY - this.y;
-		}
-	}
-	
-	public void stopDragging(double mouseX, double mouseY, int mouseButton) {
-		dragging = false;
+	public void startDragging(double mouseX, double mouseY, int mouseButton) {
+		this.dragX = (int) mouseX - this.x;
+		this.dragY = (int) mouseY - this.y;
 	}
 	
 	// this should be called on render
 	public void updateDragLogic(int mouseX, int mouseY) {
-		if (dragging) {
-			this.x = Math.max(0, (mouseX - dragX));
-			this.x = Math.min(mc.getWindow().getScaledWidth() - this.width, this.x);
+		this.x = Math.max(0, (mouseX - dragX));
+		this.x = Math.min(mc.getWindow().getScaledWidth() - this.width, this.x);
 
-			this.y = Math.max(0, (mouseY - dragY));
-			this.y = Math.min(mc.getWindow().getScaledHeight() - this.height, this.y);
-		}
+		this.y = Math.max(0, (mouseY - dragY));
+		this.y = Math.min(mc.getWindow().getScaledHeight() - this.height, this.y);
 	}
 }
