@@ -14,7 +14,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class CustomMainMenu extends Screen {
-    Identifier background = new Identifier("ofx", "coolbg.png");
+    Identifier background = new Identifier("ofx", "bg.mp4");
     MinecraftClient mc = MinecraftClient.getInstance();
 
     public CustomMainMenu() {

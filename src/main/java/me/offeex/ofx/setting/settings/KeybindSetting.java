@@ -8,7 +8,7 @@ public class KeybindSetting extends Setting {
 	public int code;
 	
 	public KeybindSetting(int code) {
-		this.setName("KeyBind");
+		this.setName("Bind");
 		this.code = code;
 	}
 	

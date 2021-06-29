@@ -3,6 +3,7 @@ package me.offeex.ofx.gui.impl.clickgui;
 import me.offeex.ofx.Main;
 import me.offeex.ofx.gui.api.AbstractDraggable;
 import me.offeex.ofx.gui.impl.hud.element.HudElement;
+import me.offeex.ofx.gui.impl.settings.SettingWindow;
 import me.offeex.ofx.module.Module;
 import me.offeex.ofx.module.ModuleManager;
 import me.offeex.ofx.module.modules.client.ClickGui;
@@ -22,15 +23,17 @@ public class HudScreen extends Screen {
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        if(Main.guiscreen.getDragging() != null) Main.guiscreen.getDragging().updateDragLogic(mouseX, mouseY);
+        if (Main.guiscreen.getDragging() != null) Main.guiscreen.getDragging().updateDragLogic(mouseX, mouseY);
         for (AbstractDraggable ad : Main.guiscreen.panels) {
-                if (ad instanceof GuiPanel) {
-                    GuiPanel panel = (GuiPanel) ad;
-                    if (panel.getCategory().equals(Module.Category.HUD))
-                        panel.draw(matrices, mouseX, mouseY, delta);
-                } else if (!(ad instanceof HudElement))
-                    ad.draw(matrices, mouseX, mouseY, delta);
-            }
+            if (ad instanceof GuiPanel) {
+                GuiPanel panel = (GuiPanel) ad;
+                if (panel.getCategory().equals(Module.Category.HUD))
+                    panel.draw(matrices, mouseX, mouseY, delta);
+            } else if (ad instanceof SettingWindow) {
+                continue;
+            } else if (!(ad instanceof HudElement))
+                ad.draw(matrices, mouseX, mouseY, delta);
+        }
     }
 
     @Override
@@ -47,17 +50,26 @@ public class HudScreen extends Screen {
             }
             if (panel instanceof HudElement) {
                 HudElement element = (HudElement) panel;
-                if (!element.getModule().isEnabled())
+                if (!element.getModule().isEnabled()) {
                     continue;
-            }
-
-            if (panel.isMouseWithin(mouseX, mouseY)) {
-                panel.mouseClicked(mouseX, mouseY, mouseButton);
-                Main.guiscreen.panels.remove(i);
-                Main.guiscreen.panels.add(panel);
-                if (panel.isMouseInside(panel.x, panel.y, panel.width, localHeight, mouseX, mouseY)) {
-                    Main.guiscreen.setDragging(panel);
-                    panel.startDragging(mouseX, mouseY, mouseButton);
+                } else {
+                    if (panel.isMouseInside(panel.x, panel.y, panel.width, 20, mouseX, mouseY)) {
+                        panel.mouseClicked(mouseX, mouseY, mouseButton);
+                        Main.guiscreen.panels.remove(i);
+                        Main.guiscreen.panels.add(panel);
+                        Main.guiscreen.setDragging(panel);
+                        panel.startDragging(mouseX, mouseY, mouseButton);
+                    }
+                }
+            } else {
+                if (panel.isMouseWithin(mouseX, mouseY)) {
+                    panel.mouseClicked(mouseX, mouseY, mouseButton);
+                    Main.guiscreen.panels.remove(i);
+                    Main.guiscreen.panels.add(panel);
+                    if (panel.isMouseInside(panel.x, panel.y, panel.width, 13, mouseX, mouseY)) {
+                        Main.guiscreen.setDragging(panel);
+                        panel.startDragging(mouseX, mouseY, mouseButton);
+                    }
                 }
             }
         }

@@ -1,16 +1,20 @@
 package me.offeex.ofx.module;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 import me.offeex.ofx.Main;
-import me.offeex.ofx.gui.impl.hud.element.HudElement;
-import me.offeex.ofx.gui.impl.settings.SettingWindow;
+import me.offeex.ofx.api.event.events.EventDrawOverlay;
+//import me.offeex.ofx.gui.impl.hud.element.HudElement;
 import me.offeex.ofx.setting.Setting;
+import me.offeex.ofx.setting.settings.BooleanSetting;
 import me.offeex.ofx.setting.settings.KeybindSetting;
+import me.zero.alpine.listener.EventHandler;
+import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -22,25 +26,32 @@ public class Module {
 	public String name, description;
 	public double version;
 	public KeybindSetting keyCode = new KeybindSetting(0);
+	public BooleanSetting shown;
 	private final Category category;
 	private boolean enabled, hidden;
-	public List<Setting> settings = new ArrayList<Setting>();
-	public int x = 10, y = 10, width, height = 18;
+	public List<Setting> settings = new ArrayList<>();
+	private final Component component = null;
+	public int x = 10, y = 100, width, height = y + 4;
 
-	public Module(String name, String description, int key, Category category, boolean hidden) {
+	public Module(String name, String description, int key, Category category, boolean hidden, Setting... s) {
 		this.name = name;
+		this.shown = new BooleanSetting("Show in arraylist", true);
 		this.description = description;
 		keyCode.code = key;
-		this.addSettings(keyCode);
+		settings = Arrays.asList(s);
 		this.category = category;
+		//settings.add(shown);
 		this.enabled = false;
 		this.hidden = hidden;
+		//if (getCategory().equals(Category.HUD)) {
+			//component = new HudElement(this, x, y, width, height);
+		//}
 	}
 	
-	public void addSettings(Setting... settings) {
-		this.settings.addAll(Arrays.asList(settings));
-		this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
-	}
+	//public void addSettings(Setting... settings) {
+	//	this.settings.addAll(Arrays.asList(settings));
+	//	this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
+	//}
 
 	public enum Category {
 		COMBAT("Combat", Color.decode("#ff2e2e"), 0),
@@ -141,6 +152,11 @@ public class Module {
 	}
 
 	public void enable() {
+		try {
+			Main.configManager.saveConfig(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		Main.moduleNotifier.setMessage(this.name + " enabled!");
 		Main.chatNotifier.sendMsg(this.name + " enabled!");
 		setEnabled(true);
@@ -148,6 +164,11 @@ public class Module {
 	}
 
 	public void disable() {
+		try {
+			Main.configManager.saveConfig(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		Main.moduleNotifier.setMessage(this.name + " disabled!");
 		Main.chatNotifier.sendMsg(this.name + " disabled!");
 		setEnabled(false);
@@ -163,7 +184,24 @@ public class Module {
 	public void onTick() {
 	}
 
+	public List<Setting> getSettings() {
+		return settings;
+	}
+
+	public Setting getSetting(int s) {
+		return settings.get(s);
+	}
+
+	public int getCountOfSettings() {
+		return settings.size() + 1;
+	}
+
 	public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {}
 //	public void mouseClicked(double mouseX, double mouseY, int mouseButton) {}
 //	public void mouseReleased(double mouseX, double mouseY, int mouseButton) {}
+
+
+	public Component getComponent() {
+		return component;
+	}
 }

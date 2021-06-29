@@ -18,7 +18,7 @@ public class ModuleNotifier extends Module {
         Thread t = new Thread(() -> {
             message = msg;
             try {
-                Thread.sleep(1500);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 System.out.print("hohol");
             }

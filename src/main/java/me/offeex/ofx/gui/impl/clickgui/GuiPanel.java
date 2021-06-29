@@ -5,21 +5,20 @@ import me.offeex.ofx.gui.api.AbstractDraggable;
 import me.offeex.ofx.gui.api.ColorUtils;
 import me.offeex.ofx.module.Module;
 import me.offeex.ofx.module.ModuleManager;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Identifier;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-/**
- * @author Gav06
- *
- * @since 5/7/2021
- */
 public class GuiPanel extends AbstractDraggable {
 
     private final Module.Category category;
     ArrayList<GuiModule> modules;
+    MinecraftClient mc = MinecraftClient.getInstance();
     boolean isMinimized;
 
     public GuiPanel(Module.Category category, int x, int y, int width, int height) {
@@ -27,10 +26,10 @@ public class GuiPanel extends AbstractDraggable {
         this.category = category;
         modules = new ArrayList<>();
 
-        int offsetY = 13;
+        int offsetY = 17;
         for (Module module : ModuleManager.getModulesByCategory(category)) {
             modules.add(new GuiModule(x, y + offsetY, module, this));
-            offsetY += 13;
+            offsetY += 17;
         }
         this.height = offsetY;
     }
@@ -40,7 +39,7 @@ public class GuiPanel extends AbstractDraggable {
 //        Чёрный фон на панельке
         int totalHeight = this.height;
         if (isMinimized)
-            totalHeight = 13;
+            totalHeight = 17;
         if (Main.guiscreen.getDragging() == this)
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(80, 80, 80, 200).getRGB());
         else
@@ -50,15 +49,29 @@ public class GuiPanel extends AbstractDraggable {
         Screen.fill(stack, x, y + 13, x + width, y + 14, ColorUtils.withTransparency(ColorUtils.Colors.PRIMARY, 120));
 
         Main.pFontRenderer.drawString(category.getName(), x + (width / 2f - Main.pFontRenderer.getStringWidth(category.getName(), Main.pFontRenderer.getFontsize()) / 2f), y + 3, ColorUtils.Colors.PRIMARY.getRGB(), true);
-        int offsetY = 13;
+        int offsetY = 17;
 
         if (!isMinimized) {
+            Identifier minimized = new Identifier("ofx", "icons/notminimized.png");
+            mc.getTextureManager().bindTexture(minimized);
+            DrawableHelper.drawTexture(stack, x + width - 10, y + 2, 0, 0, 0, 8, 8, 8, 8);
             for (GuiModule module : modules) {
                 module.x = this.x;
                 module.y = this.y + offsetY;
                 module.draw(stack, mouseX, mouseY, tickDelta);
-                offsetY += 13;
+                if (module.module.getSettings().size() > 1) {
+                    Identifier settingIcon = new Identifier("ofx", "icons/setting.png");
+                    mc.getTextureManager().bindTexture(settingIcon);
+                    DrawableHelper.drawTexture(stack, module.x + module.width - 12, module.y + 3, 0, 0, 0, 10, 10, 10, 10);
+                }
+                offsetY += 17;
             }
+        }
+
+        if (isMinimized) {
+            Identifier minimized = new Identifier("ofx", "icons/minimized.png");
+            mc.getTextureManager().bindTexture(minimized);
+            DrawableHelper.drawTexture(stack, x + width - 10, y + 2, 0, 0, 0, 8, 8, 8, 8);
         }
     }
 

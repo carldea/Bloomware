@@ -3,12 +3,6 @@ package me.offeex.ofx.gui.api;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 
-/**
- * 
- * @author Gav06
- * 
- * @since 5/4/2021
- */
 public abstract class AbstractDraggable extends AbstractComponent implements IRenderable {
 
 	protected int dragX, dragY;
