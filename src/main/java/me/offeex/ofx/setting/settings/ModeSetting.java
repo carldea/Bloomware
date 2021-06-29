@@ -12,9 +12,9 @@ public class ModeSetting extends Setting {
 	  
 	public List<String> modes;
 	  
-	public ModeSetting(String name, Module parent, String defaultMode, String... modes) {
+	public ModeSetting(String name, String defaultMode, String... modes) {
 	    this.setName(name);
-	    this.setParentMod(parent);
+	    //this.setParentMod(parent);
 	    this.modes = Arrays.asList(modes);
 	    this.index = this.modes.indexOf(defaultMode);
 	}
@@ -41,5 +41,6 @@ public class ModeSetting extends Setting {
 	    } else {
 	      this.index = 0;
 	    }
+	    setMode(modes.get(this.index));
 	}
 }

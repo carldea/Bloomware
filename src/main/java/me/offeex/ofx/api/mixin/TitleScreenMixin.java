@@ -1,11 +1,12 @@
 package me.offeex.ofx.api.mixin;
 
+import me.offeex.ofx.altmanager.screens.AltManager;
 import me.offeex.ofx.Main;
 import me.offeex.ofx.gui.CustomMainMenu;
-import me.offeex.ofx.module.modules.client.MainMenu;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -59,5 +60,10 @@ public abstract class TitleScreenMixin extends Screen {
     @Inject(method = "render", cancellable = true, at = @At("TAIL"))
     public void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo cbi) {
         textRenderer.drawWithShadow(matrices, "BloomWare client made by OffeeX, Rikonardo & DiOnFire", width - text1Length - 3, 3, 0xffffffff);
+    }
+
+    @Inject(at = @At("RETURN"), method = "initWidgetsNormal")
+    private void addCustomButton(int y, int spacingY, CallbackInfo ci) {
+        this.addButton(new ButtonWidget(this.width / 2 - 100 + 205, y, 80, 20, Text.of("Alt Manager"), (buttonWidget) -> this.mc.openScreen(new AltManager())));
     }
 }

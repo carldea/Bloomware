@@ -7,9 +7,9 @@ import me.offeex.ofx.setting.Setting;
 public class BooleanSetting extends Setting {
 	public boolean enabled;
 	  
-	public BooleanSetting(String name, Module parent, boolean enabled) {
+	public BooleanSetting(String name, boolean enabled) {
 	    this.setName(name);
-	    this.setParentMod(parent);
+	    //this.setParentMod(parent);
 	    this.enabled = enabled;
 	}
 	  

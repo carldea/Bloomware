@@ -1,5 +1,6 @@
 package me.offeex.ofx.setting;
 
+/*
 import java.util.ArrayList;
 
 import me.offeex.ofx.module.Module;
@@ -46,3 +47,5 @@ public class SettingManager {
 		return null;
 	}
 }
+
+ */

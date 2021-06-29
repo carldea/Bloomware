@@ -20,12 +20,12 @@ public abstract class Setting {
 		this.name = name;
 	}
 
-	public Module getParentMod() {
-		return parent;
-	}
+	//public Module getParentMod() {
+	//	return parent;
+	//}
 
-	public void setParentMod(Module parent) {
-		this.parent = parent;
-	}
+	//public void setParentMod(Module parent) {
+		//this.parent = parent;
+	//}
 
 }

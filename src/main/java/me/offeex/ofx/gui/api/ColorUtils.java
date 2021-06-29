@@ -20,5 +20,8 @@ public class ColorUtils {
         public static final Color PRIMARY = Color.decode("#D6ED17");
         public static final Color PRIMARY_DARKER = Color.decode("#717d0f");
         public static final Color SECONDARY = Color.decode("#1c1c1c");
+        public static final Color WHITE = Color.WHITE;
+        public static final Color GRAY = Color.GRAY;
+        public static final Color BLACK = Color.BLACK;
     }
 }

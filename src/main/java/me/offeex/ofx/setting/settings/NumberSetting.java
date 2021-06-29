@@ -10,9 +10,9 @@ public class NumberSetting extends Setting {
 	public double maximum;
 	public double increment;
 	  
-	public NumberSetting(String name, Module parent, double value, double minimum, double maximum, double increment) {
+	public NumberSetting(String name, double value, double minimum, double maximum, double increment) {
 		this.setName(name);
-	    this.setParentMod(parent);
+	    //this.setParentMod(parent);
 	    this.value = value;
 	    this.minimum = minimum;
 	    this.maximum = maximum;
