@@ -23,10 +23,11 @@ A free minecraft utility mod for 1.16.5+ versions, designed for anarchy serverы
 - [X] ClickGUI
 - [X] HudEditor
 - [X] Commands
+- [ ] Alt Manager
 - [ ] Capes
 - [ ] Animations
 - [ ] Friends
-- [ ] JSON configs
-- [ ] Settings
+- [X] JSON configs
+- [X] Settings
   - [ ] using Commands
-  - [ ] using ClickGUI
+  - [X] using ClickGUI
