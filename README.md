@@ -5,6 +5,14 @@ A free minecraft utility mod for 1.16.5+ versions, designed for anarchy serverы
 1) Download mod from [**Here**](https://github.com/TheFishDevs/Bloomware/releases)
 2) Drag it to following directory: *\AppData\Roaming\.minecraft\mods*
 
+## Setupping dev environment
+1) Clone the repo;
+2) Open cmd;
+3) Type "gradlew genSources" to command line;
+4) If you're working from intellij, type "gradlew idea" to command line;
+4.1) If you're working from eclipse, type "gradlew eclipse" to command line;
+5) Open the project in your IDE. Done.
+
 ## Community:
 - [Discord](https://discord.gg/D4G7JN5d7m)
 
