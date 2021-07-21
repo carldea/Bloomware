@@ -1,5 +1,5 @@
 # Bloomware
-A free minecraft utility mod for 1.16.5+ versions, designed for anarchy serverы, especially for 2b2t.
+A free minecraft utility mod for 1.16.5+ versions, designed for anarchy servers, especially for 2b2t.
 
 ## How To Use
 1) Download mod from [**here**](https://github.com/TheFishDevs/Bloomware/releases)
