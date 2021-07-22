@@ -26,24 +26,7 @@ public abstract class TitleScreenMixin extends Screen {
     }
 
     private boolean enabled() {
-        boolean nigger = false;
-        File dir = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
-        File dataFile = new File(dir, "config.txt");
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(dataFile));
-            String line = reader.readLine();
-            while(line != null) {
-                String lineN = line;
-                line = reader.readLine();
-                String[] args = lineN.split(":");
-                if (args[1].equals("Bloomware Menu")) {
-                    nigger = args[2].equals("true");
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return nigger;
+        return Bloomware.moduleManager.getModule("Bloomware Menu").isEnabled();
     }
 
     MinecraftClient mc = MinecraftClient.getInstance();

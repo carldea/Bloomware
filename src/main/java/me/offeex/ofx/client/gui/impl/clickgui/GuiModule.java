@@ -10,7 +10,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
-import java.util.Iterator;
 
 public class GuiModule extends AbstractButton {
     Module module;
@@ -53,18 +52,30 @@ public class GuiModule extends AbstractButton {
             }
         }
         if (mouseButton == 1) {
-            Iterator<AbstractDraggable> i = Bloomware.guiscreen.panels.iterator();
-            while (i.hasNext()) {
-                AbstractDraggable ad = i.next();
-                if (ad instanceof SettingWindow) {
-                    SettingWindow sw = (SettingWindow) ad;
-                    if (!sw.isPinned())
-                        i.remove();
+            int count = 0;
+
+            for (AbstractDraggable panel : Bloomware.guiscreen.panels) {
+                if (panel instanceof SettingWindow) {
+                    count++;
                 }
             }
-            SettingWindow sw = new SettingWindow(module, (int) mouseX, (int) mouseY, Bloomware.guiscreen.panels.size() - 1);
-            Bloomware.guiscreen.panels.add(sw);
-            sw.startDragging(mouseX, mouseY, mouseButton);
+
+            if (Bloomware.guiscreen.panels.get(Bloomware.guiscreen.panels.size() - 1) instanceof SettingWindow) {
+                Bloomware.guiscreen.panels.remove(Bloomware.guiscreen.panels.get(Bloomware.guiscreen.panels.size() - 1));
+            }
+
+            boolean isExist = false;
+            for (AbstractDraggable panel : Bloomware.guiscreen.panels) {
+                if (panel instanceof SettingWindow) {
+                    if (((SettingWindow) panel).getModule() == this.module) {
+                        isExist = true;
+                        break;
+                    }
+                }
+            }
+            if (!isExist && count == 0) {
+                Bloomware.guiscreen.panels.add(new SettingWindow(module, (int) mouseX + 50, (int) mouseY, Bloomware.guiscreen.panels.size()));
+            }
         }
     }
 }

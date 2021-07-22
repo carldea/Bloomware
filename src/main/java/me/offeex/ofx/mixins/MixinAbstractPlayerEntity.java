@@ -26,24 +26,7 @@ abstract class MixinAbstractPlayerEntity extends PlayerEntity {
     private final MinecraftClient mc = MinecraftClient.getInstance();
 
     private boolean enabled() {
-        boolean nigger = false;
-        File dir = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
-        File dataFile = new File(dir, "config.txt");
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(dataFile));
-            String line = reader.readLine();
-            while (line != null) {
-                String lineN = line;
-                line = reader.readLine();
-                String[] args = lineN.split(":");
-                if (args[1].equals("Capes")) {
-                    nigger = args[2].equals("true");
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return nigger;
+        return Bloomware.moduleManager.getModule("Capes").isEnabled();
     }
 
     public MixinAbstractPlayerEntity(World world, BlockPos pos, float yaw, GameProfile profile) {
