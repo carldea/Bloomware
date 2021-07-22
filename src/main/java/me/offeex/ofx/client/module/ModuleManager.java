@@ -3,9 +3,9 @@ package me.offeex.ofx.client.module;
 import java.util.*;
 
 import com.google.common.eventbus.Subscribe;
+import me.offeex.ofx.api.event.events.EventKeyPress;
 import org.lwjgl.glfw.GLFW;
 
-import me.offeex.ofx.api.event.events.EventKeyPress;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
 import org.reflections.Reflections;

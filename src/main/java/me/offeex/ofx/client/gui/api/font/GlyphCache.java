@@ -35,7 +35,7 @@ public class GlyphCache
 
     private static final int GLYPH_BORDER = 1;
 
-    private static Color BACK_COLOR = new Color(255, 255, 255, 0);
+    private static final Color BACK_COLOR = new Color(255, 255, 255, 0);
 
     private int fontSize = 18;
 
@@ -51,9 +51,9 @@ public class GlyphCache
 
     public static FontRenderContext fontRenderContext = glyphCacheGraphics.getFontRenderContext();
 
-    private int imageData[] = new int[TEXTURE_WIDTH * TEXTURE_HEIGHT];
+    private final int[] imageData = new int[TEXTURE_WIDTH * TEXTURE_HEIGHT];
 
-    private IntBuffer imageBuffer = ByteBuffer.allocateDirect(4 * TEXTURE_WIDTH * TEXTURE_HEIGHT).order(ByteOrder.BIG_ENDIAN).asIntBuffer();
+    private final IntBuffer imageBuffer = ByteBuffer.allocateDirect(4 * TEXTURE_WIDTH * TEXTURE_HEIGHT).order(ByteOrder.BIG_ENDIAN).asIntBuffer();
 
 //    private IntBuffer singleIntBuffer = GLAllocation.createDirectIntBuffer(1);
 //    private IntBuffer singleIntBuffer = ByteBuffer.allocateDirect(1).asIntBuffer();
@@ -61,13 +61,13 @@ public class GlyphCache
 
     private final List<Font> allFonts = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts());
 
-    public List<Font> usedFonts = Lists.newArrayList();
+    public static List<Font> usedFonts = Lists.newArrayList();
 
     private int textureName;
 
-    private LinkedHashMap<Font, Integer> fontCache = Maps.newLinkedHashMap();
+    private final LinkedHashMap<Font, Integer> fontCache = Maps.newLinkedHashMap();
 
-    private LinkedHashMap<Long, Entry> glyphCache = Maps.newLinkedHashMap();
+    private final LinkedHashMap<Long, Entry> glyphCache = Maps.newLinkedHashMap();
 
     private int cachePosX = GLYPH_BORDER;
 
@@ -92,7 +92,7 @@ public class GlyphCache
         float v2;
     }
 
-    private String path;
+    private final String path;
 
     GlyphCache(String path)
     {
@@ -131,7 +131,7 @@ public class GlyphCache
         setRenderingHints();
     }
 
-    GlyphVector layoutGlyphVector(Font font, char text[], int start, int limit, int layoutFlags)
+    GlyphVector layoutGlyphVector(Font font, char[] text, int start, int limit, int layoutFlags)
     {
         /* Ensure this font is already in fontCache so it can be referenced by cacheGlyphs() later on */
         if (!fontCache.containsKey(font))
@@ -141,7 +141,7 @@ public class GlyphCache
         return font.layoutGlyphVector(fontRenderContext, text, start, limit, layoutFlags);
     }
 
-    Font lookupFont(char text[], int start, int limit, int style)
+    Font lookupFont(char[] text, int start, int limit, int style)
     {
         /* Try using an already known base font; the first font in usedFonts list is the one set with setDefaultFont() */
         Iterator<Font> iterator = usedFonts.iterator();
@@ -185,7 +185,7 @@ public class GlyphCache
         return glyphCache.get(fontKey | glyphCode);
     }
 
-    void cacheGlyphs(Font font, char text[], int start, int limit, int layoutFlags)
+    void cacheGlyphs(Font font, char[] text, int start, int limit, int layoutFlags)
     {
         /* Create new GlyphVector so glyphs can be moved around (kerning workaround; see below) without affecting caller */
         GlyphVector vector = layoutGlyphVector(font, text, start, limit, layoutFlags);

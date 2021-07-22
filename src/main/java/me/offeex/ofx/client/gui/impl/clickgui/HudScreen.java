@@ -97,6 +97,5 @@ public class HudScreen extends Screen {
     public void onClose() {
         super.onClose();
         Bloomware.guiscreen.setDragging(null);
-        ClickGui.setCurrentScreen(0);
     }
 }

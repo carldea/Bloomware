@@ -3,16 +3,13 @@ package me.offeex.ofx.client.altmanager;
 import com.google.gson.*;
 import me.offeex.ofx.Bloomware;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.nio.file.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AccountManager {
     Path output;
-    public List<Account> accounts = new ArrayList<Account>();
+    public List<Account> accounts = new ArrayList<>();
     JsonArray array = new JsonArray();
 
     public AccountManager() {
@@ -24,16 +21,29 @@ public class AccountManager {
             }
         }
 
-        Gson gson = new Gson();
+        String s = "";
 
         try {
-            accounts = gson.fromJson(output.toFile().toString(), accounts.getClass());
-        } catch (JsonSyntaxException ignored) {}
+            Scanner in = new Scanner(new File(Bloomware.name + "/accounts.json"));
+            while(in.hasNext())
+                s += in.nextLine() + "\r\n";
+            in.close();
+        } catch (Exception ignored) {}
 
-        converter(accounts);
+        // ПРОВЕРКА ЕСЛИ БЛЯ АККАУНТОВ НЕТ НИХУЯ
+
+        try {
+            array = (JsonArray) new JsonParser().parse(s);
+            converter(array);
+        } catch (Exception e) {
+            Bloomware.LOGGER.info("Found bad account config! Repairing...");
+            try {
+                fileRepair();
+            } catch (Exception ignored) {}
+        }
     }
 
-    public void saveCracked(Account account) throws IOException {
+    public void saveAccount(Account account) throws IOException {
         if (!Files.exists(output = Paths.get(Bloomware.name + "/accounts.json"))) {
             Files.createFile(output);
         }
@@ -41,20 +51,14 @@ public class AccountManager {
         writer(account);
     }
 
-    public void savePremium(Account account) throws IOException {
+    public void fileRepair() throws IOException {
         if (!Files.exists(output = Paths.get(Bloomware.name + "/accounts.json"))) {
             Files.createFile(output);
-        }
-        accounts.add(account);
-        writer(account);
-    }
-
-    public void saveToken(Account account) throws IOException {
-        if (!Files.exists(output = Paths.get(Bloomware.name + "/accounts.json"))) {
+        } else {
+            Files.delete(output);
             Files.createFile(output);
+            writer();
         }
-        accounts.add(account);
-        writer(account);
     }
 
     public void writer(Account object) throws IOException {
@@ -83,20 +87,63 @@ public class AccountManager {
         return object;
     }
 
-    public void converter(List<Account> accounts) {
+    public void converter() {
+
+        System.out.print(array.size());
+
+        for (int i = array.size() - 1; i >= 0; i--) {
+            array.remove(i);
+        }
+
+        System.out.print(array.size());
+
         for (Account account : accounts) {
-            array.add(writer(account.getLogin(), account.getPassword(), account.type));
+            if (account.getPassword().equals("")) {
+                array.add(writer(account.getLogin(), "", account.type));
+                System.out.print(array.size());
+            } else {
+                array.add(writer(account.getLogin(), account.getPassword(), account.type));
+            }
+        }
+    }
+
+    public void converter(JsonArray a) {
+        for (JsonElement object : a) {
+            String[] data = new String[3];
+            int i = 0;
+            for (Map.Entry entry : ((JsonObject) object).entrySet()) {
+                data[i] = entry.getValue().toString();
+                i++;
+            }
+            switch (data[0]) {
+                case "\"Mojang\"": {
+                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Mojang));
+                    break;
+                }
+                case "\"Cracked\"": {
+                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Cracked));
+                    break;
+                }
+                case "\"Token\"": {
+                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Token));
+                    break;
+                }
+            }
         }
     }
 
     public void deleteAccount(Account account) throws IOException {
         try {
+            System.out.print(accounts.size());
             accounts.remove(account);
-        } catch (NullPointerException ignored) {}
+            System.out.print(accounts.size());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
-        try {
-            array.remove(writer(account.getLogin(), account.getPassword(), account.type));
-        } catch (NullPointerException ignored) {}
+        System.out.print(array.size());
+        converter();
+        System.out.print(array.size());
 
         writer();
     }

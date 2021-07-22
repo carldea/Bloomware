@@ -110,10 +110,10 @@ public class RenderUtil {
         GlStateManager.disableTexture();
         GlStateManager.blendFuncSeparate(770, 771, 1, 0);
         bufferbuilder.begin(7, VertexFormats.POSITION_COLOR);
-        bufferbuilder.vertex((double) x, (double) h, 0.0D).color(red, green, blue, alpha).next();
-        bufferbuilder.vertex((double) w, (double) h, 0.0D).color(red, green, blue, alpha).next();
-        bufferbuilder.vertex((double) w, (double) y, 0.0D).color(red, green, blue, alpha).next();
-        bufferbuilder.vertex((double) x, (double) y, 0.0D).color(red, green, blue, alpha).next();
+        bufferbuilder.vertex(x, h, 0.0D).color(red, green, blue, alpha).next();
+        bufferbuilder.vertex(w, h, 0.0D).color(red, green, blue, alpha).next();
+        bufferbuilder.vertex(w, y, 0.0D).color(red, green, blue, alpha).next();
+        bufferbuilder.vertex(x, y, 0.0D).color(red, green, blue, alpha).next();
         tessellator.draw();
         GlStateManager.enableTexture();
         GlStateManager.disableBlend();

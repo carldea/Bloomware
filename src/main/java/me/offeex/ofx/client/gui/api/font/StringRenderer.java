@@ -334,7 +334,7 @@ public class StringRenderer
             width += width;
 
         /* The glyph array for a string is sorted by the string's logical character position */
-        Glyph glyphs[] = cache.cacheString(str).glyphs;
+        Glyph[] glyphs = cache.cacheString(str).glyphs;
 
         /* Index of the last whitespace found in the string; used if breakAtSpaces is true */
         int wsIndex = -1;

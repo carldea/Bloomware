@@ -14,13 +14,15 @@ import net.minecraft.util.Identifier;
 
 import java.io.IOException;
 
-public class AddTokenAccount extends Screen {
+public class EditTokenAccount extends Screen {
+    Account account;
     private TextFieldWidget username, token;
     MinecraftClient mc = MinecraftClient.getInstance();
     Identifier background = new Identifier("ofx", "gui/coolbg.png");
 
-    public AddTokenAccount() {
-        super(Text.of("AddTokenAccount"));
+    public EditTokenAccount(Account account) {
+        super(Text.of("EditTokenAccount"));
+        this.account = account;
     }
 
     @Override
@@ -29,15 +31,16 @@ public class AddTokenAccount extends Screen {
         this.username = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 105, 200, 20, Text.of(""));
         this.username.setMaxLength(20);
         this.username.setTextFieldFocused(false);
-        this.username.setText("");
+        this.username.setText(account.getLogin());
         this.children.add(this.username);
         this.token = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 138, 200, 20, Text.of(""));
         this.token.setMaxLength(2000);
         this.token.setTextFieldFocused(false);
-        this.token.setText("");
+        this.token.setText(account.getPassword());
         this.children.add(this.token);
-        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 160, 200, 20, Text.of("Add account"), (buttonWidget) -> {
+        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 160, 200, 20, Text.of("Edit account"), (buttonWidget) -> {
             try {
+                Bloomware.accountManager.deleteAccount(account);
                 Bloomware.accountManager.saveAccount(new Account(this.username.getText(), this.token.getText(), AccountTypes.Token));
             } catch (IOException ignored) {}
             this.mc.openScreen(new AltManager());
@@ -51,8 +54,6 @@ public class AddTokenAccount extends Screen {
         DrawableHelper.drawTexture(matrices, 0, 0, 0, 0, 0, width, height, height, width);
         username.render(matrices, mouseX, mouseY, delta);
         token.render(matrices, mouseX, mouseY, delta);
-        this.textRenderer.drawWithShadow(matrices, "Nickname", this.width / 2 - 100, this.height / 4 + 95, 0xFFFFFFFF);
-        this.textRenderer.drawWithShadow(matrices, "Token", this.width / 2 - 100, this.height / 4 + 128, 0xFFFFFFFF);
         super.render(matrices, mouseX, mouseY, delta);
     }
 }

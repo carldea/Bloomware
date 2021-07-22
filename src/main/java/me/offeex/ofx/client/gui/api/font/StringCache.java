@@ -47,7 +47,7 @@ public class StringCache
      * all pre-rendered glyph images needed to display this string. The weakRefCache holds strong references to the Key
      * objects used in this map.
      */
-    private WeakHashMap<Key, Entry> stringCache = new WeakHashMap();
+    private final WeakHashMap<Key, Entry> stringCache = new WeakHashMap();
 
     /**
      * Every String passed to the public renderString() function is added to this WeakHashMap. As long as As long as Minecraft
@@ -55,14 +55,14 @@ public class StringCache
      * weakRefCache map will continue to hold a strong reference to the Key object that said strings all map to (multiple strings
      * in weakRefCache can map to a single Key if those strings only differ by their ASCII digits).
      */
-    private WeakHashMap<String, Key> weakRefCache = new WeakHashMap();
+    private final WeakHashMap<String, Key> weakRefCache = new WeakHashMap();
 
     /**
      * Temporary Key object re-used for lookups with stringCache.get(). Using a temporary object like this avoids the overhead
      * of allocating new objects in the critical rendering path. Of course, new Key objects are always created when adding
      * a mapping to stringCache.
      */
-    private Key lookupKey = new Key();
+    private final Key lookupKey = new Key();
 
     /**
      * Pre-cached glyphs for the ASCII digits 0-9 (in that order). Used by renderString() to substiture digit glyphs on the fly
@@ -85,7 +85,7 @@ public class StringCache
      * it will crash LWJGL with a NullPointerException. By remembering the initial thread and comparing it later against
      * Thread.currentThread(), the StringCache code can avoid calling cacheGlyphs() when it's not safe to do so.
      */
-    private Thread mainThread;
+    private final Thread mainThread;
 
     /**
      * Wraps a String and acts as the key into stringCache. The hashCode() and equals() methods consider all ASCII digits
@@ -206,10 +206,10 @@ public class StringCache
         public int advance;
 
         /** Array of fully layed out glyphs for the string. Sorted by logical order of characters (i.e. glyph.stringIndex) */
-        public Glyph glyphs[];
+        public Glyph[] glyphs;
 
         /** Array of color code locations from the original string */
-        public ColorCode colors[];
+        public ColorCode[] colors;
 
         /** True if the string uses strikethrough or underlines anywhere and needs an extra pass in renderString() */
         public boolean specialRender;
@@ -337,7 +337,7 @@ public class StringCache
         if (entry == null)
         {
             /* layoutGlyphVector() requires a char[] so create it here and pass it around to avoid duplication later on */
-            char text[] = str.toCharArray();
+            char[] text = str.toCharArray();
 
             /* Strip all color codes from the string */
             entry = new Entry();
@@ -345,7 +345,7 @@ public class StringCache
 
             /* Layout the entire string, splitting it up by color codes and the Unicode bidirectional algorithm */
             List<Glyph> glyphList = new ArrayList();
-            entry.advance = (int) layoutBidiString(glyphList, text, 0, length, entry.colors);
+            entry.advance = layoutBidiString(glyphList, text, 0, length, entry.colors);
 
             /* Convert the accumulated Glyph list to an array for efficient storage */
             entry.glyphs = new Glyph[glyphList.size()];
@@ -387,7 +387,7 @@ public class StringCache
                 key = new Key();
 
                 /* Make a copy of the original String to avoid creating a strong reference to it */
-                key.str = new String(str);
+                key.str = str;
                 entry.keyRef = new WeakReference(key);
                 stringCache.put(key, entry);
             }
@@ -424,7 +424,7 @@ public class StringCache
      * @param text       on input it should be an identical copy of str; on output it will be string with all color codes removed
      * @return the length of the new stripped string in text[]; actual text.length will not change because the array is not reallocated
      */
-    private int stripColorCodes(Entry cacheEntry, String str, char text[])
+    private int stripColorCodes(Entry cacheEntry, String str, char[] text)
     {
         List<ColorCode> colorList = new ArrayList();
         int start = 0, shift = 0, next;
@@ -524,7 +524,7 @@ public class StringCache
      * @param limit     the (offset + length) at which to stop performing the layout
      * @return the total advance (horizontal distance) of this string
      */
-    private int layoutBidiString(List<Glyph> glyphList, char text[], int start, int limit, ColorCode colors[])
+    private int layoutBidiString(List<Glyph> glyphList, char[] text, int start, int limit, ColorCode[] colors)
     {
         int advance = 0;
 
@@ -544,8 +544,8 @@ public class StringCache
             else
             {
                 int runCount = bidi.getRunCount();
-                byte levels[] = new byte[runCount];
-                Integer ranges[] = new Integer[runCount];
+                byte[] levels = new byte[runCount];
+                Integer[] ranges = new Integer[runCount];
 
                 /* Reorder contiguous runs of text into their display order from left to right */
                 for (int index = 0; index < runCount; index++)
@@ -581,7 +581,7 @@ public class StringCache
         }
     }
 
-    private int layoutStyle(List<Glyph> glyphList, char text[], int start, int limit, int layoutFlags, int advance, ColorCode colors[])
+    private int layoutStyle(List<Glyph> glyphList, char[] text, int start, int limit, int layoutFlags, int advance, ColorCode[] colors)
     {
         int currentFontStyle = Font.PLAIN;
 
@@ -652,7 +652,7 @@ public class StringCache
      * @todo Correctly handling RTL font selection requires scanning the sctring from RTL as well.
      * @todo Use bitmap fonts as a fallback if no OpenType font could be found
      */
-    private int layoutString(List<Glyph> glyphList, char text[], int start, int limit, int layoutFlags, int advance, int style)
+    private int layoutString(List<Glyph> glyphList, char[] text, int start, int limit, int layoutFlags, int advance, int style)
     {
         /*
 * Convert all digits in the string to a '0' before layout to ensure that any glyphs replaced on the fly will all have
@@ -715,7 +715,7 @@ public class StringCache
      * @return the advance (horizontal distance) of this string plus the advance passed in as an argument
      * @todo need to ajust position of all glyphs if digits are present, by assuming every digit should be 0 in length
      */
-    private int layoutFont(List<Glyph> glyphList, char text[], int start, int limit, int layoutFlags, int advance, Font font)
+    private int layoutFont(List<Glyph> glyphList, char[] text, int start, int limit, int layoutFlags, int advance, Font font)
     {
         /*
 * Ensure that all glyphs used by the string are pre-rendered and cached in the texture. Only safe to do so from the

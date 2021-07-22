@@ -17,7 +17,7 @@ import java.io.IOException;
 public class AddMojangAccount extends Screen {
     private TextFieldWidget email, password;
     MinecraftClient mc = MinecraftClient.getInstance();
-    Identifier background = new Identifier("ofx", "coolbg.png");
+    Identifier background = new Identifier("ofx", "gui/coolbg.png");
 
     public AddMojangAccount() {
         super(Text.of("AddMojangAccount"));
@@ -27,21 +27,19 @@ public class AddMojangAccount extends Screen {
     public void init() {
         this.mc.keyboard.setRepeatEvents(true);
         this.email = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 105, 200, 20, Text.of(""));
-        this.email.setMaxLength(20);
-        this.email.setTextFieldFocused(true);
+        this.email.setMaxLength(200);
+        this.email.setTextFieldFocused(false);
         this.email.setText("");
         this.children.add(this.email);
         this.password = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 138, 200, 20, Text.of(""));
-        this.password.setMaxLength(20);
-        this.password.setTextFieldFocused(true);
+        this.password.setMaxLength(200);
+        this.password.setTextFieldFocused(false);
         this.password.setText("");
         this.children.add(this.password);
-        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 160, 200, 20, Text.of("Add account"), (buttonWidget) -> {
+        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 160, 200, 20, Text.of("Edit account"), (buttonWidget) -> {
             try {
-                Bloomware.accountManager.savePremium(new Account(this.email.getText(), this.password.getText(), AccountTypes.Mojang));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                Bloomware.accountManager.saveAccount(new Account(this.email.getText(), this.password.getText(), AccountTypes.Mojang));
+            } catch (IOException ignored) {}
             this.mc.openScreen(new AltManager());
         }));
         this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 182, 200, 20, Text.of("Cancel"), (buttonWidget) -> this.mc.openScreen(new AltManager())));
@@ -53,6 +51,8 @@ public class AddMojangAccount extends Screen {
         DrawableHelper.drawTexture(matrices, 0, 0, 0, 0, 0, width, height, height, width);
         email.render(matrices, mouseX, mouseY, delta);
         password.render(matrices, mouseX, mouseY, delta);
+        this.textRenderer.drawWithShadow(matrices, "Email", this.width / 2 - 100, this.height / 4 + 95, 0xFFFFFFFF);
+        this.textRenderer.drawWithShadow(matrices, "Password", this.width / 2 - 100, this.height / 4 + 128, 0xFFFFFFFF);
         super.render(matrices, mouseX, mouseY, delta);
     }
 }

@@ -13,12 +13,6 @@ public class HudEditor extends Module {
     @Override
     public void onEnable() {
         mc.openScreen(Bloomware.hudScreen);
-        Bloomware.inHudEditor = true;
         disable();
-    }
-
-    @Override
-    public void onDisable() {
-        Bloomware.inHudEditor = false;
     }
 }
