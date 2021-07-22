@@ -7,7 +7,6 @@ import java.util.Set;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventKeyPress;
-import me.offeex.ofx.api.util.TextFormatting;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
@@ -15,6 +14,7 @@ import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import org.reflections.Reflections;
 
 public class CommandManager {
@@ -23,8 +23,8 @@ public class CommandManager {
 	public static String prefix = "$";
 	public boolean commandFound = false;
 
-	public static String ARROW = "" + TextFormatting.GRAY + TextFormatting.BOLD + " ➜ ";
-	public static String USAGE = "" + TextFormatting.GRAY + TextFormatting.BOLD + "Usage: ";
+	public static String ARROW = "" + Formatting.GRAY + Formatting.BOLD + " ➜ ";
+	public static String USAGE = "" + Formatting.GRAY + Formatting.BOLD + "Usage: ";
 	
 	public CommandManager() {
 		Bloomware.EVENTBUS.subscribe(listener);
@@ -32,7 +32,7 @@ public class CommandManager {
 	}
 
 	public void register() {
-		// Iterating every command and adding it in "commands" list
+		// Iterating every command and adding it to massive
 		Set<Class<? extends Command>> reflections = new Reflections("me.offeex.ofx.client.command.commands").getSubTypesOf(Command.class);
 		reflections.forEach(aClass -> {
 			try {
@@ -45,8 +45,8 @@ public class CommandManager {
 
 	public static void addChatMessage(String message) {
 		Text textComponentString = new LiteralText(message);
-		String prefix = "" + TextFormatting.BLACK + TextFormatting.BOLD + "<" + TextFormatting.GREEN + TextFormatting.BOLD + "O" + TextFormatting.AQUA + TextFormatting.BOLD + "F" + TextFormatting.LIGHT_PURPLE + TextFormatting.BOLD + "X" + TextFormatting.BLACK + TextFormatting.BOLD + "> ";
-		MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(new LiteralText( prefix + TextFormatting.GRAY + TextFormatting.BOLD + "▸ ").append(textComponentString));
+		String prefix = "" + Formatting.BLACK + Formatting.BOLD + "<" + Formatting.GREEN + Formatting.BOLD + "O" + Formatting.AQUA + Formatting.BOLD + "F" + Formatting.LIGHT_PURPLE + Formatting.BOLD + "X" + Formatting.BLACK + Formatting.BOLD + "> ";
+		MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(new LiteralText( prefix + Formatting.GRAY + Formatting.BOLD + "▸ ").append(textComponentString));
 	}
 	
 	public static void callCommandReturn(String input) {
@@ -67,7 +67,7 @@ public class CommandManager {
         		}
         	}
         	if(!commandFound) {
-        		addChatMessage(TextFormatting.DARK_RED + "command isn't exist. Type " + TextFormatting.RED + TextFormatting.ITALIC + prefix + "help " + TextFormatting.RESET + "" + TextFormatting.DARK_RED + "to see all commands.");
+        		addChatMessage(Formatting.DARK_RED + "command doesn't exist. Type " + Formatting.RED + Formatting.ITALIC + prefix + "help " + Formatting.RESET + "" + Formatting.DARK_RED + "to see all commands.");
         	}
         }
     }

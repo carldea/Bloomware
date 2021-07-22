@@ -37,8 +37,7 @@ public class Coordinates extends Module {
             else
                 width = Bloomware.sFontRenderer.getStringWidth("XYZ: " + stringX + ", " + stringY + ", " + stringZ + " (" + stringXN + ", " + stringZN + ")", Bloomware.sFontRenderer.getFontsize()) + 8;
         }
-        if (ClickGui.getCurrentScreen() == 2)
-            Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
+
         if (DimensionUtil.getDimension() == 2)
             Bloomware.sFontRenderer.drawString("XYZ: " + stringX + ", " + stringY + ", " + stringZ, x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
         else

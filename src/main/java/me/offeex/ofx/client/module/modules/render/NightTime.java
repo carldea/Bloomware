@@ -13,19 +13,16 @@ public class NightTime extends Module {
 
     @Override
     public void onEnable() {
-        assert mc.world != null;
         oldTime = mc.world.getTime();
     }
 
     @Override
     public void onTick() {
-        assert mc.world != null;
         mc.world.setTimeOfDay(18000);
     }
 
     @Override
     public void onDisable() {
-        assert mc.world != null;
         mc.world.setTimeOfDay(oldTime);
     }
 }

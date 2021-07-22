@@ -45,7 +45,6 @@ public class StorageESP extends Module {
     @EventHandler
     private final Listener<EventWorldRender> listener = new Listener<>(event -> {
         assert mc.world != null;
-        //  && ((BooleanSetting) this.getSetting(1)).isEnabled()
 
         for (BlockEntity block : mc.world.blockEntities) {
             if (mc.options.getPerspective().isFirstPerson()) {

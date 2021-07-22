@@ -18,12 +18,10 @@ public class RichPresence extends Module {
 
     @Override
     public void onEnable() {
-        assert mc.player != null;
         DiscordEventHandlers handlers = new DiscordEventHandlers();
         lib.Discord_Initialize(applicationId, handlers, true, steamId);
         lib.Discord_UpdatePresence(rpc);
         rpc.largeImageKey = "logo";
-        assert mc.player != null;
         rpc.state = "IGN: " + mc.getSession().getUsername();
         rpc.startTimestamp = System.currentTimeMillis() / 1000L;
         lib.Discord_UpdatePresence(rpc);

@@ -16,10 +16,7 @@ public class Fps extends Module {
     public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("FPS: " + mc.fpsDebugString.split(" ")[0], Bloomware.sFontRenderer.getFontsize()) + 8;
-            if (ClickGui.getCurrentScreen() == 2) {
-                Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
-            }
-            Bloomware.sFontRenderer.drawString("FPS: " + mc.fpsDebugString.split(" ")[0], x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString(mc.fpsDebugString.split(" ")[0], x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
         }
     }
 }

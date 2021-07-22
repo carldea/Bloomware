@@ -11,7 +11,6 @@ public class Speed extends Module {
 
     @Override
     public void onTick() {
-        assert mc.player != null;
         if (mc.player.isSprinting()) {
             mc.player.jump();
             mc.player.forwardSpeed = 0.01f;

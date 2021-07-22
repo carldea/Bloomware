@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import me.offeex.ofx.Bloomware;
-import me.offeex.ofx.api.event.events.EventDrawOverlay;
-//import me.offeex.ofx.client.gui.impl.hud.element.HudElement;
 import me.offeex.ofx.client.setting.Setting;
 import me.offeex.ofx.client.setting.settings.BooleanSetting;
 import me.offeex.ofx.client.setting.settings.KeybindSetting;
@@ -37,18 +35,9 @@ public class Module {
 		keyCode.code = key;
 		settings = Arrays.asList(s);
 		this.category = category;
-		//settings.add(shown);
 		this.enabled = false;
 		this.hidden = hidden;
-		//if (getCategory().equals(Category.HUD)) {
-			//component = new HudElement(this, x, y, width, height);
-		//}
 	}
-	
-	//public void addSettings(Setting... settings) {
-	//	this.settings.addAll(Arrays.asList(settings));
-	//	this.settings.sort(Comparator.comparingInt(s -> s == keyCode ? 1 : 0));
-	//}
 
 	public enum Category {
 		COMBAT("Combat", Color.decode("#ff2e2e"), 0),
@@ -62,15 +51,6 @@ public class Module {
 		private final String name;
 		private final int categoryIndex;
 		private final Color color;
-
-		public Module.Category getCategoryByIndex(int index) {
-			Category cat = null;
-			for (Module.Category category : Module.Category.values()) {
-				if (category.categoryIndex == index)
-					cat = category;
-			}
-			return cat;
-		}
 
 		Category(String name, Color color, int index) {
 			this.name = name;
@@ -121,19 +101,11 @@ public class Module {
 	
 	public void setKey(int key) {
 		this.keyCode.code = key;
-		
-//		 if(Bloomware.saveLoad != null) {
-//				Bloomware.saveLoad.save();
-//		 }
 	}
 
 	public void toggle() {
 		if (enabled) disable();
 		else enable();
-
-//		if(Bloomware.saveLoad != null) {
-//			Bloomware.saveLoad.save();
-//		}
 	}
 
 	public boolean isEnabled() {
@@ -142,18 +114,9 @@ public class Module {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
-
-//		if(Bloomware.saveLoad != null) {
-//			Bloomware.saveLoad.save();
-//		}
 	}
 
 	public void enable() {
-		try {
-			Bloomware.configManager.saveConfig(this);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		Bloomware.moduleNotifier.setMessage(this.name + " enabled!");
 		Bloomware.chatNotifier.sendMsg(this.name + " enabled!");
 		setEnabled(true);
@@ -161,25 +124,17 @@ public class Module {
 	}
 
 	public void disable() {
-		try {
-			Bloomware.configManager.saveConfig(this);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		Bloomware.moduleNotifier.setMessage(this.name + " disabled!");
 		Bloomware.chatNotifier.sendMsg(this.name + " disabled!");
 		setEnabled(false);
 		onDisable();
 	}
 
-	public void onEnable() {
-	}
+	public void onEnable() {}
 
-	public void onDisable() {
-	}
+	public void onDisable() {}
 
-	public void onTick() {
-	}
+	public void onTick() {}
 
 	public List<Setting> getSettings() {
 		return settings;
@@ -194,11 +149,4 @@ public class Module {
 	}
 
 	public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {}
-//	public void mouseClicked(double mouseX, double mouseY, int mouseButton) {}
-//	public void mouseReleased(double mouseX, double mouseY, int mouseButton) {}
-
-
-	public Component getComponent() {
-		return component;
-	}
 }

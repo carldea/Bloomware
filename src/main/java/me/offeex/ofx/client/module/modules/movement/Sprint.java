@@ -28,11 +28,9 @@ public class Sprint extends Module {
 
     @EventHandler
     private final Listener<EventPlayerMove> listener = new Listener<>(e -> {
-        if((mc.options.keyForward.isPressed() || mc.options.keyLeft.isPressed() || mc.options.keyRight.isPressed() || mc.options.keyBack.isPressed()) && !mc.player.isSneaking() && mc.player.getHungerManager().getFoodLevel() > 6 && mc.player != null) {
-            mc.player.setSprinting(true);
-            final double[] dir = MovementUtil.forward2(0.01745329238474369);
-            e.setVec3d(new Vec3d(dir[0] * 0.20000000298023224, e.getVec3d().getY(), dir[1] * 0.20000000298023224));
-        }
+        mc.player.setSprinting(true);
+        final double[] dir = MovementUtil.forward2(0.01745329238474369);
+        e.setVec3d(new Vec3d(dir[0] * 0.20000000298023224, e.getVec3d().getY(), dir[1] * 0.20000000298023224));
     });
 }
 

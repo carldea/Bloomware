@@ -3,10 +3,12 @@ package me.offeex.ofx.client.gui.impl.hud.element;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
+import me.offeex.ofx.client.gui.api.ColorUtils;
 import me.offeex.ofx.client.module.Module;
 import me.zero.alpine.listener.EventHandler;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
 public class HudElement extends AbstractDraggable {
@@ -32,6 +34,8 @@ public class HudElement extends AbstractDraggable {
 		if (module.isEnabled()) {
 			module.draw(stack, mouseX, mouseY, tickDelta);
 		}
+
+		Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
 	}
 
 	@Override

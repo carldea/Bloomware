@@ -1,7 +1,6 @@
 package me.offeex.ofx.client.command.commands;
 
 import me.offeex.ofx.Bloomware;
-import me.offeex.ofx.api.util.TextFormatting;
 import me.offeex.ofx.client.command.Command;
 import me.offeex.ofx.client.command.CommandManager;
 

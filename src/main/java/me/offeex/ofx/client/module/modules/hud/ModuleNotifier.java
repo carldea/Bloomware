@@ -35,9 +35,7 @@ public class ModuleNotifier extends Module {
     public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth(Bloomware.moduleNotifier.getMessage(), Bloomware.sFontRenderer.getFontsize()) + 8;
-            if (ClickGui.getCurrentScreen() == 2) {
-                Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
-            }
+
             Bloomware.sFontRenderer.drawString(Bloomware.moduleNotifier.getMessage(), x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
         }
     }

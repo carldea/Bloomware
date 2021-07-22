@@ -11,7 +11,6 @@ public class AutoRespawn extends Module {
 
     @Override
     public void onTick() {
-        assert mc.player != null;
         if (mc.getNetworkHandler() != null) {
             if (mc.player.isDead()) {
                 mc.getNetworkHandler().sendPacket(new ClientStatusC2SPacket(ClientStatusC2SPacket.Mode.PERFORM_RESPAWN));

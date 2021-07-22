@@ -40,13 +40,8 @@ public class ModuleManager {
 		return m.isEnabled();
 	}
 	
-	public Module getModule (String name) {
-		for (Module m : ModuleManager.modules) {
-			if(m.getName().equalsIgnoreCase(name)) {
-				return m;
-			}
-		}
-		return null;
+	public Module getModule(String name) {
+		return modules.stream().filter(s -> s.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}
 	
 	public static ArrayList<Module> getModules() {
@@ -55,24 +50,20 @@ public class ModuleManager {
 	
 	public static List<Module> getModulesByCategory(Module.Category c) {
 		List<Module> modules = new ArrayList<Module>();
-		
-		for(Module m : ModuleManager.modules) {
-			if(!m.getName().equals("Esp2dHelper")) {
-			if(m.getCategory() == c)
-				modules.add(m);
-			}
-		}
+
+		modules.forEach(module -> {
+			if (module.getCategory().equals(c)) modules.add(module);
+		});
+
 		return modules;
 	}
 
 	public static void onTick(){
-		for(Module mod : modules){
-			if(mod.isEnabled()) mod.onTick();
+		if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().world != null) {
+			modules.forEach(module -> {
+				if (module.isEnabled()) module.onTick();
+			});
 		}
-	}
-
-	public static Module getModuleByName(String name) {
-		return modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}
 	
 	@EventHandler

@@ -11,8 +11,14 @@ public class HudEditor extends Module {
     }
 
     @Override
-    public void toggle() {
+    public void onEnable() {
         mc.openScreen(Bloomware.hudScreen);
-        ClickGui.setCurrentScreen(2);
+        Bloomware.inHudEditor = true;
+        disable();
+    }
+
+    @Override
+    public void onDisable() {
+        Bloomware.inHudEditor = false;
     }
 }

@@ -21,6 +21,7 @@ import me.offeex.ofx.client.module.ModuleManager;
 import me.zero.alpine.bus.EventBus;
 import me.zero.alpine.bus.EventManager;
 
+// todo снести НАХУЙ БЛЯТЬ АЛЬПИН
 public class Bloomware implements ClientModInitializer {
 
 	public static final String name = "OFX";
@@ -46,7 +47,7 @@ public class Bloomware implements ClientModInitializer {
 	public static HudScreen hudScreen;
 
 	public static ModuleNotifier moduleNotifier;
-	
+
 	public final Object synchronize = new Object();
 	public void printLog(String text) {
 		synchronized (synchronize) {

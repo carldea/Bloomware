@@ -23,15 +23,11 @@ public class Ping extends Module {
             assert playerListEntry != null;
             try {
                 width = Bloomware.sFontRenderer.getStringWidth("Ping: " + playerListEntry.getLatency() + "ms", Bloomware.sFontRenderer.getFontsize()) + 8;
-                if (ClickGui.getCurrentScreen() == 2) {
-                    Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
-                }
+
                 Bloomware.sFontRenderer.drawString("Ping: " + playerListEntry.getLatency() + "ms", x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
             } catch (NullPointerException nullPointerException) {
                 width = Bloomware.sFontRenderer.getStringWidth("Ping: 0ms", Bloomware.sFontRenderer.getFontsize()) + 8;
-                if (ClickGui.getCurrentScreen() == 2) {
-                    Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
-                }
+
                 Bloomware.sFontRenderer.drawString("Ping: 0ms", x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
             }
         }

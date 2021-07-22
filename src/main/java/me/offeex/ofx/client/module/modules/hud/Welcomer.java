@@ -16,9 +16,7 @@ public class Welcomer extends Module {
     public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("Looking cute today, " + mc.getSession().getUsername() + "! :^)", Bloomware.sFontRenderer.getFontsize()) + 8;
-            if (ClickGui.getCurrentScreen() == 2) {
-                Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
-            }
+
             Bloomware.sFontRenderer.drawString("Looking cute today, " + mc.getSession().getUsername() + "! :^)", x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
         }
     }

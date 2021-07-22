@@ -1,6 +1,5 @@
 package me.offeex.ofx.client.command.commands;
 
-import me.offeex.ofx.api.util.TextFormatting;
 import me.offeex.ofx.client.command.Command;
 import me.offeex.ofx.client.command.CommandManager;
 import me.offeex.ofx.client.module.Module;

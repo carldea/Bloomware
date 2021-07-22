@@ -47,6 +47,11 @@ public class FakePlayer extends Module {
     }
 
     @Override
+    public void onTick() {
+        if (mc.player == null || mc.world == null) disable();
+    }
+
+    @Override
     public void onDisable() {
         if (mc.world != null) {
             mc.world.removeEntity(-100);

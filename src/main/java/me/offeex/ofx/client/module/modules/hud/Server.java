@@ -26,9 +26,7 @@ public class Server extends Module {
 
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("Server: " + server, Bloomware.sFontRenderer.getFontsize()) + 8;
-            if (ClickGui.getCurrentScreen() == 2) {
-                Screen.fill(stack, x, y, x + width, y + 16, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 50));
-            }
+
             Bloomware.sFontRenderer.drawString("Server: " + server, x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
         }
     }
