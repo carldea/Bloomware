@@ -48,7 +48,7 @@ public class ModuleManager {
 		List<Module> modules = new ArrayList<Module>();
 
 		modules.forEach(module -> {
-			if (module.getCategory().equals(c)) modules.add(module);
+			if (module.getCategory() == c) modules.add(module);
 		});
 
 		return modules;
