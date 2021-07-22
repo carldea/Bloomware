@@ -5,7 +5,7 @@ A free minecraft utility mod for 1.16.5+ versions, designed for anarchy servers,
 1) Download mod from [**here**](https://github.com/TheFishDevs/Bloomware/releases)
 2) Drag it to following directory: *\AppData\Roaming\.minecraft\mods*
 
-## Setupping dev environment
+## Setuping dev environment
 1) Clone the repo;
 2) Open cmd;
 3) Type "gradlew genSources" to command line;
@@ -21,8 +21,8 @@ A free minecraft utility mod for 1.16.5+ versions, designed for anarchy servers,
 - **DiOnFire** (*dion*)
 
 ## Contributors
+- **yoursleep** (Code cleanup whole project, clearing project from tons of shit, switching event system to google event system, help with GUI, renderers)
 - **Rikonardo** (FontRenderer, moral support, tips, etc.)
-- **yoursleep** (help with GUI, Renderers)
 - **srgantmoomoo** (client base "bedroom")
 - **ronmamo** (java lib - Reflections)
 - **Minecraft Fabric devs** (for fabric)
