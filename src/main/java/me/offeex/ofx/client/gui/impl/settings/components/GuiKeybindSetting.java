@@ -2,6 +2,7 @@ package me.offeex.ofx.client.gui.impl.settings.components;
 
 import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.api.event.events.EventKeyPress;
 import me.offeex.ofx.client.command.CommandManager;
 import me.offeex.ofx.client.gui.api.AbstractButton;
 import me.offeex.ofx.client.gui.api.ColorUtils;

@@ -1,6 +1,7 @@
 package me.offeex.ofx.mixins;
 
 import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.api.event.events.EventKeyPress;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

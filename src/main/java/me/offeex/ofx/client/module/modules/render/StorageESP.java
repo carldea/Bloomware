@@ -1,6 +1,7 @@
 package me.offeex.ofx.client.module.modules.render;
 
 import com.google.common.eventbus.Subscribe;
+import me.offeex.ofx.api.event.events.EventWorldRender;
 import me.offeex.ofx.api.util.RenderUtil;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.setting.settings.BooleanSetting;

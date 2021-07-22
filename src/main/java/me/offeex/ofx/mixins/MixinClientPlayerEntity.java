@@ -19,6 +19,7 @@ package me.offeex.ofx.mixins;
 
 import com.mojang.authlib.GameProfile;
 import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.api.event.events.EventPlayerMove;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;

@@ -10,13 +10,13 @@
     "MixinKeyboard",
     "ScreenMixin",
     "TitleScreenMixin",
-    "MixinAbstractClientPlayerEntity",
+    "MixinAbstractPlayerEntity",
     "MixinClientConnection",
     "MixinClientPlayerEntity",
     "MixinIngameHud",
     "MixinMinecraftClient",
     "MixinPlayerTab",
-    "MixinSession"
+    "IMixinSession"
   ],
   "injectors": {
     "defaultRequire": 1

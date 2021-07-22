@@ -2,6 +2,7 @@ package me.offeex.ofx.client.gui.impl.hud;
 
 import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.client.gui.api.font.StringRenderer;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.ModuleManager;

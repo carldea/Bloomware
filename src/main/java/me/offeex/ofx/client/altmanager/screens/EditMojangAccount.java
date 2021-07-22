@@ -1,6 +1,6 @@
 package me.offeex.ofx.client.altmanager.screens;
 
-import me.offeex.ofx.Main;
+import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.altmanager.Account;
 import me.offeex.ofx.client.altmanager.AccountTypes;
 import net.minecraft.client.MinecraftClient;
@@ -40,8 +40,8 @@ public class EditMojangAccount extends Screen {
         this.children.add(this.password);
         this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 160, 200, 20, Text.of("Add account"), (buttonWidget) -> {
             try {
-                Main.accountManager.deleteAccount(account);
-                Main.accountManager.saveAccount(new Account(this.email.getText(), this.password.getText(), AccountTypes.Mojang));
+                Bloomware.accountManager.deleteAccount(account);
+                Bloomware.accountManager.saveAccount(new Account(this.email.getText(), this.password.getText(), AccountTypes.Mojang));
             } catch (IOException ignored) {}
             this.mc.openScreen(new AltManager());
         }));
