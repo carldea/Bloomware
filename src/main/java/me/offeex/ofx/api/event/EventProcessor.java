@@ -1,6 +1,6 @@
 package me.offeex.ofx.api.event;
 
-import me.offeex.ofx.Main;
+import me.offeex.ofx.Bloomware;
 import me.zero.alpine.listener.Listenable;
 import net.minecraft.client.MinecraftClient;
 
@@ -11,7 +11,7 @@ public class EventProcessor implements Listenable {
 
 	public EventProcessor() {
 		instance = this;
-		Main.EVENTBUS.subscribe(this);
+		Bloomware.EVENTBUS.subscribe(this);
 	}
 
 }

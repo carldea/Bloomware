@@ -1,8 +1,7 @@
 package me.offeex.ofx.api.mixin;
 
-import me.offeex.ofx.gui.CustomMainMenu;
+import me.offeex.ofx.client.gui.CustomMainMenu;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gl.ShaderEffect;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;

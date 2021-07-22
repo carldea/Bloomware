@@ -1,6 +1,6 @@
 package me.offeex.ofx.api.mixin;
 
-import me.offeex.ofx.Main;
+import me.offeex.ofx.Bloomware;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,7 +16,7 @@ public class MixinIngameHud {
 	@Inject(at = @At(value = "RETURN"), method = "render", cancellable = true)
 	public void render(MatrixStack matrixStack, float float_1, CallbackInfo info) {
 		EventDrawOverlay event = new EventDrawOverlay(matrixStack);
-		Main.EVENTBUS.post(event);
+		Bloomware.EVENTBUS.post(event);
 		if (event.isCancelled())
 			info.cancel();
 	}

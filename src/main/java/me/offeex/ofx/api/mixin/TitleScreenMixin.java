@@ -1,8 +1,8 @@
 package me.offeex.ofx.api.mixin;
 
-import me.offeex.ofx.altmanager.screens.AltManager;
-import me.offeex.ofx.Main;
-import me.offeex.ofx.gui.CustomMainMenu;
+import me.offeex.ofx.client.altmanager.screens.AltManager;
+import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.client.gui.CustomMainMenu;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -27,7 +27,7 @@ public abstract class TitleScreenMixin extends Screen {
 
     private boolean enabled() {
         boolean nigger = false;
-        File dir = new File(MinecraftClient.getInstance().runDirectory, Main.name);
+        File dir = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
         File dataFile = new File(dir, "config.txt");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(dataFile));
@@ -36,7 +36,7 @@ public abstract class TitleScreenMixin extends Screen {
                 String lineN = line;
                 line = reader.readLine();
                 String[] args = lineN.split(":");
-                if (args[1].equals("Main Menu")) {
+                if (args[1].equals("Bloomware Menu")) {
                     nigger = args[2].equals("true");
                 }
             }

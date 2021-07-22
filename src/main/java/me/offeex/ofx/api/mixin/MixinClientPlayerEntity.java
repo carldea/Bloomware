@@ -18,7 +18,7 @@
 package me.offeex.ofx.api.mixin;
 
 import com.mojang.authlib.GameProfile;
-import me.offeex.ofx.Main;
+import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.Event;
 import me.offeex.ofx.api.event.events.EventPlayerMove;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -42,7 +42,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     public void move(final MovementType movementType, final Vec3d vec3d, final CallbackInfo info) {
         EventPlayerMove event = new EventPlayerMove(movementType, vec3d);
         EventPlayerMove.era = Event.Era.PRE;
-        Main.EVENTBUS.post(event);
+        Bloomware.EVENTBUS.post(event);
         if (event.isCancelled()) {
             super.move(event.type, event.getVec3d());
             info.cancel();

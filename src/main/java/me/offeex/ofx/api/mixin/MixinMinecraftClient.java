@@ -1,8 +1,8 @@
 package me.offeex.ofx.api.mixin;
 
-import me.offeex.ofx.Main;
-import me.offeex.ofx.gui.api.font.StringRenderer;
-import me.offeex.ofx.module.ModuleManager;
+import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.client.gui.api.font.StringRenderer;
+import me.offeex.ofx.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.util.Session;
@@ -20,8 +20,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinMinecraftClient {
     @Inject(method = "<init>", at = @At("TAIL"))
     public void minecraftClient(CallbackInfo ci) {
-        Main.pFontRenderer = new StringRenderer(23, "/assets/fonts/" + Main.FontMain + ".ttf");
-        Main.sFontRenderer = new StringRenderer(18, "/assets/fonts/" + Main.FontMain + ".ttf");
+        Bloomware.pFontRenderer = new StringRenderer(23, "/assets/fonts/" + Bloomware.FontMain + ".ttf");
+        Bloomware.sFontRenderer = new StringRenderer(18, "/assets/fonts/" + Bloomware.FontMain + ".ttf");
     }
 
 
@@ -44,6 +44,6 @@ public class MixinMinecraftClient {
 
     @Inject(at = @At("TAIL"), method = "getWindowTitle", cancellable = true)
     public void getWindowTitle(CallbackInfoReturnable<String> cir) {
-        cir.setReturnValue(Main.name + " v" + Main.version);
+        cir.setReturnValue(Bloomware.name + " v" + Bloomware.version);
     }
 }

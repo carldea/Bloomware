@@ -1,6 +1,6 @@
 package me.offeex.ofx.api.mixin;
 
-import me.offeex.ofx.Main;
+import me.offeex.ofx.Bloomware;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -15,7 +15,7 @@ public class MixinKeyboard {
 	private void onKeyEvent(long windowPointer, int key, int scanCode, int action, int modifiers, CallbackInfo callbackInfo) {
 
 		EventKeyPress event = new EventKeyPress(key, scanCode);
-		Main.EVENTBUS.post(event);
+		Bloomware.EVENTBUS.post(event);
 		if (event.isCancelled())
 			callbackInfo.cancel();
 	}

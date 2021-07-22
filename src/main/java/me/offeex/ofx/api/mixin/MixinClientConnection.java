@@ -1,6 +1,6 @@
 package me.offeex.ofx.api.mixin;
 
-import me.offeex.ofx.command.CommandManager;
+import me.offeex.ofx.client.command.CommandManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
