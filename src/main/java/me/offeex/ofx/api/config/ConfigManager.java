@@ -30,7 +30,7 @@ public class ConfigManager {
         }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         if (module.getSettings() != null) {
-            String json = gson.toJson((JsonElement) this.settingWriter(module));
+            String json = gson.toJson(this.settingWriter(module));
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(Files.newOutputStream(output)));
             writer.write(json);
             writer.close();
@@ -40,7 +40,7 @@ public class ConfigManager {
     public void loadConfig(Module module) throws IOException {
         Path settings = Paths.get(Bloomware.name + "/" + module.getName() + ".json");
         InputStream stream = Files.newInputStream(settings);
-        Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse((Reader) new InputStreamReader(stream)).getAsJsonObject(), module);
+        Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse(new InputStreamReader(stream)).getAsJsonObject(), module);
     }
 
     public JsonObject settingWriter(Module module) {

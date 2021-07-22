@@ -7,7 +7,10 @@ import net.minecraft.client.util.math.MatrixStack;
 import java.util.Random;
 
 public class Particle {
-    private int x, y, size, speed;
+    private int x;
+    private int y;
+    private final int size;
+    private final int speed;
     Random random = new Random();
 
     public Particle(int _x, int _y, int _size, int _speed) {

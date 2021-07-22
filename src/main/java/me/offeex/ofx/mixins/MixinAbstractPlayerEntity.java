@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Mixin(AbstractClientPlayerEntity.class)
-abstract class MixinAbstractClientPlayerEntity extends PlayerEntity {
+abstract class MixinAbstractPlayerEntity extends PlayerEntity {
 
     Identifier jex_cape = new Identifier("ofx", "maincape.png");
     private final MinecraftClient mc = MinecraftClient.getInstance();
@@ -46,7 +46,7 @@ abstract class MixinAbstractClientPlayerEntity extends PlayerEntity {
         return nigger;
     }
 
-    public MixinAbstractClientPlayerEntity(World world, BlockPos pos, float yaw, GameProfile profile) {
+    public MixinAbstractPlayerEntity(World world, BlockPos pos, float yaw, GameProfile profile) {
         super(world, pos, yaw, profile);
     }
 
