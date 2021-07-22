@@ -6,7 +6,7 @@
   "name": "OFX",
   "description": "It's OFX",
   "authors": [
-    "OffeeX"
+    "OffeeX, lots of bullshit fixed by https://github.com/fuckyouthinkimboogieman"
   ],
   "contact": {
   },
@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "me.offeex.ofx.Main"
+      "me.offeex.ofx.Bloomware"
     ]
   },
   "mixins": [
