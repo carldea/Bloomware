@@ -28,7 +28,7 @@ import me.offeex.ofx.client.module.ModuleManager;
 
 public class Bloomware implements ClientModInitializer {
 
-	public static final String name = "OFX";
+	public static final String name = "Bloomware";
 	public static final String version = "1.0-ALPHA";
 	public static String FontMain = "Comfortaa-Light";
 
