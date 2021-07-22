@@ -22,6 +22,7 @@ A free minecraft utility mod for 1.16.5+ versions, designed for anarchy servers,
 
 ## Contributors
 - **yoursleep** (Code cleanup whole project, clearing project from tons of shit, switching event system to google event system, help with GUI, renderers)
+- **cattyn** (helps with code clean up)
 - **Rikonardo** (FontRenderer, moral support, tips, etc.)
 - **srgantmoomoo** (client base "bedroom")
 - **ronmamo** (java lib - Reflections)
