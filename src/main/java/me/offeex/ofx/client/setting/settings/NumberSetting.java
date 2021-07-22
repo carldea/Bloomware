@@ -10,7 +10,6 @@ public class NumberSetting extends Setting {
 	  
 	public NumberSetting(String name, double value, double minimum, double maximum, double increment) {
 		this.setName(name);
-	    //this.setParentMod(parent);
 	    this.value = value;
 	    this.minimum = minimum;
 	    this.maximum = maximum;
@@ -23,12 +22,7 @@ public class NumberSetting extends Setting {
 	  
 	public void setValue(double value) {
 	    double precision = 1.0D / this.increment;
-	    //this.value = value;
 	    this.value = Math.round(Math.max(this.minimum, Math.min(this.maximum, value)) * precision) / precision;
-	    
-//	    if(Bloomware.saveLoad != null) {
-//			Bloomware.saveLoad.save();
-//	    }
 	}
 	 
 	public void increment(boolean positive) {

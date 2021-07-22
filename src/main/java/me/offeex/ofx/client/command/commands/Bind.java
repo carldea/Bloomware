@@ -4,6 +4,8 @@ import me.offeex.ofx.client.command.Command;
 import me.offeex.ofx.client.command.CommandManager;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.ModuleManager;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
 
 public class Bind extends Command {
@@ -12,50 +14,36 @@ public class Bind extends Command {
     }
 
     public void onCommand(String[] args, String command) {
-        try {
-            if (args[0].equals("set")) {
-                boolean bug = false;
-                if(args.length == 3) {
-                String module = args[1];
-                String key = args[2];
-                int rawKey = GLFW.class.getField("GLFW_KEY_" + key.toUpperCase()).getInt(null);
-                for (Module m : ModuleManager.getModules()) {
-                    if (m.getName().equalsIgnoreCase(module)) {
-                        m.setKey(rawKey);
-                        CommandManager.addChatMessage(TextFormatting.GREEN + m.getName() + " " + TextFormatting.GRAY + "was set to " + TextFormatting.GREEN + key.toUpperCase());
-                        return;
-                    }
-                    else bug = true;
-                }
-            }
-                if (bug)
-                    CommandManager.addChatMessage(TextFormatting.DARK_RED + "module is not exist");
+        boolean found = false;
 
-                if (args.length != 3 || !args[0].equalsIgnoreCase("set"))
-                    CommandManager.addChatMessage(CommandManager.USAGE + TextFormatting.RESET + TextFormatting.GOLD + CommandManager.getPrefix() + "bind set <module> <key>");
+        if (args.length == 0) {
+            CommandManager.addChatMessage(Formatting.DARK_RED + "Invalid Syntax");
+            return;
         }
-            if (args[0].equals("reset")) {
-                if (args.length == 2) {
-                boolean bug = true;
-                String module = args[1];
-                for (Module m : ModuleManager.getModules()) {
-                    if (m.getName().equalsIgnoreCase(module)) {
-                        bug = false;
-                        m.setKey(0);
-                        CommandManager.addChatMessage(TextFormatting.GREEN + m.getName() + " " + TextFormatting.GRAY + "was reset");
+
+        for (Module m : ModuleManager.modules) {
+            if (m.getName().equalsIgnoreCase(args[0])) {
+                found = true;
+                try {
+                    if (args[1].equalsIgnoreCase("null") || args[1].equalsIgnoreCase("delete") || args[1].equalsIgnoreCase("unbind")) {
+                        m.setKey(-1);
+                        CommandManager.addChatMessage(Formatting.GREEN + m.getName() + " was unbinded!");
+                    } else {
+                        m.setKey(InputUtil.fromTranslationKey("key.keyboard." + args[1].toLowerCase()).getCode());
+                        CommandManager.addChatMessage(Formatting.GREEN + m.getName() + " was bound to " + args[1].toUpperCase() + "!");
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    CommandManager.addChatMessage(Formatting.RED + "Invalid Synatax. Usage: " + CommandManager.prefix + "bind <Module> <Key>");
                 }
-                    if (bug)
-                        CommandManager.addChatMessage(TextFormatting.DARK_RED + "module is not exist");
+
+                break;
             }
-                if (args.length != 2)
-                    CommandManager.addChatMessage(CommandManager.USAGE + TextFormatting.RESET + TextFormatting.GOLD + CommandManager.getPrefix() + "bind reset <module>");
-            }
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            CommandManager.addChatMessage(TextFormatting.DARK_RED + "key is not exist");
         }
-        catch (ArrayIndexOutOfBoundsException e) {
-            CommandManager.addChatMessage(CommandManager.USAGE + TextFormatting.RESET + TextFormatting.GOLD + CommandManager.getPrefix() + "bind set <module> <key> / " + CommandManager.getPrefix() + "bind reset <module>");
+
+        if (!found) {
+            CommandManager.addChatMessage(Formatting.RED + "Module not found.");
+            return;
         }
     }
 }

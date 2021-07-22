@@ -12,7 +12,6 @@ public class ModeSetting extends Setting {
 	  
 	public ModeSetting(String name, String defaultMode, String... modes) {
 	    this.setName(name);
-	    //this.setParentMod(parent);
 	    this.modes = Arrays.asList(modes);
 	    this.index = this.modes.indexOf(defaultMode);
 	}
@@ -23,10 +22,6 @@ public class ModeSetting extends Setting {
 	  
 	public void setMode(String mode) {
 		  this.index = this.modes.indexOf(mode);
-		  
-//		   if(Bloomware.saveLoad != null) {
-//				Bloomware.saveLoad.save();
-//		   }
 	}
 	  
 	public boolean is(String mode) {

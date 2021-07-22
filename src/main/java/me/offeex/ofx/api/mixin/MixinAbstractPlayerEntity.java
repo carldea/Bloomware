@@ -2,7 +2,6 @@ package me.offeex.ofx.api.mixin;
 
 import com.mojang.authlib.GameProfile;
 import me.offeex.ofx.Bloomware;
-import me.offeex.ofx.api.util.CapeUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;

@@ -21,7 +21,6 @@ public class CommandManager {
 	
 	public static List<Command> commands = new ArrayList<Command>();
 	public static String prefix = "$";
-	public boolean commandFound = false;
 
 	public static String ARROW = "" + Formatting.GRAY + Formatting.BOLD + " ➜ ";
 	public static String USAGE = "" + Formatting.GRAY + Formatting.BOLD + "Usage: ";
@@ -82,10 +81,6 @@ public class CommandManager {
 
 	public static void setCommandPrefix(String pre) {
         prefix = pre;
-        
-//        if(Bloomware.saveLoad != null) {
-//			Bloomware.saveLoad.save();
-//		}
     }
 	public static String getPrefix() {
 		return prefix;

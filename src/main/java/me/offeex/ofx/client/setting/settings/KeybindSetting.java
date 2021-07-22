@@ -11,10 +11,6 @@ public class KeybindSetting extends Setting {
 		this.setName("Bind");
 		this.code = code;
 	}
-	
-	public KeybindSetting(Module module) {
-
-	}
 
 	public int getKeyCode() {
 		return this.code;

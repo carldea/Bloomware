@@ -17,17 +17,9 @@ public class BooleanSetting extends Setting {
 	  
 	public void setEnabled(boolean enabled) {
 	    this.enabled = enabled;
-	    
-//	    if(Bloomware.saveLoad != null) {
-//			Bloomware.saveLoad.save();
-//	    }
 	}
 	
 	public void toggle() {
 	    this.enabled = !this.enabled;
-	    
-//	    if(Bloomware.saveLoad != null) {
-//			Bloomware.saveLoad.save();
-//	    }
 	}
 }

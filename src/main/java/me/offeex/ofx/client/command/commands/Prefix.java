@@ -2,6 +2,7 @@ package me.offeex.ofx.client.command.commands;
 
 import me.offeex.ofx.client.command.Command;
 import me.offeex.ofx.client.command.CommandManager;
+import net.minecraft.util.Formatting;
 
 public class Prefix extends Command {
 	
@@ -14,9 +15,9 @@ public class Prefix extends Command {
 		if(args.length == 1) {
 			String key = args[0];
 			CommandManager.setCommandPrefix(key);
-			CommandManager.addChatMessage(TextFormatting.GREEN + "prefix " + TextFormatting.GRAY + "was set to " + TextFormatting.GREEN + CommandManager.prefix);
+			CommandManager.addChatMessage(Formatting.GREEN + "prefix " + Formatting.GRAY + "was set to " + Formatting.GREEN + CommandManager.prefix);
 		}
 		else
-			CommandManager.addChatMessage(CommandManager.USAGE + TextFormatting.RESET + TextFormatting.GOLD + CommandManager.prefix + "prefix <key>");
+			CommandManager.addChatMessage(CommandManager.USAGE + Formatting.RESET + Formatting.GOLD + CommandManager.prefix + "prefix <key>");
 	}
 }

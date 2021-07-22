@@ -3,6 +3,7 @@ package me.offeex.ofx.client.command.commands;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.command.Command;
 import me.offeex.ofx.client.command.CommandManager;
+import net.minecraft.util.Formatting;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -20,14 +21,14 @@ public class Friend extends Command {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            CommandManager.addChatMessage(TextFormatting.DARK_RED + args[1] + " removed from your friend list");
+            CommandManager.addChatMessage(Formatting.DARK_RED + args[1] + " removed from your friend list");
         } else if (args[0].equals("add")) {
             try {
                 Bloomware.friendManager.addFriend(args[1]);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            CommandManager.addChatMessage(TextFormatting.GREEN + args[1] + " added to your friend list");
+            CommandManager.addChatMessage(Formatting.GREEN + args[1] + " added to your friend list");
         } else if (args[0].equals("list")) {
             ArrayList<String> friends = null;
             try {
@@ -36,9 +37,9 @@ public class Friend extends Command {
                 e.printStackTrace();
             }
             if (friends != null) {
-                CommandManager.addChatMessage(TextFormatting.BLUE + "Current list of your friends: " + String.join(", ", friends));
+                CommandManager.addChatMessage(Formatting.BLUE + "Current list of your friends: " + String.join(", ", friends));
             } else {
-                CommandManager.addChatMessage(TextFormatting.DARK_RED + "You don't have any friends");
+                CommandManager.addChatMessage(Formatting.DARK_RED + "You don't have any friends");
             }
         }
     }

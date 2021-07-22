@@ -2,6 +2,7 @@ package me.offeex.ofx.client.command.commands;
 
 import me.offeex.ofx.client.command.Command;
 import me.offeex.ofx.client.command.CommandManager;
+import net.minecraft.util.Formatting;
 
 public class Help extends Command {
 	
@@ -11,13 +12,14 @@ public class Help extends Command {
 
 	@Override
 	public void onCommand(String[] args, String command) {
+		String commandsList = "Commands (" + CommandManager.commands.size() + "): ";
+
 		for (Command cmd : CommandManager.commands) {
-			if (cmd.modifier.equals("key"))
-				CommandManager.addChatMessage(TextFormatting.RED + CommandManager.getPrefix() + cmd.getName() + TextFormatting.GOLD +" <key>" + CommandManager.ARROW + TextFormatting.RESET + TextFormatting.YELLOW + TextFormatting.ITALIC + cmd.getDescription());
-			if (cmd.modifier.equals("module"))
-				CommandManager.addChatMessage(TextFormatting.RED + CommandManager.getPrefix() + cmd.getName() + TextFormatting.GOLD +" <module>" + CommandManager.ARROW + TextFormatting.RESET + TextFormatting.YELLOW + TextFormatting.ITALIC + cmd.getDescription());
-			if (cmd.modifier.equals(""))
-				CommandManager.addChatMessage(TextFormatting.RED + CommandManager.getPrefix() + cmd.getName() + CommandManager.ARROW + TextFormatting.RESET + TextFormatting.YELLOW + TextFormatting.ITALIC + cmd.getDescription());
+			commandsList += cmd.name + ", ";
 		}
+
+		commandsList += ".";
+
+		CommandManager.addChatMessage(commandsList.substring(0, commandsList.length() - 3) + ".");
 	}
 }
