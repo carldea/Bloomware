@@ -1,13 +1,10 @@
 package me.offeex.ofx.client.gui.impl.clickgui;
 
-import me.offeex.ofx.Bloomware;
+import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.api.event.events.EventKeyPress;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
 import me.offeex.ofx.client.gui.impl.hud.element.HudElement;
 import me.offeex.ofx.client.module.Module;
-import me.offeex.ofx.client.module.modules.client.ClickGui;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
@@ -28,11 +25,6 @@ public class GuiScreen extends Screen {
             panels.add(guiPanel);
             offsetX += guiPanel.width + 5;
         }
-//		for (Module module : ModuleManager.getModulesByCategory(Module.Category.HUD)) {
-//			HudElement element = new HudElement(module, module.x, module.y, module.width, module.height);
-//			panels.add(element);
-//		}
-        Bloomware.EVENTBUS.subscribe(listener);
     }
 
     @Override
@@ -107,21 +99,15 @@ public class GuiScreen extends Screen {
         return true;
     }
 
-    @EventHandler
-    private final Listener<EventKeyPress> listener = new Listener<>(e -> {
-        key = e.getKey();
-    });
+    @Subscribe
+    public void onKey(EventKeyPress keyPress) {
+        key = keyPress.getKey();
+    }
 
     @Override
     public void onClose() {
         super.onClose();
         dragging = null;
-//		for (AbstractDraggable panel : Bloomware.guiscreen.panels) {
-//			if (panel instanceof SettingWindow && !((SettingWindow) panel).isPinned()) {
-//				Bloomware.guiscreen.panels.remove(Bloomware.guiscreen.panels.get(Bloomware.guiscreen.panels.indexOf(panel)));
-//			}
-//		}
-        ClickGui.setCurrentScreen(0);
     }
 
     public AbstractDraggable getDragging() {

@@ -1,12 +1,10 @@
 package me.offeex.ofx.client.gui.impl.hud.element;
 
-import me.offeex.ofx.Bloomware;
+import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
 import me.offeex.ofx.client.gui.api.ColorUtils;
 import me.offeex.ofx.client.module.Module;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
@@ -17,13 +15,12 @@ public class HudElement extends AbstractDraggable {
 	public HudElement(Module module, int x, int y, int width, int height) {
 		super(x, y, width, height);
 		this.module = module;
-		Bloomware.EVENTBUS.subscribe(listener);
 	}
 
-	@EventHandler
-	private final Listener<EventDrawOverlay> listener = new Listener<>(e -> {
+	@Subscribe
+	public void onDrawOverlay(EventDrawOverlay e) {
 		this.draw(e.matrix, (int) MinecraftClient.getInstance().mouse.getX(), (int) MinecraftClient.getInstance().mouse.getY(), MinecraftClient.getInstance().getTickDelta());
-	});
+	}
 
 	@Override
 	public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {

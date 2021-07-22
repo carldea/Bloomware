@@ -1,4 +1,4 @@
-package me.offeex.ofx.api.mixin;
+package me.offeex.ofx.mixins;
 
 import me.offeex.ofx.client.command.CommandManager;
 import org.spongepowered.asm.mixin.Mixin;

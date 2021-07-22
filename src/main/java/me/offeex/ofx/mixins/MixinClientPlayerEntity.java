@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package me.offeex.ofx.api.mixin;
+package me.offeex.ofx.mixins;
 
 import com.mojang.authlib.GameProfile;
 import me.offeex.ofx.Bloomware;
@@ -40,8 +40,11 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
     @Inject(at = @At("HEAD"), method = "move", cancellable = true)
     public void move(final MovementType movementType, final Vec3d vec3d, final CallbackInfo info) {
+        /**
+         * FIXED BY https://github.com/fuckyouthinkimboogieman
+         */
+
         EventPlayerMove event = new EventPlayerMove(movementType, vec3d);
-        EventPlayerMove.era = Event.Era.PRE;
         Bloomware.EVENTBUS.post(event);
         if (event.isCancelled()) {
             super.move(event.type, event.getVec3d());

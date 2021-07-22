@@ -1,4 +1,4 @@
-package me.offeex.ofx.api.mixin;
+package me.offeex.ofx.mixins;
 
 import me.offeex.ofx.Bloomware;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,6 +13,9 @@ import net.minecraft.client.Keyboard;
 public class MixinKeyboard {
 	@Inject(method = "onKey", at = @At(value = "INVOKE", target = "net/minecraft/client/util/InputUtil.isKeyPressed(JI)Z", ordinal = 5), cancellable = true)
 	private void onKeyEvent(long windowPointer, int key, int scanCode, int action, int modifiers, CallbackInfo callbackInfo) {
+		/**
+		 * FIXED BY https://github.com/fuckyouthinkimboogieman
+		 */
 
 		EventKeyPress event = new EventKeyPress(key, scanCode);
 		Bloomware.EVENTBUS.post(event);

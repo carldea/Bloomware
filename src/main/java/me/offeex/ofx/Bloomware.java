@@ -1,5 +1,10 @@
+/**
+ * PROJECT FIXED AND CLEAN UPBY https://github.com/fuckyouthinkimboogieman
+ */
+
 package me.offeex.ofx;
 
+import com.google.common.eventbus.EventBus;
 import me.offeex.ofx.client.altmanager.AccountManager;
 import me.offeex.ofx.api.config.ConfigManager;
 import me.offeex.ofx.api.friends.FriendManager;
@@ -15,13 +20,9 @@ import net.fabricmc.api.ClientModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import me.offeex.ofx.api.event.EventProcessor;
 import me.offeex.ofx.client.command.CommandManager;
 import me.offeex.ofx.client.module.ModuleManager;
-import me.zero.alpine.bus.EventBus;
-import me.zero.alpine.bus.EventManager;
 
-// todo снести НАХУЙ БЛЯТЬ АЛЬПИН
 public class Bloomware implements ClientModInitializer {
 
 	public static final String name = "OFX";
@@ -29,7 +30,7 @@ public class Bloomware implements ClientModInitializer {
 	public static String FontMain = "Comfortaa-Light";
 
 	public static final Logger LOGGER = LogManager.getLogger("ofx");
-	public static EventBus EVENTBUS = new EventManager();
+	public static EventBus EVENTBUS = new EventBus();
 
 	public static RenderHelper rh;
 	public static AccountManager accountManager;
@@ -38,7 +39,6 @@ public class Bloomware implements ClientModInitializer {
 	public static StringRenderer sFontRenderer;
 
 	public static ModuleManager moduleManager;
-	public static EventProcessor eventProcessor;
 	public static FriendManager friendManager;
 	public static CommandManager commandManager;
 	public static ConfigManager configManager;
@@ -70,7 +70,6 @@ public class Bloomware implements ClientModInitializer {
 				"SS    ;,. SS       SSS ;,. \n" +
 				"`:;;;;;:' :;       `:; ;:' ");
 
-		eventProcessor = new EventProcessor();
 		commandManager = new CommandManager();
 		moduleManager = new ModuleManager();
 		moduleNotifier = new ModuleNotifier();

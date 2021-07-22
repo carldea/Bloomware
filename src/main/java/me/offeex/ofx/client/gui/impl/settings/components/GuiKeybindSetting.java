@@ -1,17 +1,14 @@
 package me.offeex.ofx.client.gui.impl.settings.components;
 
+import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventKeyPress;
 import me.offeex.ofx.client.command.CommandManager;
 import me.offeex.ofx.client.gui.api.AbstractButton;
 import me.offeex.ofx.client.gui.api.ColorUtils;
 import me.offeex.ofx.client.setting.settings.KeybindSetting;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
-
-import static me.offeex.ofx.api.event.Event.Era.POST;
 
 public class GuiKeybindSetting extends AbstractButton {
     KeybindSetting keybindSetting;
@@ -26,25 +23,19 @@ public class GuiKeybindSetting extends AbstractButton {
         this.keybindSetting = setting;
     }
 
-    @EventHandler
-    private final Listener<EventKeyPress> listener = new Listener<>(event -> {
-        key = event.getKey();
-        CommandManager.addChatMessage(key + "pressed!");
-    });
+    @Subscribe
+    public void onKeyPressed(EventKeyPress event) {
+        if (listening) {
+            key = event.getKey();
+            CommandManager.addChatMessage(key + "pressed!");
+        }
+    }
 
     @Override
     public void mouseClicked(double mouseX, double mouseY, int mouseButton) {
         isPressed = true;
         if (listening) {
             mainText = "Listening...";
-            t = new Thread(() -> {
-                Bloomware.EVENTBUS.subscribe(listener);
-            });
-            t.start();
-            if (key != -1) {
-                Bloomware.EVENTBUS.unsubscribe(listener);
-                t.interrupt();
-            }
         }
         listening = !listening;
     }

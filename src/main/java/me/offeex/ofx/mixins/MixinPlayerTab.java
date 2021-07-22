@@ -1,4 +1,4 @@
-package me.offeex.ofx.api.mixin;
+package me.offeex.ofx.mixins;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.module.Module;

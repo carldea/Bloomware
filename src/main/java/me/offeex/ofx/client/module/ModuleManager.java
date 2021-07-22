@@ -2,12 +2,10 @@ package me.offeex.ofx.client.module;
 
 import java.util.*;
 
-import me.offeex.ofx.Bloomware;
+import com.google.common.eventbus.Subscribe;
 import org.lwjgl.glfw.GLFW;
 
 import me.offeex.ofx.api.event.events.EventKeyPress;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
 import org.reflections.Reflections;
@@ -17,8 +15,6 @@ public class ModuleManager {
 	public static ArrayList<Module> modules;
 
 	public ModuleManager() {
-		Bloomware.EVENTBUS.subscribe(listener);
-		
 		modules = new ArrayList<>();
 
 		// Iterating every module and adding it in "modules" list
@@ -65,13 +61,13 @@ public class ModuleManager {
 			});
 		}
 	}
-	
-	@EventHandler
-	private final Listener<EventKeyPress> listener = new Listener<>(e -> {
+
+	@Subscribe
+	public void onKey(EventKeyPress e) {
 		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_F3))
 			return;
 
 		modules.stream().filter(m -> m.getKey() == e.getKey()).forEach(Module::toggle);
-	});
+	}
 	
 }

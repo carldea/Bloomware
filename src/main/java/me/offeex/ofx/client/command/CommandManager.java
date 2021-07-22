@@ -5,13 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import me.offeex.ofx.Bloomware;
-import me.offeex.ofx.api.event.events.EventKeyPress;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.ChatScreen;
-import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -26,7 +20,6 @@ public class CommandManager {
 	public static String USAGE = "" + Formatting.GRAY + Formatting.BOLD + "Usage: ";
 	
 	public CommandManager() {
-		Bloomware.EVENTBUS.subscribe(listener);
 		register();
 	}
 
@@ -70,14 +63,6 @@ public class CommandManager {
         	}
         }
     }
-	
-	@EventHandler
-	private final Listener<EventKeyPress> listener = new Listener<>(e -> {
-		if(InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), prefix.charAt(0)))
-		if (prefix.length() == 1) {
-                MinecraftClient.getInstance().openScreen(new ChatScreen(""));
-            }
-	});
 
 	public static void setCommandPrefix(String pre) {
         prefix = pre;

@@ -1,4 +1,4 @@
-package me.offeex.ofx.api.mixin;
+package me.offeex.ofx.mixins;
 
 import me.offeex.ofx.client.altmanager.screens.AltManager;
 import me.offeex.ofx.Bloomware;

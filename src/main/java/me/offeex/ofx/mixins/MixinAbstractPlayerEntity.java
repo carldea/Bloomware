@@ -1,4 +1,4 @@
-package me.offeex.ofx.api.mixin;
+package me.offeex.ofx.mixins;
 
 import com.mojang.authlib.GameProfile;
 import me.offeex.ofx.Bloomware;

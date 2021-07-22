@@ -3,7 +3,7 @@ package me.offeex.ofx.client.altmanager;
 import com.mojang.authlib.yggdrasil.YggdrasilEnvironment;
 import com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService;
 import net.minecraft.client.MinecraftClient;
-import me.offeex.ofx.api.mixin.IMixinSession;
+import me.offeex.ofx.mixins.IMixinSession;
 import net.minecraft.client.util.Session;
 
 public class Account {

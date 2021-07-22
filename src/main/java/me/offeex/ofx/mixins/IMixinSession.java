@@ -1,4 +1,4 @@
-package me.offeex.ofx.api.mixin;
+package me.offeex.ofx.mixins;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.Session;
