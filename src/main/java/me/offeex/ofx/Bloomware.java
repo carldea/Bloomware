@@ -16,7 +16,10 @@ import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.modules.hud.ModuleNotifier;
 import me.offeex.ofx.client.gui.api.font.StringRenderer;
 import me.offeex.ofx.client.module.modules.client.ChatNotifier;
+import me.offeex.ofx.mixins.IMixinSession;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.mixin.networking.accessor.MinecraftClientAccessor;
+import net.minecraft.client.MinecraftClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,6 +40,8 @@ public class Bloomware implements ClientModInitializer {
 	public static StringRenderer pFontRenderer;
 	public static ChatNotifier chatNotifier;
 	public static StringRenderer sFontRenderer;
+
+	public static final IMixinSession IMC = (IMixinSession) MinecraftClient.getInstance();
 
 	public static ModuleManager moduleManager;
 	public static FriendManager friendManager;

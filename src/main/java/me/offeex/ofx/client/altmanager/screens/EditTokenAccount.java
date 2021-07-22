@@ -1,6 +1,6 @@
 package me.offeex.ofx.client.altmanager.screens;
 
-import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.Main;
 import me.offeex.ofx.client.altmanager.Account;
 import me.offeex.ofx.client.altmanager.AccountTypes;
 import net.minecraft.client.MinecraftClient;
@@ -14,31 +14,34 @@ import net.minecraft.util.Identifier;
 
 import java.io.IOException;
 
-public class AddMojangAccount extends Screen {
-    private TextFieldWidget email, password;
+public class EditTokenAccount extends Screen {
+    Account account;
+    private TextFieldWidget username, token;
     MinecraftClient mc = MinecraftClient.getInstance();
     Identifier background = new Identifier("ofx", "gui/coolbg.png");
 
-    public AddMojangAccount() {
-        super(Text.of("AddMojangAccount"));
+    public EditTokenAccount(Account account) {
+        super(Text.of("EditTokenAccount"));
+        this.account = account;
     }
 
     @Override
     public void init() {
         this.mc.keyboard.setRepeatEvents(true);
-        this.email = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 105, 200, 20, Text.of(""));
-        this.email.setMaxLength(200);
-        this.email.setTextFieldFocused(false);
-        this.email.setText("");
-        this.children.add(this.email);
-        this.password = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 138, 200, 20, Text.of(""));
-        this.password.setMaxLength(200);
-        this.password.setTextFieldFocused(false);
-        this.password.setText("");
-        this.children.add(this.password);
+        this.username = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 105, 200, 20, Text.of(""));
+        this.username.setMaxLength(20);
+        this.username.setTextFieldFocused(false);
+        this.username.setText(account.getLogin());
+        this.children.add(this.username);
+        this.token = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 138, 200, 20, Text.of(""));
+        this.token.setMaxLength(2000);
+        this.token.setTextFieldFocused(false);
+        this.token.setText(account.getPassword());
+        this.children.add(this.token);
         this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 160, 200, 20, Text.of("Edit account"), (buttonWidget) -> {
             try {
-                Bloomware.accountManager.saveAccount(new Account(this.email.getText(), this.password.getText(), AccountTypes.Mojang));
+                Main.accountManager.deleteAccount(account);
+                Main.accountManager.saveAccount(new Account(this.username.getText(), this.token.getText(), AccountTypes.Token));
             } catch (IOException ignored) {}
             this.mc.openScreen(new AltManager());
         }));
@@ -49,10 +52,8 @@ public class AddMojangAccount extends Screen {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         mc.getTextureManager().bindTexture(background);
         DrawableHelper.drawTexture(matrices, 0, 0, 0, 0, 0, width, height, height, width);
-        email.render(matrices, mouseX, mouseY, delta);
-        password.render(matrices, mouseX, mouseY, delta);
-        this.textRenderer.drawWithShadow(matrices, "Email", this.width / 2 - 100, this.height / 4 + 95, 0xFFFFFFFF);
-        this.textRenderer.drawWithShadow(matrices, "Password", this.width / 2 - 100, this.height / 4 + 128, 0xFFFFFFFF);
+        username.render(matrices, mouseX, mouseY, delta);
+        token.render(matrices, mouseX, mouseY, delta);
         super.render(matrices, mouseX, mouseY, delta);
     }
 }

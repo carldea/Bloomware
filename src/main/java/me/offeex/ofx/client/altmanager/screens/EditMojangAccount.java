@@ -1,6 +1,6 @@
 package me.offeex.ofx.client.altmanager.screens;
 
-import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.Main;
 import me.offeex.ofx.client.altmanager.Account;
 import me.offeex.ofx.client.altmanager.AccountTypes;
 import net.minecraft.client.MinecraftClient;
@@ -14,31 +14,34 @@ import net.minecraft.util.Identifier;
 
 import java.io.IOException;
 
-public class AddMojangAccount extends Screen {
+public class EditMojangAccount extends Screen {
     private TextFieldWidget email, password;
+    Account account;
     MinecraftClient mc = MinecraftClient.getInstance();
     Identifier background = new Identifier("ofx", "gui/coolbg.png");
 
-    public AddMojangAccount() {
-        super(Text.of("AddMojangAccount"));
+    public EditMojangAccount(Account account) {
+        super(Text.of("EditMojangAccount"));
+        this.account = account;
     }
 
     @Override
     public void init() {
         this.mc.keyboard.setRepeatEvents(true);
         this.email = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 105, 200, 20, Text.of(""));
-        this.email.setMaxLength(200);
+        this.email.setMaxLength(20);
         this.email.setTextFieldFocused(false);
-        this.email.setText("");
+        this.email.setText(account.getLogin());
         this.children.add(this.email);
         this.password = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 138, 200, 20, Text.of(""));
         this.password.setMaxLength(200);
         this.password.setTextFieldFocused(false);
-        this.password.setText("");
+        this.password.setText(account.getPassword());
         this.children.add(this.password);
-        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 160, 200, 20, Text.of("Edit account"), (buttonWidget) -> {
+        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 160, 200, 20, Text.of("Add account"), (buttonWidget) -> {
             try {
-                Bloomware.accountManager.saveAccount(new Account(this.email.getText(), this.password.getText(), AccountTypes.Mojang));
+                Main.accountManager.deleteAccount(account);
+                Main.accountManager.saveAccount(new Account(this.email.getText(), this.password.getText(), AccountTypes.Mojang));
             } catch (IOException ignored) {}
             this.mc.openScreen(new AltManager());
         }));

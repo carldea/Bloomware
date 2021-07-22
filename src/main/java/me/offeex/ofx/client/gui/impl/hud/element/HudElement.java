@@ -1,7 +1,6 @@
 package me.offeex.ofx.client.gui.impl.hud.element;
 
 import com.google.common.eventbus.Subscribe;
-import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
 import me.offeex.ofx.client.gui.api.ColorUtils;
 import me.offeex.ofx.client.module.Module;

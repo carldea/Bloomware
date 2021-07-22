@@ -1,7 +1,6 @@
 package me.offeex.ofx.client.module.modules.movement;
 
 import com.google.common.eventbus.Subscribe;
-import me.offeex.ofx.api.event.events.EventPlayerMove;
 import me.offeex.ofx.api.util.MovementUtil;
 import me.offeex.ofx.client.module.Module;
 import net.minecraft.util.math.Vec3d;

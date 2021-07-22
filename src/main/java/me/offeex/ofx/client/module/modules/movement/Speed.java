@@ -1,6 +1,5 @@
 package me.offeex.ofx.client.module.modules.movement;
 
-import me.offeex.ofx.api.event.events.EventKeyPress;
 import me.offeex.ofx.client.module.Module;
 import org.lwjgl.glfw.GLFW;
 

@@ -1,7 +1,6 @@
 package me.offeex.ofx.client.module.modules.render;
 
 import com.google.common.eventbus.Subscribe;
-import me.offeex.ofx.api.event.events.PacketEvent;
 import me.offeex.ofx.client.module.Module;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 import org.lwjgl.glfw.GLFW;

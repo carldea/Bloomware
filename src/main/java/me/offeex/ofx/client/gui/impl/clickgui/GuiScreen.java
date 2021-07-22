@@ -1,7 +1,6 @@
 package me.offeex.ofx.client.gui.impl.clickgui;
 
 import com.google.common.eventbus.Subscribe;
-import me.offeex.ofx.api.event.events.EventKeyPress;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
 import me.offeex.ofx.client.gui.impl.hud.element.HudElement;
 import me.offeex.ofx.client.module.Module;

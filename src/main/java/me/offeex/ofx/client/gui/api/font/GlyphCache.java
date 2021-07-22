@@ -61,7 +61,7 @@ public class GlyphCache
 
     private final List<Font> allFonts = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts());
 
-    public List<Font> usedFonts = Lists.newArrayList();
+    public static List<Font> usedFonts = Lists.newArrayList();
 
     private int textureName;
 

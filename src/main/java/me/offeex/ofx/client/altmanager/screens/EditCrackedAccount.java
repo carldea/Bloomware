@@ -14,13 +14,15 @@ import net.minecraft.util.Identifier;
 
 import java.io.IOException;
 
-public class AddCrackedAccount extends Screen {
+public class EditCrackedAccount extends Screen {
     private TextFieldWidget nickname;
     MinecraftClient mc = MinecraftClient.getInstance();
     Identifier background = new Identifier("ofx", "gui/coolbg.png");
+    Account account;
 
-    public AddCrackedAccount() {
-        super(Text.of("AddCrackedAccount"));
+    public EditCrackedAccount(Account account) {
+        super(Text.of("EditCrackedAccount"));
+        this.account = account;
     }
 
     @Override
@@ -29,10 +31,11 @@ public class AddCrackedAccount extends Screen {
         this.nickname = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, this.height / 4 + 105, 200, 20, Text.of(""));
         this.nickname.setMaxLength(20);
         this.nickname.setTextFieldFocused(true);
-        this.nickname.setText("");
+        this.nickname.setText(account.getLogin());
         this.children.add(this.nickname);
         this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, Text.of("Add account"), (buttonWidget) -> {
             try {
+                Bloomware.accountManager.deleteAccount(account);
                 Bloomware.accountManager.saveAccount(new Account(this.nickname.getText(), "", AccountTypes.Cracked));
             } catch (IOException e) {
                 e.printStackTrace();

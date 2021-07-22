@@ -1,16 +1,12 @@
 package me.offeex.ofx.client.altmanager;
 
-import com.mojang.authlib.yggdrasil.YggdrasilEnvironment;
-import com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService;
-import net.minecraft.client.MinecraftClient;
-import me.offeex.ofx.mixins.IMixinSession;
-import net.minecraft.client.util.Session;
+import me.offeex.ofx.client.altmanager.types.CrackedAccount;
+import me.offeex.ofx.client.altmanager.types.MojangAccount;
+import me.offeex.ofx.client.altmanager.types.TokenAccount;
 
 public class Account {
     public String login, password;
     public AccountTypes type;
-    IMixinSession mixinSession;
-    MinecraftClient mc;
 
     public Account(String login, String password, AccountTypes type) {
         this.login = login;
@@ -30,14 +26,21 @@ public class Account {
         this.password = password;
     }
 
-    protected void setSession(Session session) {
-        mixinSession.setSession(session);
-    }
-
-    public void login() {
-        YggdrasilMinecraftSessionService service = (YggdrasilMinecraftSessionService) mc.getSessionService();
-        AccountHelper.setBaseUrl(service, YggdrasilEnvironment.PROD.getSessionHost() + "/session/minecraft/");
-        AccountHelper.setJoinUrl(service, YggdrasilEnvironment.PROD.getSessionHost() + "/session/minecraft/join");
-        AccountHelper.setCheckUrl(service, YggdrasilEnvironment.PROD.getSessionHost() + "/session/minecraft/hasJoined");
+    public String login() {
+        switch (this.type.toString()) {
+            case "Cracked": {
+                CrackedAccount account = new CrackedAccount(login);
+                return account.login();
+            }
+            case "Mojang": {
+                MojangAccount account = new MojangAccount(login, password);
+                return account.login();
+            }
+            case "Token": {
+                TokenAccount account = new TokenAccount(login, password);
+                return account.login();
+            }
+        }
+        return "l";
     }
 }
