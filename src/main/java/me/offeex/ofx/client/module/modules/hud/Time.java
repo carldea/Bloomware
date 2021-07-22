@@ -1,0 +1,26 @@
+package me.offeex.ofx.client.module.modules.hud;
+
+import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.client.gui.api.ColorUtils;
+import me.offeex.ofx.client.module.Module;
+import me.offeex.ofx.client.module.modules.client.ClickGui;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.math.MatrixStack;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class Time extends Module {
+    public Time() {
+        super("Time", "Shows current time", KEY_UNBOUND, Category.HUD, false);
+    }
+
+    @Override
+    public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
+        if (isEnabled()) {
+            width = Bloomware.sFontRenderer.getStringWidth("Time: " + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()), Bloomware.sFontRenderer.getFontsize()) + 8;
+
+            Bloomware.sFontRenderer.drawString("Time: " + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()), x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+        }
+    }
+}

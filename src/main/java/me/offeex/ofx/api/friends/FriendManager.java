@@ -1,6 +1,6 @@
 package me.offeex.ofx.api.friends;
 
-import me.offeex.ofx.Main;
+import me.offeex.ofx.Bloomware;
 import net.minecraft.client.MinecraftClient;
 
 import java.io.*;
@@ -10,7 +10,7 @@ public class FriendManager {
     private File dir, dataFile;
 
     public void addFriend(String nickname) throws FileNotFoundException {
-        dir = new File(MinecraftClient.getInstance().runDirectory, Main.name);
+        dir = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
         dataFile = new File(dir, "friends.txt");
         ArrayList<String> t = loadFriends();
         t.add(nickname);
@@ -22,7 +22,7 @@ public class FriendManager {
     }
 
     public void removeFriend(String nickname) throws FileNotFoundException {
-        dir = new File(MinecraftClient.getInstance().runDirectory, Main.name);
+        dir = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
         dataFile = new File(dir, "friends.txt");
         PrintWriter pw = new PrintWriter(this.dataFile);
         ArrayList<String> t = loadFriends();
@@ -35,7 +35,7 @@ public class FriendManager {
 
     public ArrayList<String> loadFriends() throws FileNotFoundException {
         ArrayList<String> friends = new ArrayList<>();
-        dir = new File(MinecraftClient.getInstance().runDirectory, Main.name);
+        dir = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
         dataFile = new File(dir, "friends.txt");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(dataFile));
@@ -52,7 +52,7 @@ public class FriendManager {
     }
 
     public FriendManager() {
-        dir = new File(MinecraftClient.getInstance().runDirectory, Main.name);
+        dir = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
         if (!dir.exists()) {
             dir.mkdir();
         }

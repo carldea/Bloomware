@@ -1,32 +1,31 @@
 package me.offeex.ofx.api.config;
 
 import com.google.gson.*;
-import me.offeex.ofx.Main;
-import me.offeex.ofx.module.Module;
-import me.offeex.ofx.setting.Setting;
-import me.offeex.ofx.setting.settings.BooleanSetting;
-import me.offeex.ofx.setting.settings.KeybindSetting;
-import me.offeex.ofx.setting.settings.ModeSetting;
-import me.offeex.ofx.setting.settings.NumberSetting;
+import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.client.module.Module;
+import me.offeex.ofx.client.setting.Setting;
+import me.offeex.ofx.client.setting.settings.BooleanSetting;
+import me.offeex.ofx.client.setting.settings.KeybindSetting;
+import me.offeex.ofx.client.setting.settings.ModeSetting;
+import me.offeex.ofx.client.setting.settings.NumberSetting;
 import net.minecraft.client.MinecraftClient;
 
 import java.io.*;
 import java.nio.file.*;
-import java.nio.file.attribute.FileAttribute;
 import java.util.Map;
 
 public class ConfigManager {
     Path output;
 
     public ConfigManager() {
-        File directory = new File(MinecraftClient.getInstance().runDirectory, Main.name);
+        File directory = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
         if (!directory.exists()) {
             directory.mkdir();
         }
     }
 
     public void saveConfig(Module module) throws IOException {
-        if (!Files.exists(output = Paths.get(Main.name + "/" + module.getName() + ".json"))) {
+        if (!Files.exists(output = Paths.get(Bloomware.name + "/" + module.getName() + ".json"))) {
             Files.createFile(output);
         }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -39,9 +38,9 @@ public class ConfigManager {
     }
 
     public void loadConfig(Module module) throws IOException {
-        Path settings = Paths.get(Main.name + "/" + module.getName() + ".json");
+        Path settings = Paths.get(Bloomware.name + "/" + module.getName() + ".json");
         InputStream stream = Files.newInputStream(settings);
-        Main.configManager.loadSettingsFromFile(new JsonParser().parse((Reader) new InputStreamReader(stream)).getAsJsonObject(), module);
+        Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse((Reader) new InputStreamReader(stream)).getAsJsonObject(), module);
     }
 
     public JsonObject settingWriter(Module module) {

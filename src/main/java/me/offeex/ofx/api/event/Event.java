@@ -1,16 +1,19 @@
 package me.offeex.ofx.api.event;
 
-import me.zero.alpine.event.type.Cancellable;
-import net.minecraft.client.MinecraftClient;
-
-public class Event extends Cancellable {
+public class Event {
 	
-	public static Era era = Era.PRE;
+    private boolean cancelled = false;
 
-    public static Float partialTicks = MinecraftClient.getInstance().getTickDelta();
+    public boolean isCancelled() {
+        return cancelled;
+    }
 
-    public enum Era {
-        PRE, POST
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
+    public void cancel() {
+        cancelled = true;
     }
 
 }
