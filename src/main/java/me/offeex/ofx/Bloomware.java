@@ -32,7 +32,7 @@ public class Bloomware implements ClientModInitializer {
 	public static final String version = "1.0-ALPHA";
 	public static String FontMain = "Comfortaa-Light";
 
-	public static final Logger LOGGER = LogManager.getLogger("ofx");
+	public static final Logger LOGGER = LogManager.getLogger("bloomware");
 	public static EventBus EVENTBUS = new EventBus();
 
 	public static RenderHelper rh;
@@ -62,18 +62,15 @@ public class Bloomware implements ClientModInitializer {
 	
 	@Override
 	public void onInitializeClient() {
-		printLog("OFX Initialized!");
+		printLog("Bloomware started ratting you!");
 		
-		printLog("\n" +
-				".s5SSSs.  .s5SSSs. .s5 s.  \n" +
-				"      SS.              SS. \n" +
-				"sS    S%S sS       ssS SSS \n" +
-				"SS    S%S SS       SSS SSS \n" +
-				"SS    S%S SSSs.     SSSSS  \n" +
-				"SS    S%S SS       SSS SSS \n" +
-				"SS    `:; SS       SSS `:; \n" +
-				"SS    ;,. SS       SSS ;,. \n" +
-				"`:;;;;;:' :;       `:; ;:' ");
+		System.out.println(
+				"__________.__                                                      \n" +
+				"\\______   \\  |   ____   ____   _______  _  _______ _______   ____  \n" +
+				" |    |  _/  |  /  _ \\ /  _ \\ /     \\ \\/ \\/ /\\__  \\\\_  __ \\_/ __ \\ \n" +
+				" |    |   \\  |_(  <_> |  <_> )  Y Y  \\     /  / __ \\|  | \\/\\  ___/ \n" +
+				" |______  /____/\\____/ \\____/|__|_|  /\\/\\_/  (____  /__|    \\___  >\n" +
+				"        \\/                         \\/             \\/            \\/ ");
 
 		commandManager = new CommandManager();
 		moduleManager = new ModuleManager();
@@ -95,7 +92,7 @@ public class Bloomware implements ClientModInitializer {
 			}
 		});
 
-		printLog(Bloomware.name + " has finished initialization :)");
+		printLog(Bloomware.name + " finished ratting you!");
 
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 			for (Module module : ModuleManager.getModules()) {
