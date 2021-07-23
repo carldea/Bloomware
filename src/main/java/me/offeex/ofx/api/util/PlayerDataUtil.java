@@ -5,10 +5,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.Vec3d;
 
 public class PlayerDataUtil {
-    public static MinecraftClient mc;
+    public static MinecraftClient mc = MinecraftClient.getInstance();
     private static final double diagonal = 1 / Math.sqrt(2);
-    private static final Vec3d horizontalVelocity = new Vec3d(0, 0, 0);
-
     public static Vec3d getHorizontalVelocity(double bps) {
         assert mc.player != null;
         float yaw = mc.player.getYaw(1);
@@ -49,7 +47,6 @@ public class PlayerDataUtil {
             velZ *= diagonal;
         }
 
-        ((Vector3D) horizontalVelocity).setXZ(velX, velZ);
-        return horizontalVelocity;
+        return new Vec3d(velX, 0, velZ);
     }
 }

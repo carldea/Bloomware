@@ -2,6 +2,8 @@ package me.offeex.ofx.mixins;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventDrawOverlay;
+import me.offeex.ofx.client.module.ModuleManager;
+import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,7 +20,10 @@ public class MixinIngameHud {
 		/**
 		 * FIXED BY https://github.com/fuckyouthinkimboogieman
 		 */
-
+		ModuleManager.getModules().forEach(module -> {
+			if (module.isEnabled())
+				module.draw(matrixStack, (int) MinecraftClient.getInstance().mouse.getX(), (int) MinecraftClient.getInstance().mouse.getY(), MinecraftClient.getInstance().getTickDelta());
+		});
 		EventDrawOverlay event = new EventDrawOverlay(matrixStack);
 		Bloomware.EVENTBUS.post(event);
 		if (event.isCancelled())

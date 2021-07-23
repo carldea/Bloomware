@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.scene.effect.Bloom;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.setting.Setting;
 import me.offeex.ofx.client.setting.settings.BooleanSetting;
@@ -24,7 +25,7 @@ public class Module {
 	public BooleanSetting shown;
 	private final Category category;
 	private boolean enabled, hidden;
-	public List<Setting> settings = new ArrayList<>();
+	public List<Setting> settings;
 	private final Component component = null;
 	public int x = 10, y = 100, width, height = y + 4;
 
@@ -119,6 +120,7 @@ public class Module {
 	public void enable() {
 		Bloomware.moduleNotifier.setMessage(this.name + " enabled!");
 		Bloomware.chatNotifier.sendMsg(this.name + " enabled!");
+		Bloomware.EVENTBUS.register(this);
 		setEnabled(true);
 		onEnable();
 	}
@@ -126,6 +128,7 @@ public class Module {
 	public void disable() {
 		Bloomware.moduleNotifier.setMessage(this.name + " disabled!");
 		Bloomware.chatNotifier.sendMsg(this.name + " disabled!");
+		Bloomware.EVENTBUS.unregister(this);
 		setEnabled(false);
 		onDisable();
 	}

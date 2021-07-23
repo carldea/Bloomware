@@ -19,7 +19,7 @@ public class ScreenMixin {
     MinecraftClient mc = MinecraftClient.getInstance();
     @Inject(method = "renderBackgroundTexture", at = @At("HEAD"), cancellable = true)
     public void renderBG(int vOffset, CallbackInfo ci) {
-        mc.getTextureManager().bindTexture(new Identifier("ofx", "coolbg.png"));
+        mc.getTextureManager().bindTexture(new Identifier("ofx", "gui/coolbg.png"));
         int width = mc.getWindow().getScaledWidth();
         int height = mc.getWindow().getScaledHeight();
         DrawableHelper.drawTexture(new MatrixStack(), 0, 0, 0, 0, 0, width, height, height, width);

@@ -1,6 +1,7 @@
 package me.offeex.ofx.client.module;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.api.event.events.EventKeyPress;
@@ -45,7 +46,7 @@ public class ModuleManager {
 	}
 	
 	public static List<Module> getModulesByCategory(Module.Category c) {
-		return (List<Module>) modules.stream().filter(module -> module.getCategory() == c);
+		return modules.stream().filter(module -> module.getCategory() == c).collect(Collectors.toList());
 	}
 
 	public static void onTick(){
