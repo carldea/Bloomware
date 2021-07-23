@@ -25,13 +25,13 @@ public class HUD {
 				windowY += -10;
 			}
 		}
-		for (int i = 0; i < ModuleManager.modules.size(); i++) {
+		for (int i = 0; i < ModuleManager.getModules().size(); i++) {
 			Module tmp;
-			for (int j = i + 1; j < ModuleManager.modules.size(); j++) {
-				if (ModuleManager.modules.get(i).name.length() < ModuleManager.modules.get(j).name.length()) {
-					tmp = ModuleManager.modules.get(i);
-					ModuleManager.modules.set(i, ModuleManager.modules.get(j));
-					ModuleManager.modules.set(j, tmp);
+			for (int j = i + 1; j < ModuleManager.getModules().size(); j++) {
+				if (ModuleManager.getModules().get(i).name.length() < ModuleManager.getModules().get(j).name.length()) {
+					tmp = ModuleManager.getModules().get(i);
+					ModuleManager.getModules().set(i, ModuleManager.getModules().get(j));
+					ModuleManager.getModules().set(j, tmp);
 				}
 			}
 		}

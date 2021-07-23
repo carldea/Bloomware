@@ -88,7 +88,7 @@ public class Bloomware implements ClientModInitializer {
 		hud = new HUD();
 
 		new Thread(() -> {
-			for (Module module : ModuleManager.modules) {
+			for (Module module : ModuleManager.getModules()) {
 				try {
 					configManager.loadConfig(module);
 				} catch (Exception ignored) {}
@@ -98,7 +98,7 @@ public class Bloomware implements ClientModInitializer {
 		printLog(Bloomware.name + " has finished initialization :)");
 
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-			for (Module module : ModuleManager.modules) {
+			for (Module module : ModuleManager.getModules()) {
 				try {
 					configManager.saveConfig(module);
 				} catch (Exception ignored) {}

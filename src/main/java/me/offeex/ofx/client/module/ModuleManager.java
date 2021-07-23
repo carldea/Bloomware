@@ -12,7 +12,7 @@ import org.reflections.Reflections;
 
 public class ModuleManager {
 
-	public static ArrayList<Module> modules;
+	private static ArrayList<Module> modules;
 
 	public ModuleManager() {
 		modules = new ArrayList<>();
@@ -45,13 +45,7 @@ public class ModuleManager {
 	}
 	
 	public static List<Module> getModulesByCategory(Module.Category c) {
-		List<Module> modules = new ArrayList<Module>();
-
-		modules.forEach(module -> {
-			if (module.getCategory() == c) modules.add(module);
-		});
-
-		return modules;
+		return (List<Module>) modules.stream().filter(module -> module.getCategory() == c);
 	}
 
 	public static void onTick(){
@@ -64,8 +58,7 @@ public class ModuleManager {
 
 	@Subscribe
 	public void onKey(EventKeyPress e) {
-		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_F3))
-			return;
+		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_F3)) return;
 
 		modules.stream().filter(m -> m.getKey() == e.getKey()).forEach(Module::toggle);
 	}

@@ -21,7 +21,7 @@ public class Bind extends Command {
             return;
         }
 
-        for (Module m : ModuleManager.modules) {
+        for (Module m : ModuleManager.getModules()) {
             if (m.getName().equalsIgnoreCase(args[0])) {
                 found = true;
                 try {
