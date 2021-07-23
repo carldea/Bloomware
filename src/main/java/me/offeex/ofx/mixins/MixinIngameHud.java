@@ -20,10 +20,10 @@ public class MixinIngameHud {
 		/**
 		 * FIXED BY https://github.com/fuckyouthinkimboogieman
 		 */
-		ModuleManager.getModules().forEach(module -> {
-			if (module.isEnabled())
-				module.draw(matrixStack, (int) MinecraftClient.getInstance().mouse.getX(), (int) MinecraftClient.getInstance().mouse.getY(), MinecraftClient.getInstance().getTickDelta());
-		});
+//		ModuleManager.getModules().forEach(module -> {
+//			if (module.isEnabled())
+//				module.draw(matrixStack, (int) MinecraftClient.getInstance().mouse.getX(), (int) MinecraftClient.getInstance().mouse.getY(), MinecraftClient.getInstance().getTickDelta());
+//		});
 		EventDrawOverlay event = new EventDrawOverlay(matrixStack);
 		Bloomware.EVENTBUS.post(event);
 		if (event.isCancelled())

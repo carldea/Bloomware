@@ -5,7 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.Vec3d;
 
 public class PlayerDataUtil {
-    public static MinecraftClient mc = MinecraftClient.getInstance();
+    public static MinecraftClient mc;
     private static final double diagonal = 1 / Math.sqrt(2);
     public static Vec3d getHorizontalVelocity(double bps) {
         assert mc.player != null;

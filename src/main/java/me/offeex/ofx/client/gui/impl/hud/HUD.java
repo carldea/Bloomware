@@ -9,8 +9,11 @@ import me.offeex.ofx.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 
 public class HUD {
-
 	MinecraftClient mc = MinecraftClient.getInstance();
+
+	public HUD() {
+		Bloomware.EVENTBUS.register(this);
+	}
 
 	@Subscribe
 	public void onDrawOverlay(EventDrawOverlay drawOverlay) {
