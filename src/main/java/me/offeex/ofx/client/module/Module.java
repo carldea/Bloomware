@@ -105,6 +105,11 @@ public class Module {
 	}
 
 	public void toggle() {
+		try {
+			Bloomware.configManager.saveConfig(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		if (enabled) disable();
 		else enable();
 	}

@@ -1,7 +1,6 @@
 package me.offeex.ofx.client.module;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.api.event.events.EventKeyPress;
@@ -13,7 +12,7 @@ import org.reflections.Reflections;
 
 public class ModuleManager {
 
-	private static ArrayList<Module> modules;
+	public static ArrayList<Module> modules;
 
 	public ModuleManager() {
 		modules = new ArrayList<>();
@@ -46,7 +45,13 @@ public class ModuleManager {
 	}
 	
 	public static List<Module> getModulesByCategory(Module.Category c) {
-		return modules.stream().filter(module -> module.getCategory() == c).collect(Collectors.toList());
+		List<Module> moduless = new ArrayList<Module>();
+
+		modules.forEach(module -> {
+			if (module.getCategory() == c) moduless.add(module);
+		});
+
+		return moduless;
 	}
 
 	public static void onTick(){
@@ -59,7 +64,8 @@ public class ModuleManager {
 
 	@Subscribe
 	public void onKey(EventKeyPress e) {
-		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_F3)) return;
+		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_F3))
+			return;
 
 		modules.stream().filter(m -> m.getKey() == e.getKey()).forEach(Module::toggle);
 	}

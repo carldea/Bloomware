@@ -32,7 +32,7 @@ A free minecraft utility mod for 1.16.5+ versions, designed for anarchy servers,
 - [X] ClickGUI
 - [X] HudEditor
 - [X] Commands
-- [ ] Alt Manager
+- [X] Alt Manager
 - [ ] Capes
 - [ ] Animations
 - [ ] Friends

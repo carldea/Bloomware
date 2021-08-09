@@ -28,9 +28,9 @@ public abstract class AbstractDraggable extends AbstractComponent implements IRe
 	// this should be called on render
 	public void updateDragLogic(int mouseX, int mouseY) {
 		this.x = Math.max(0, (mouseX - dragX));
-		this.x = Math.min(mc.getWindow().getScaledWidth() - this.width, this.x);
+		//this.x = Math.min(mc.getWindow().getScaledWidth() - this.width, this.x);
 
 		this.y = Math.max(0, (mouseY - dragY));
-		this.y = Math.min(mc.getWindow().getScaledHeight() - this.height, this.y);
+		//this.y = Math.min(mc.getWindow().getScaledHeight() - this.height, this.y);
 	}
 }

@@ -1,9 +1,9 @@
-package me.offeex.ofx.client.gui.impl.settings.components;
+package me.offeex.ofx.client.gui.impl.oldclicksettings.components;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.gui.api.AbstractButton;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
-import me.offeex.ofx.client.gui.impl.settings.SettingWindow;
+import me.offeex.ofx.client.gui.impl.oldclicksettings.SettingWindow;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;

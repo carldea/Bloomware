@@ -1,10 +1,10 @@
-package me.offeex.ofx.client.gui.impl.clickgui;
+package me.offeex.ofx.client.gui.impl.oldclick;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.gui.api.AbstractButton;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
 import me.offeex.ofx.client.gui.api.ColorUtils;
-import me.offeex.ofx.client.gui.impl.settings.SettingWindow;
+import me.offeex.ofx.client.gui.impl.oldclicksettings.SettingWindow;
 import me.offeex.ofx.client.module.Module;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
@@ -54,18 +54,18 @@ public class GuiModule extends AbstractButton {
         if (mouseButton == 1) {
             int count = 0;
 
-            for (AbstractDraggable panel : Bloomware.guiscreen.panels) {
+            for (AbstractDraggable panel : Bloomware.oldGui.panels) {
                 if (panel instanceof SettingWindow) {
                     count++;
                 }
             }
 
-            if (Bloomware.guiscreen.panels.get(Bloomware.guiscreen.panels.size() - 1) instanceof SettingWindow) {
-                Bloomware.guiscreen.panels.remove(Bloomware.guiscreen.panels.get(Bloomware.guiscreen.panels.size() - 1));
+            if (Bloomware.oldGui.panels.get(Bloomware.oldGui.panels.size() - 1) instanceof SettingWindow) {
+                Bloomware.oldGui.panels.remove(Bloomware.oldGui.panels.get(Bloomware.oldGui.panels.size() - 1));
             }
 
             boolean isExist = false;
-            for (AbstractDraggable panel : Bloomware.guiscreen.panels) {
+            for (AbstractDraggable panel : Bloomware.oldGui.panels) {
                 if (panel instanceof SettingWindow) {
                     if (((SettingWindow) panel).getModule() == this.module) {
                         isExist = true;
@@ -74,7 +74,7 @@ public class GuiModule extends AbstractButton {
                 }
             }
             if (!isExist && count == 0) {
-                Bloomware.guiscreen.panels.add(new SettingWindow(module, (int) mouseX + 50, (int) mouseY, Bloomware.guiscreen.panels.size()));
+                Bloomware.oldGui.panels.add(new SettingWindow(module, (int) mouseX + 50, (int) mouseY, Bloomware.oldGui.panels.size()));
             }
         }
     }

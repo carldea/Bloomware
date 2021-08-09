@@ -37,10 +37,26 @@ public class ConfigManager {
         }
     }
 
+    public void fileRepairer(Module module) throws IOException {
+        if (!Files.exists(output = Paths.get(Bloomware.name + "/" + module.getName() + ".json"))) {
+            Files.createFile(output);
+        } else {
+            Files.delete(Paths.get(Bloomware.name + "/" + module.getName() + ".json"));
+            Files.createFile(output);
+        }
+        saveConfig(module);
+        loadConfig(module);
+    }
+
     public void loadConfig(Module module) throws IOException {
         Path settings = Paths.get(Bloomware.name + "/" + module.getName() + ".json");
         InputStream stream = Files.newInputStream(settings);
-        Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse(new InputStreamReader(stream)).getAsJsonObject(), module);
+        try {
+            Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse((Reader) new InputStreamReader(stream)).getAsJsonObject(), module);
+        } catch (Exception exception) {
+            Bloomware.LOGGER.info("Found bad config for " + module.getName() + "! Repairing...");
+            fileRepairer(module);
+        }
     }
 
     public JsonObject settingWriter(Module module) {

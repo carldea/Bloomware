@@ -12,6 +12,6 @@ public class ClickGui extends Module {
 
     @Override
     public void toggle() {
-        mc.openScreen(Bloomware.guiscreen);
+        mc.openScreen(Bloomware.newGui);
     }
 }

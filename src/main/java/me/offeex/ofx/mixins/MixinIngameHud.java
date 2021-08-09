@@ -19,13 +19,14 @@ public class MixinIngameHud {
 	public void render(MatrixStack matrixStack, float float_1, CallbackInfo info) {
 		/**
 		 * FIXED BY https://github.com/fuckyouthinkimboogieman
+		 * Пиздатый евентбус от гугла, рендер не работает, заебись
 		 */
 //		ModuleManager.getModules().forEach(module -> {
 //			if (module.isEnabled())
 //				module.draw(matrixStack, (int) MinecraftClient.getInstance().mouse.getX(), (int) MinecraftClient.getInstance().mouse.getY(), MinecraftClient.getInstance().getTickDelta());
 //		});
 		EventDrawOverlay event = new EventDrawOverlay(matrixStack);
-		Bloomware.EVENTBUS.post(event);
+		Bloomware.EVENTBUS_ALPINE.post(event);
 		if (event.isCancelled())
 			info.cancel();
 	}

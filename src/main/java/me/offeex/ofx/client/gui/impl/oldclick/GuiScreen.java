@@ -1,4 +1,4 @@
-package me.offeex.ofx.client.gui.impl.clickgui;
+package me.offeex.ofx.client.gui.impl.oldclick;
 
 import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.api.event.events.EventKeyPress;
