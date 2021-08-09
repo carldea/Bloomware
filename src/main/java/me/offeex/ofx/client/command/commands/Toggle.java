@@ -17,7 +17,7 @@ public class Toggle extends Command {
 		if(args.length > 0) {
 			String moduleName = args[0]; 
 			boolean moduleFound = false;
-			for(Module module : ModuleManager.modules) {
+			for(Module module : ModuleManager.getModules()) {
 				String moduleIn = module.name;
 				moduleIn = moduleIn.replaceAll("\\s", "");
 				if(moduleIn.equalsIgnoreCase(moduleName)) {

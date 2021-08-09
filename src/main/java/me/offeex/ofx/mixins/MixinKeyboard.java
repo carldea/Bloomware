@@ -20,7 +20,7 @@ public class MixinKeyboard {
 		 */
 
 		EventKeyPress event = new EventKeyPress(key, scanCode);
-		for (Module module : ModuleManager.modules) {
+		for (Module module : ModuleManager.getModules()) {
 			if (module.getKey() == key) module.toggle();
 		}
 		Bloomware.EVENTBUS.post(event);
