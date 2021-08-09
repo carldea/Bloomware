@@ -22,20 +22,6 @@ public class FakePlayer extends Module {
 
     @Override
     public void onEnable() {
-        dir = new File(MinecraftClient.getInstance().runDirectory, Bloomware.name);
-        dataFile = new File(dir, "fakeplayer.txt");
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(dataFile));
-            String line = reader.readLine();
-            while(line != null) {
-                lineN = line;
-                line = reader.readLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String[] args = lineN.split(":");
-        nickname = args[1];
         if (mc.world != null && mc.player != null) {
             OtherClientPlayerEntity player = new OtherClientPlayerEntity(mc.world, new GameProfile(UUID.fromString(UUID_Data), nickname));
             player.copyPositionAndRotation(mc.player);

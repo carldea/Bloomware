@@ -17,10 +17,11 @@ public class MixinIngameHud {
 	public void render(MatrixStack matrixStack, float float_1, CallbackInfo info) {
 		/**
 		 * FIXED BY https://github.com/fuckyouthinkimboogieman
+		 * Пиздатый евентбус от гугла, рендер не работает, заебись
 		 */
 
 		EventDrawOverlay event = new EventDrawOverlay(matrixStack);
-		Bloomware.EVENTBUS.post(event);
+		Bloomware.EVENTBUS_ALPINE.post(event);
 		if (event.isCancelled())
 			info.cancel();
 	}

@@ -1,4 +1,4 @@
-package me.offeex.ofx.client.gui.impl.clickgui;
+package me.offeex.ofx.client.gui.impl.oldclick;
 
 import me.offeex.ofx.client.gui.api.ColorUtils;
 import net.minecraft.client.gui.screen.Screen;

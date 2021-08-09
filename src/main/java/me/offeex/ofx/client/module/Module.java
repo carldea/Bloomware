@@ -104,6 +104,11 @@ public class Module {
 	}
 
 	public void toggle() {
+		try {
+			Bloomware.configManager.saveConfig(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		if (enabled) disable();
 		else enable();
 	}
@@ -119,6 +124,7 @@ public class Module {
 	public void enable() {
 		Bloomware.moduleNotifier.setMessage(this.name + " enabled!");
 		Bloomware.chatNotifier.sendMsg(this.name + " enabled!");
+		Bloomware.EVENTBUS.register(this);
 		setEnabled(true);
 		onEnable();
 	}
@@ -126,6 +132,7 @@ public class Module {
 	public void disable() {
 		Bloomware.moduleNotifier.setMessage(this.name + " disabled!");
 		Bloomware.chatNotifier.sendMsg(this.name + " disabled!");
+		Bloomware.EVENTBUS.unregister(this);
 		setEnabled(false);
 		onDisable();
 	}

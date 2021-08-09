@@ -6,6 +6,7 @@ import me.offeex.ofx.api.util.RenderUtil;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.setting.settings.BooleanSetting;
 import me.offeex.ofx.client.setting.settings.NumberSetting;
+import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.block.entity.EnderChestBlockEntity;

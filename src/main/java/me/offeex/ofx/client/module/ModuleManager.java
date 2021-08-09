@@ -45,13 +45,13 @@ public class ModuleManager {
 	}
 	
 	public static List<Module> getModulesByCategory(Module.Category c) {
-		List<Module> modules = new ArrayList<Module>();
+		List<Module> moduless = new ArrayList<Module>();
 
 		modules.forEach(module -> {
-			if (module.getCategory() == c) modules.add(module);
+			if (module.getCategory() == c) moduless.add(module);
 		});
 
-		return modules;
+		return moduless;
 	}
 
 	public static void onTick(){

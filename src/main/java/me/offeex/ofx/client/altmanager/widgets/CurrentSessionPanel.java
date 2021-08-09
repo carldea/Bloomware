@@ -25,7 +25,7 @@ public class CurrentSessionPanel extends AbstractDraggable {
         if (isMinimized) {
             totalHeight = 13;
         }
-        if (Bloomware.guiscreen.getDragging() == this) {
+        if (Bloomware.oldGui.getDragging() == this) {
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(80, 80, 80, 200).getRGB());
         } else {
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(0, 0, 0, 150).getRGB());

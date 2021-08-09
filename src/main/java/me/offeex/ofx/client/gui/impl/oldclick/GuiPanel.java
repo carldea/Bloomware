@@ -1,4 +1,4 @@
-package me.offeex.ofx.client.gui.impl.clickgui;
+package me.offeex.ofx.client.gui.impl.oldclick;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
@@ -40,7 +40,7 @@ public class GuiPanel extends AbstractDraggable {
         int totalHeight = this.height;
         if (isMinimized)
             totalHeight = 17;
-        if (Bloomware.guiscreen.getDragging() == this)
+        if (Bloomware.oldGui.getDragging() == this)
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(80, 80, 80, 200).getRGB());
         else
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(0, 0, 0, 150).getRGB());

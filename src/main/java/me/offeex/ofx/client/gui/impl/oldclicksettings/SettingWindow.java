@@ -1,10 +1,10 @@
-package me.offeex.ofx.client.gui.impl.settings;
+package me.offeex.ofx.client.gui.impl.oldclicksettings;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.gui.api.AbstractButton;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
 import me.offeex.ofx.client.gui.api.ColorUtils;
-import me.offeex.ofx.client.gui.impl.settings.components.*;
+import me.offeex.ofx.client.gui.impl.oldclicksettings.components.*;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.setting.Setting;
 import me.offeex.ofx.client.setting.settings.BooleanSetting;

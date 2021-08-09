@@ -1,19 +1,24 @@
 package me.offeex.ofx.client.gui.impl.hud;
 
-import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.client.gui.api.font.StringRenderer;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.ModuleManager;
+import me.zero.alpine.listener.EventHandler;
+import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
 
 public class HUD {
 
 	MinecraftClient mc = MinecraftClient.getInstance();
 
-	@Subscribe
-	public void onDrawOverlay(EventDrawOverlay drawOverlay) {
+	public HUD() {
+		Bloomware.EVENTBUS_ALPINE.subscribe(listener);
+	}
+
+	@EventHandler
+	public final Listener<EventDrawOverlay> listener = new Listener<>(event -> {
 		StringRenderer fontRenderer = Bloomware.pFontRenderer;
 
 		int windowX = mc.getWindow().getScaledWidth();
@@ -25,15 +30,15 @@ public class HUD {
 				windowY += -10;
 			}
 		}
-		for (int i = 0; i < ModuleManager.modules.size(); i++) {
+		for (int i = 0; i < ModuleManager.getModules().size(); i++) {
 			Module tmp;
-			for (int j = i + 1; j < ModuleManager.modules.size(); j++) {
-				if (ModuleManager.modules.get(i).name.length() < ModuleManager.modules.get(j).name.length()) {
-					tmp = ModuleManager.modules.get(i);
-					ModuleManager.modules.set(i, ModuleManager.modules.get(j));
-					ModuleManager.modules.set(j, tmp);
+			for (int j = i + 1; j < ModuleManager.getModules().size(); j++) {
+				if (ModuleManager.getModules().get(i).name.length() < ModuleManager.getModules().get(j).name.length()) {
+					tmp = ModuleManager.getModules().get(i);
+					ModuleManager.getModules().set(i, ModuleManager.getModules().get(j));
+					ModuleManager.getModules().set(j, tmp);
 				}
 			}
 		}
-	}
+	});
 }
