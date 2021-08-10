@@ -26,7 +26,7 @@ public class MixinIngameHud {
 //				module.draw(matrixStack, (int) MinecraftClient.getInstance().mouse.getX(), (int) MinecraftClient.getInstance().mouse.getY(), MinecraftClient.getInstance().getTickDelta());
 //		});
 		EventDrawOverlay event = new EventDrawOverlay(matrixStack);
-		Bloomware.EVENTBUS_ALPINE.post(event);
+		Bloomware.EVENTBUS.post(event);
 		if (event.isCancelled())
 			info.cancel();
 	}

@@ -6,7 +6,6 @@ import net.minecraft.client.gui.screen.Screen;
 import org.lwjgl.glfw.GLFW;
 
 public class HudEditor extends Module {
-    Screen currentScreen;
 
     public HudEditor() {
         super("HudEditor", "Edit your HUD", GLFW.GLFW_KEY_RIGHT_CONTROL, Category.CLIENT, true);
@@ -14,7 +13,7 @@ public class HudEditor extends Module {
 
     @Override
     public void onEnable() {
-        mc.openScreen(Bloomware.hudScreen);
+        mc.openScreen(Bloomware.hudEditor);
         disable();
     }
 }

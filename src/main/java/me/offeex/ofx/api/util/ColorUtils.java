@@ -1,4 +1,4 @@
-package me.offeex.ofx.client.gui.api;
+package me.offeex.ofx.api.util;
 
 import java.awt.*;
 
@@ -17,8 +17,8 @@ public class ColorUtils {
     }
 
     public static class Colors {
-        public static final Color PRIMARY = new Color(40, 140, 175, 150);
-        public static final Color PRIMARY_DARKER = Color.decode("#717d0f");
+        public static final Color PRIMARY = new Color(249, 47, 154, 190);
+        public static final Color PRIMARY_DARKER = new Color(153, 11, 87, 255);
         public static final Color SECONDARY = Color.decode("#1c1c1c");
         public static final Color GREEN = Color.GREEN;
         public static final Color RED = Color.RED;

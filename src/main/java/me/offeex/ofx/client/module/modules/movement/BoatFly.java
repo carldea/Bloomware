@@ -1,11 +1,10 @@
 package me.offeex.ofx.client.module.modules.movement;
 
 import com.google.common.eventbus.Subscribe;
-import me.offeex.ofx.api.event.events.BoatMoveEvent;
+import me.offeex.ofx.api.event.events.EventBoatMove;
 import me.offeex.ofx.api.util.PlayerDataUtil;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.setting.settings.NumberSetting;
-import meteordevelopment.orbit.EventHandler;
 import net.minecraft.util.math.Vec3d;
 
 public class BoatFly extends Module {
@@ -18,7 +17,7 @@ public class BoatFly extends Module {
     }
 
     @Subscribe
-    public void onBoatMove(BoatMoveEvent event) {
+    public void onBoatMove(EventBoatMove event) {
         if (event.boatEntity.getPrimaryPassenger() != mc.player) {
             return;
         }

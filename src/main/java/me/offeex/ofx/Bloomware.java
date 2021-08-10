@@ -10,15 +10,13 @@ import me.offeex.ofx.api.config.ConfigManager;
 import me.offeex.ofx.api.friends.FriendManager;
 import me.offeex.ofx.client.gui.api.RenderHelper;
 import me.offeex.ofx.client.gui.impl.newclick.ClickGUI;
-import me.offeex.ofx.client.gui.impl.oldclick.GuiScreen;
-import me.offeex.ofx.client.gui.impl.oldclick.HudScreen;
+import me.offeex.ofx.client.gui.impl.newclick.HudEditor;
 import me.offeex.ofx.client.gui.impl.hud.HUD;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.modules.hud.ModuleNotifier;
 import me.offeex.ofx.client.gui.api.font.StringRenderer;
 import me.offeex.ofx.client.module.modules.client.ChatNotifier;
 import me.offeex.ofx.mixins.IMixinSession;
-import me.zero.alpine.bus.EventManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;
 import org.apache.logging.log4j.LogManager;
@@ -37,7 +35,6 @@ public class Bloomware implements ClientModInitializer {
 
     public static final Logger LOGGER = LogManager.getLogger("bloomware");
     public static EventBus EVENTBUS = new EventBus();
-    public static me.zero.alpine.bus.EventBus EVENTBUS_ALPINE = new EventManager();
 
     public static RenderHelper rh;
     public static AccountManager accountManager;
@@ -52,9 +49,8 @@ public class Bloomware implements ClientModInitializer {
     public static CommandManager commandManager;
     public static ConfigManager configManager;
     public static HUD hud;
-    public static GuiScreen oldGui;
     public static ClickGUI newGui;
-    public static HudScreen hudScreen;
+    public static HudEditor hudEditor;
 
     public static ModuleNotifier moduleNotifier;
 
@@ -82,10 +78,9 @@ public class Bloomware implements ClientModInitializer {
         moduleManager = new ModuleManager();
         moduleNotifier = new ModuleNotifier();
         chatNotifier = new ChatNotifier();
-        oldGui = new GuiScreen();
         newGui = new ClickGUI();
+        hudEditor = new HudEditor();
         accountManager = new AccountManager();
-        hudScreen = new HudScreen();
         configManager = new ConfigManager();
         rh = new RenderHelper();
         friendManager = new FriendManager();

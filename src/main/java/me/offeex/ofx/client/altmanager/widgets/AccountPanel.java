@@ -3,7 +3,7 @@ package me.offeex.ofx.client.altmanager.widgets;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.altmanager.Account;
 import me.offeex.ofx.client.gui.api.AbstractDraggable;
-import me.offeex.ofx.client.gui.api.ColorUtils;
+import me.offeex.ofx.api.util.ColorUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
@@ -34,9 +34,9 @@ public class AccountPanel extends AbstractDraggable {
         int totalHeight = this.height;
         if (isMinimized)
             totalHeight = 13;
-        if (Bloomware.oldGui.getDragging() == this)
+//        if (Bloomware.oldGui.getDragging() == this)
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(80, 80, 80, 200).getRGB());
-        else
+//        else
             Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(0, 0, 0, 150).getRGB());
 
         Screen.fill(stack, x, y, x + width, y + 14, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 200));

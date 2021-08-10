@@ -1,10 +1,8 @@
 package me.offeex.ofx.client.module.modules.hud;
 
 import me.offeex.ofx.Bloomware;
-import me.offeex.ofx.client.gui.api.ColorUtils;
+import me.offeex.ofx.api.util.ColorUtils;
 import me.offeex.ofx.client.module.Module;
-import me.offeex.ofx.client.module.modules.client.ClickGui;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
 public class Server extends Module {

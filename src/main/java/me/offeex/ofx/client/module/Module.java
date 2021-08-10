@@ -27,7 +27,7 @@ public class Module {
 	private boolean enabled, hidden;
 	public List<Setting> settings;
 	private final Component component = null;
-	public int x = 10, y = 100, width, height = y + 4;
+	public int x = 10, y = 100, width, height = 15;
 
 	public Module(String name, String description, int key, Category category, boolean hidden, Setting... s) {
 		this.name = name;

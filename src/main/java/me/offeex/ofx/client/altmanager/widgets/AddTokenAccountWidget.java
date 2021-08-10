@@ -3,7 +3,7 @@ package me.offeex.ofx.client.altmanager.widgets;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.altmanager.screens.AddTokenAccount;
 import me.offeex.ofx.client.gui.api.AbstractButton;
-import me.offeex.ofx.client.gui.api.ColorUtils;
+import me.offeex.ofx.api.util.ColorUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;

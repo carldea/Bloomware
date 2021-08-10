@@ -1,13 +1,14 @@
 package me.offeex.ofx.client.gui.impl.newclick;
 
 import me.offeex.ofx.Bloomware;
-import me.offeex.ofx.client.gui.api.ColorUtils;
+import me.offeex.ofx.api.util.ColorUtils;
 import me.offeex.ofx.client.gui.impl.newclick.component.Component;
 import me.offeex.ofx.client.gui.impl.newclick.component.components.ModuleButton;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
@@ -49,14 +50,18 @@ public class Frame {
     }
 
     public void renderFrame() {
-        DrawableHelper.fill(new MatrixStack(), x, y, x + width, y + barHeight, ColorUtils.Colors.PRIMARY.getRGB());
-        Bloomware.sFontRenderer.drawString(category.getName(), x + width / 2 - mc.textRenderer.getWidth(category.name()) / 2, y + 4, ColorUtils.Colors.WHITE.getRGB(), true);
+        if (isDragging)
+            DrawableHelper.fill(new MatrixStack(), x, y, x + width, y + barHeight, new Color(50, 50, 50, 200).getRGB());
+        else
+            DrawableHelper.fill(new MatrixStack(), x, y, x + width, y + barHeight, ColorUtils.Colors.SECONDARY.getRGB());
+        Bloomware.sFontRenderer.drawString(category.getName(), x + width / 2f - Bloomware.sFontRenderer.getStringWidth(category.getName(), Bloomware.sFontRenderer.getFontsize()) / 2f, y + 4, ColorUtils.Colors.WHITE.getRGB(), true);
         if (open && !components.isEmpty()) {
             // DrawableHelper.fill(new MatrixStack(), x, y + height, x + width, y + height + 7, ColorUtils.Colors.PRIMARY.getRGB());
             components.forEach(Component::render);
-            DrawableHelper.fill(new MatrixStack(), this.x, y + height - 5, this.x + 2, y + height, ColorUtils.Colors.PRIMARY.getRGB());
-            DrawableHelper.fill(new MatrixStack(), this.x + width, y + height - 5, this.x + width - 2, y + height, ColorUtils.Colors.PRIMARY.getRGB());
-            DrawableHelper.fill(new MatrixStack(), this.x, y + height, this.x + width, y + height + 2, ColorUtils.Colors.PRIMARY.getRGB());
+            DrawableHelper.fill(new MatrixStack(), this.x, y + 16, this.x + 1, y + height, ColorUtils.Colors.PRIMARY.getRGB());
+            DrawableHelper.fill(new MatrixStack(), this.x + width, y + height - 5, this.x + width - 1, y + height, ColorUtils.Colors.PRIMARY.getRGB());
+            DrawableHelper.fill(new MatrixStack(), this.x, y + height, this.x + width, y + height + 1, ColorUtils.Colors.PRIMARY.getRGB());
+            DrawableHelper.fill(new MatrixStack(), this.x, y + barHeight - 1, this.x + width, y + barHeight, ColorUtils.Colors.PRIMARY.getRGB());
         }
     }
 

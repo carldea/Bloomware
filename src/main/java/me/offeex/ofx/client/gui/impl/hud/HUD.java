@@ -1,12 +1,11 @@
 package me.offeex.ofx.client.gui.impl.hud;
 
+import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.client.gui.api.font.StringRenderer;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.ModuleManager;
-import me.zero.alpine.listener.EventHandler;
-import me.zero.alpine.listener.Listener;
 import net.minecraft.client.MinecraftClient;
 
 public class HUD {
@@ -14,11 +13,11 @@ public class HUD {
 	MinecraftClient mc = MinecraftClient.getInstance();
 
 	public HUD() {
-		Bloomware.EVENTBUS_ALPINE.subscribe(listener);
+		Bloomware.EVENTBUS.register(this);
 	}
 
-	@EventHandler
-	public final Listener<EventDrawOverlay> listener = new Listener<>(event -> {
+	@Subscribe
+	public void onDrawOverlay(EventDrawOverlay e) {
 		StringRenderer fontRenderer = Bloomware.pFontRenderer;
 
 		int windowX = mc.getWindow().getScaledWidth();
@@ -40,5 +39,5 @@ public class HUD {
 				}
 			}
 		}
-	});
+	}
 }

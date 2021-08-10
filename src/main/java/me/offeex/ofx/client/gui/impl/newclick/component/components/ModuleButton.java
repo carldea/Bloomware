@@ -1,7 +1,7 @@
 package me.offeex.ofx.client.gui.impl.newclick.component.components;
 
 import me.offeex.ofx.Bloomware;
-import me.offeex.ofx.client.gui.api.ColorUtils;
+import me.offeex.ofx.api.util.ColorUtils;
 import me.offeex.ofx.client.gui.impl.newclick.component.Component;
 import me.offeex.ofx.client.gui.impl.newclick.Frame;
 import me.offeex.ofx.client.gui.impl.newclick.component.components.settings.BooleanButton;
@@ -15,8 +15,6 @@ import me.offeex.ofx.client.setting.settings.KeybindSetting;
 import me.offeex.ofx.client.setting.settings.ModeSetting;
 import me.offeex.ofx.client.setting.settings.NumberSetting;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -27,6 +25,7 @@ public class ModuleButton extends Component {
     public Frame frame;
     public int offset;
     private boolean isHovered;
+    private boolean isPressed;
     private final ArrayList<Component> components;
     public boolean open;
 
@@ -72,9 +71,7 @@ public class ModuleButton extends Component {
     public void updateComponent(final double mouseX, final double mouseY) {
         isHovered = isHovered(mouseX, mouseY);
         if (!components.isEmpty()) {
-            components.forEach(c -> {
-                c.updateComponent(mouseX, mouseY);
-            });
+            components.forEach(c -> c.updateComponent(mouseX, mouseY));
         }
     }
 
@@ -82,39 +79,40 @@ public class ModuleButton extends Component {
     public void mouseClicked(final double mouseX, final double mouseY, final int button) {
         if (isHovered(mouseX, mouseY) && button == 0) {
             module.toggle();
+            isPressed = true;
         }
         if (isHovered(mouseX, mouseY) && button == 1) {
             open = !open;
             frame.update();
         }
-        components.forEach(c -> {
-            c.mouseClicked(mouseX, mouseY, button);
-        });
+        components.forEach(c -> c.mouseClicked(mouseX, mouseY, button));
     }
 
     @Override
     public void mouseReleased(final double mouseX, final double mouseY, final int mouseButton) {
-        components.forEach(c -> {
-            c.mouseReleased(mouseX, mouseY, mouseButton);
-        });
+        components.forEach(c -> c.mouseReleased(mouseX, mouseY, mouseButton));
+        isPressed = false;
     }
 
     @Override
     public void keyTyped(final int key) {
-        components.forEach(c -> {
+        for (Component c : components) {
             c.keyTyped(key);
-        });
+        }
     }
 
     @Override
     public void render() {
-        DrawableHelper.fill(new MatrixStack(), frame.getX(), frame.getY() + offset, frame.getX() + frame.getWidth(), frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 70).getRGB());
+        if (isPressed)
+            DrawableHelper.fill(stack, frame.getX(), frame.getY() + offset, frame.getX() + frame.getWidth(), frame.getY() + offset + 12, isHovered ? ColorUtils.Colors.SECONDARY.darker().getRGB() : new Color(0, 0, 0, 70).getRGB());
+        else
+            DrawableHelper.fill(stack, frame.getX(), frame.getY() + offset, frame.getX() + frame.getWidth(), frame.getY() + offset + 12, isHovered ? ColorUtils.withTransparency(ColorUtils.Colors.PRIMARY_DARKER, 180) : new Color(0, 0, 0, 70).getRGB());
 
-        if (this.module.settings.size() > 1) {
-            DrawableHelper.fill(new MatrixStack(), frame.getX() + 107, frame.getY() + offset + 2, frame.getX() + 110, frame.getY() + offset + 10, ColorUtils.Colors.PRIMARY.getRGB());
-        }
+//        if (this.module.settings.size() > 1) {
+//            DrawableHelper.fill(mc.getTickDelta(), frame.getX() + 107, frame.getY() + offset + 2, frame.getX() + 110, frame.getY() + offset + 10, ColorUtils.Colors.PRIMARY.getRGB());
+//        }
 
-        Bloomware.sFontRenderer.drawString(module.getName(), frame.getX() + 3, frame.getY() + offset + 2, module.isEnabled() ? ColorUtils.Colors.PRIMARY.getRGB() : ColorUtils.Colors.WHITE.getRGB(), true);
+        Bloomware.sFontRenderer.drawString(module.getName(), frame.getX() + 3, frame.getY() + offset + 2, module.isEnabled() ? ColorUtils.Colors.PRIMARY.brighter().getRGB() : ColorUtils.Colors.WHITE.getRGB(), true);
         if(open) components.forEach(Component::render);
     }
 

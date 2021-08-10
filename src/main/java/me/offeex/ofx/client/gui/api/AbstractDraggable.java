@@ -6,7 +6,7 @@ import net.minecraft.client.util.math.MatrixStack;
 public abstract class AbstractDraggable extends AbstractComponent implements IRenderable {
 
 	protected int dragX, dragY;
-	MinecraftClient mc = MinecraftClient.getInstance();
+	public MinecraftClient mc = MinecraftClient.getInstance();
 	
 	public AbstractDraggable(int x, int y, int width, int height) {
 		super(x, y, width, height);

@@ -1,10 +1,12 @@
 package me.offeex.ofx.client.gui.impl.newclick.component;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.math.MatrixStack;
 
 public class Component {
 
     public final static MinecraftClient mc;
+    public final static MatrixStack stack = new MatrixStack();
 
     public void render() { }
 

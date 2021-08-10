@@ -52,7 +52,7 @@ public class ConfigManager {
         Path settings = Paths.get(Bloomware.name + "/" + module.getName() + ".json");
         InputStream stream = Files.newInputStream(settings);
         try {
-            Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse((Reader) new InputStreamReader(stream)).getAsJsonObject(), module);
+            Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse(new InputStreamReader(stream)).getAsJsonObject(), module);
         } catch (Exception exception) {
             Bloomware.LOGGER.info("Found bad config for " + module.getName() + "! Repairing...");
             fileRepairer(module);
@@ -89,30 +89,20 @@ public class ConfigManager {
     }
 
     private void loadSettingsFromFile(JsonObject data, Module module) {
-        for (Map.Entry entry : data.entrySet()) {
-            String settingName = (String) entry.getKey();
-            JsonElement value = (JsonElement) entry.getValue();
-//            if (settingName.equals("enabled")) {
-//                module.setEnabled(value.getAsBoolean());
-//                if (value.getAsBoolean()) {
-//                    try {
-//                        module.setEnabled(true);
-//                        module.enable();
-//                    } catch (Exception ignored) {}
-//                } else {
-//                    try {
-//                        module.setEnabled(true);
-//                        module.disable();
-//                    } catch (Exception ignored) {}
-//                }
-//            }
-            for (Setting setting : module.getSettings()) {
-                if (!settingName.equals(setting.getName())) {
-                    continue;
-                } else {
-                    valueLoader(setting, value);
-                }
+        for (Map.Entry<String, JsonElement> entry : data.entrySet()) {
+            String settingName = entry.getKey();
+            JsonElement value = entry.getValue();
+
+            if (settingName.equals("enabled")) {
+                module.setEnabled(value.getAsBoolean());
+                if (value.getAsBoolean())
+                    module.enable();
             }
+
+            module.getSettings().forEach(setting -> {
+                if (settingName.equals(setting.getName()))
+                    valueLoader(setting, value);
+            });
         }
     }
 }

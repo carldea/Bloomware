@@ -14,10 +14,6 @@ public class FakePlayer extends Module {
     public FakePlayer() {
         super("Fake Player", "Summons a fake player entity", GLFW.GLFW_KEY_UNKNOWN, Category.MISCELLANEOUS, false);
     }
-
-    private File dir, dataFile;
-    private String lineN;
-
     public String nickname = "TheFakeDiOnFire", UUID_Data = "ab47040f-6bcb-4c00-9424-238be6eec731";
 
     @Override

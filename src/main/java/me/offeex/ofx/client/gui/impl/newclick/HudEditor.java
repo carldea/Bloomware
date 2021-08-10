@@ -10,27 +10,18 @@ import net.minecraft.text.LiteralText;
 import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class ClickGUI extends Screen {
+public class HudEditor extends Screen {
 
     MinecraftClient mc = MinecraftClient.getInstance();
-    
-    public static List<Frame> frames;
+    final Frame frame;
 
-    public ClickGUI() {
+    public HudEditor() {
         super(new LiteralText("Bloomware Gui"));
-        frames = new ArrayList<>();
         int frameX = 10;
-        for (final Module.Category category : Module.Category.values()) {
-            if (category != Module.Category.HUD) {
-                final Frame frame = new Frame(category);
-                frame.setX(frameX);
-                ClickGUI.frames.add(frame);
-                frameX += frame.getWidth() + 10;
-            }
-        }
+        frame = new Frame(Module.Category.HUD);
+        frame.setX(frameX);
+        frameX += frame.getWidth() + 10;
     }
 
     @Override
@@ -39,42 +30,33 @@ public class ClickGUI extends Screen {
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float partialTicks) {
         DrawableHelper.fill(new MatrixStack(), 0, 0, mc.getWindow().getScaledWidth(), mc.getWindow().getScaledHeight(), new Color(0, 0, 0, 100).getRGB());
-        frames.forEach(frame -> {
-            frame.renderFrame();
-            frame.updatePosition(mouseX, mouseY);
-            frame.getComponents().forEach(c -> c.updateComponent(mouseX, mouseY));
-        });
+        frame.renderFrame();
+        frame.updatePosition(mouseX, mouseY);
+        frame.getComponents().forEach(c -> c.updateComponent(mouseX, mouseY));
     }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
-        for (final Frame frame : frames) {
             if (frame.isHover(mouseX, mouseY) && mouseButton == 0) {
                 frame.setDrag(true);
                 frame.dragX = (int) (mouseX - frame.getX());
                 frame.dragY = (int) (mouseY - frame.getY());
             }
             if (frame.isHover(mouseX, mouseY) && mouseButton == 1) frame.setOpen(!frame.isOpen());
-
             if (frame.isOpen() && !frame.getComponents().isEmpty()) {
                 for (final Component component : frame.getComponents()) {
                     component.mouseClicked(mouseX, mouseY, mouseButton);
                 }
             }
-        }
         return false;
     }
 
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int state) {
-        for (final Frame frame : frames) {
-            frame.setDrag(false);
-        }
-        for (final Frame frame : frames) {
-            if (frame.isOpen() && !frame.getComponents().isEmpty()) {
-                for (final Component component : frame.getComponents()) {
-                    component.mouseReleased(mouseX, mouseY, state);
-                }
+        frame.setDrag(false);
+        if (frame.isOpen() && !frame.getComponents().isEmpty()) {
+            for (final Component component : frame.getComponents()) {
+                component.mouseReleased(mouseX, mouseY, state);
             }
         }
         return false;
@@ -86,11 +68,9 @@ public class ClickGUI extends Screen {
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        for (final Frame frame : ClickGUI.frames) {
-            if (frame.isOpen() && keyCode != 1 && !frame.getComponents().isEmpty()) {
-                for (final Component component : frame.getComponents()) {
-                    component.keyTyped(keyCode);
-                }
+        if (frame.isOpen() && keyCode != 1 && !frame.getComponents().isEmpty()) {
+            for (final Component component : frame.getComponents()) {
+                component.keyTyped(keyCode);
             }
         }
 
