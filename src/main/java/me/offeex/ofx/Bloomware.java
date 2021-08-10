@@ -90,11 +90,6 @@ public class Bloomware implements ClientModInitializer {
             try {
                 configManager.loadConfig(module);
             } catch (Exception ignored) {
-                try {
-                    configManager.fileRepairer(module);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         }
 

@@ -1,7 +1,11 @@
 package me.offeex.ofx.client.gui.impl.newclick;
 
+import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.client.gui.impl.hud.element.Element;
 import me.offeex.ofx.client.gui.impl.newclick.component.Component;
+import me.offeex.ofx.client.gui.impl.newclick.component.components.ModuleButton;
 import me.offeex.ofx.client.module.Module;
+import me.offeex.ofx.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
@@ -10,9 +14,11 @@ import net.minecraft.text.LiteralText;
 import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class HudEditor extends Screen {
 
+    ArrayList<Element> elements = new ArrayList<>();
     MinecraftClient mc = MinecraftClient.getInstance();
     final Frame frame;
 
@@ -22,10 +28,16 @@ public class HudEditor extends Screen {
         frame = new Frame(Module.Category.HUD);
         frame.setX(frameX);
         frameX += frame.getWidth() + 10;
+        for (Module module : ModuleManager.getModulesByCategory(Module.Category.HUD)) {
+            Element element = new Element(module);
+            elements.add(element);
+        }
     }
 
     @Override
-    public boolean isPauseScreen() { return false; }
+    public boolean isPauseScreen() {
+        return false;
+    }
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float partialTicks) {
@@ -33,26 +45,40 @@ public class HudEditor extends Screen {
         frame.renderFrame();
         frame.updatePosition(mouseX, mouseY);
         frame.getComponents().forEach(c -> c.updateComponent(mouseX, mouseY));
+        elements.forEach(element -> {
+            if (element.getModule().isEnabled()) {
+                element.draw(matrices, mouseX, mouseY, partialTicks);
+                element.updatePosition(mouseX, mouseY);
+            }
+        });
     }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
-            if (frame.isHover(mouseX, mouseY) && mouseButton == 0) {
-                frame.setDrag(true);
-                frame.dragX = (int) (mouseX - frame.getX());
-                frame.dragY = (int) (mouseY - frame.getY());
+        if (frame.isHover(mouseX, mouseY) && mouseButton == 0) {
+            frame.setDrag(true);
+            frame.dragX = (int) (mouseX - frame.getX());
+            frame.dragY = (int) (mouseY - frame.getY());
+        }
+        for (Element element : elements) {
+            if (element.isHover(mouseX, mouseY) && mouseButton == 0 && element.getModule().isEnabled()) {
+                element.setDrag(true);
+                element.dragX = (int) (mouseX - element.getX());
+                element.dragY = (int) (mouseY - element.getY());
             }
-            if (frame.isHover(mouseX, mouseY) && mouseButton == 1) frame.setOpen(!frame.isOpen());
-            if (frame.isOpen() && !frame.getComponents().isEmpty()) {
-                for (final Component component : frame.getComponents()) {
-                    component.mouseClicked(mouseX, mouseY, mouseButton);
-                }
+        }
+        if (frame.isHover(mouseX, mouseY) && mouseButton == 1) frame.setOpen(!frame.isOpen());
+        if (frame.isOpen() && !frame.getComponents().isEmpty()) {
+            for (final Component component : frame.getComponents()) {
+                component.mouseClicked(mouseX, mouseY, mouseButton);
             }
+        }
         return false;
     }
 
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int state) {
+        elements.forEach(element -> element.setDrag(false));
         frame.setDrag(false);
         if (frame.isOpen() && !frame.getComponents().isEmpty()) {
             for (final Component component : frame.getComponents()) {

@@ -36,6 +36,7 @@ public class Element{
 		module.y = y;
 		width = module.width;
 		height = module.height;
+
 		if (module.isEnabled()) {
 			module.draw(stack, mouseX, mouseY, tickDelta);
 		}
@@ -45,16 +46,10 @@ public class Element{
 		}
 	}
 
-	public void mouseClicked(double mouseX, double mouseY, int mouseButton) {
-	}
-
-	public void mouseReleased(double mouseX, double mouseY, int mouseButton) {
-	}
-
 	public void updatePosition(final int mouseX, final int mouseY) {
 		if (this.isDragging) {
-			this.x = (mouseX - this.dragX);
-			this.y = (mouseY - this.dragY);
+			this.setX(mouseX - this.dragX);
+			this.setY(mouseY - this.dragY);
 		}
 	}
 
@@ -68,5 +63,21 @@ public class Element{
 
 	public Module getModule() {
 		return module;
+	}
+
+	public int getX() {
+		return this.x;
+	}
+
+	public int getY() {
+		return this.y;
+	}
+
+	public void setX(final int newX) {
+		this.x = newX;
+	}
+
+	public void setY(final int newY) {
+		this.y = newY;
 	}
 }
