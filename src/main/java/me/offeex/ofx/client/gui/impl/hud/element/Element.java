@@ -4,12 +4,14 @@ import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.api.util.ColorUtils;
+import me.offeex.ofx.client.gui.impl.newclick.ClickGUI;
+import me.offeex.ofx.client.gui.impl.newclick.IDraggable;
 import me.offeex.ofx.client.module.Module;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 
-public class Element{
+public class Element implements IDraggable {
 	private final Module module;
 	private boolean isDragging;
 	private int x;
@@ -54,7 +56,15 @@ public class Element{
 	}
 
 	public void setDrag(final boolean drag) {
-		this.isDragging = drag;
+		if (drag && ClickGUI.dragging == null) {
+			ClickGUI.dragging = this;
+			this.isDragging = true;
+		}
+		else {
+			if (ClickGUI.dragging == this)
+				ClickGUI.dragging = null;
+			this.isDragging = false;
+		}
 	}
 
 	public boolean isHover(final double x, final double y) {

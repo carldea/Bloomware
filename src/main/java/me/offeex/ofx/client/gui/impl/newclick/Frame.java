@@ -14,7 +14,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Frame {
+public class Frame implements IDraggable {
 
     MinecraftClient mc = MinecraftClient.getInstance();
 
@@ -78,7 +78,15 @@ public class Frame {
     }
 
     public void setDrag(final boolean drag) {
-        this.isDragging = drag;
+        if (drag && ClickGUI.dragging == null) {
+            ClickGUI.dragging = this;
+            this.isDragging = true;
+        }
+        else {
+            if (ClickGUI.dragging == this)
+                ClickGUI.dragging = null;
+            this.isDragging = false;
+        }
     }
 
     public boolean isOpen() {
@@ -112,8 +120,8 @@ public class Frame {
 
     public void updatePosition(final int mouseX, final int mouseY) {
         if (this.isDragging) {
-            this.setX(mouseX - this.dragX);
-            this.setY(mouseY - this.dragY);
+            this.setX(Math.max(0, Math.min(mc.getWindow().getScaledWidth() - this.width, mouseX - dragX)));
+            this.setY(Math.max(0, Math.min(mc.getWindow().getScaledHeight() - this.height, mouseY - dragY)));
         }
     }
 

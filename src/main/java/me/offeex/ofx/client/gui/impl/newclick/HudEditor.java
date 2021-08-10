@@ -1,9 +1,7 @@
 package me.offeex.ofx.client.gui.impl.newclick;
 
-import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.client.gui.impl.hud.element.Element;
 import me.offeex.ofx.client.gui.impl.newclick.component.Component;
-import me.offeex.ofx.client.gui.impl.newclick.component.components.ModuleButton;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
@@ -27,7 +25,6 @@ public class HudEditor extends Screen {
         int frameX = 10;
         frame = new Frame(Module.Category.HUD);
         frame.setX(frameX);
-        frameX += frame.getWidth() + 10;
         for (Module module : ModuleManager.getModulesByCategory(Module.Category.HUD)) {
             Element element = new Element(module);
             elements.add(element);

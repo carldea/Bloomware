@@ -16,7 +16,7 @@ import java.util.List;
 public class ClickGUI extends Screen {
 
     MinecraftClient mc = MinecraftClient.getInstance();
-    
+    public static IDraggable dragging = null;
     public static List<Frame> frames;
 
     public ClickGUI() {
@@ -48,9 +48,12 @@ public class ClickGUI extends Screen {
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
-        for (final Frame frame : frames) {
+        for (int i = frames.size() - 1; i >= 0; i--) {
+            Frame frame = frames.get(i);
             if (frame.isHover(mouseX, mouseY) && mouseButton == 0) {
                 frame.setDrag(true);
+                frames.remove(i);
+                frames.add(frame);
                 frame.dragX = (int) (mouseX - frame.getX());
                 frame.dragY = (int) (mouseY - frame.getY());
             }
@@ -67,12 +70,14 @@ public class ClickGUI extends Screen {
 
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int state) {
-        for (final Frame frame : frames) {
+        for (int i = frames.size() - 1; i >= 0; i--) {
+            Frame frame = frames.get(i);
             frame.setDrag(false);
         }
-        for (final Frame frame : frames) {
+        for (int i = frames.size() - 1; i >= 0; i--) {
+            Frame frame = frames.get(i);
             if (frame.isOpen() && !frame.getComponents().isEmpty()) {
-                for (final Component component : frame.getComponents()) {
+                for (Component component : frame.getComponents()) {
                     component.mouseReleased(mouseX, mouseY, state);
                 }
             }
@@ -86,9 +91,10 @@ public class ClickGUI extends Screen {
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        for (final Frame frame : ClickGUI.frames) {
+        for (int i = frames.size() - 1; i >= 0; i--) {
+            Frame frame = frames.get(i);
             if (frame.isOpen() && keyCode != 1 && !frame.getComponents().isEmpty()) {
-                for (final Component component : frame.getComponents()) {
+                for (Component component : frame.getComponents()) {
                     component.keyTyped(keyCode);
                 }
             }
