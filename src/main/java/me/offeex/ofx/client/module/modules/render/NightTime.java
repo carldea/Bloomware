@@ -1,7 +1,7 @@
 package me.offeex.ofx.client.module.modules.render;
 
 import com.google.common.eventbus.Subscribe;
-import me.offeex.ofx.api.event.events.PacketEvent;
+import me.offeex.ofx.api.event.events.EventPacket;
 import me.offeex.ofx.client.module.Module;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 import org.lwjgl.glfw.GLFW;
@@ -30,9 +30,9 @@ public class NightTime extends Module {
 
     // Fixed by @author https://github.com/fuckyouthinkimboogieman on 22 July of 2021
     @Subscribe
-    public void onPacket(PacketEvent.Receive event) {
+    public void onPacket(EventPacket.Receive event) {
         if (event.getPacket() instanceof WorldTimeUpdateS2CPacket) {
-            event.cancel();
+            event.setCancelled(true);
         }
     }
 }
