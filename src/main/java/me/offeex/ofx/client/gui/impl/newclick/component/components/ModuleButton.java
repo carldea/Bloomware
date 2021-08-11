@@ -15,7 +15,6 @@ import me.offeex.ofx.client.setting.settings.KeybindSetting;
 import me.offeex.ofx.client.setting.settings.ModeSetting;
 import me.offeex.ofx.client.setting.settings.NumberSetting;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -105,15 +104,15 @@ public class ModuleButton extends Component {
     @Override
     public void render() {
         if (isPressed)
-            DrawableHelper.fill(stack, frame.getX(), frame.getY() + offset, frame.getX() + frame.getWidth(), frame.getY() + offset + 12, isHovered ? ColorUtils.Colors.SECONDARY.darker().getRGB() : new Color(0, 0, 0, 70).getRGB());
+            DrawableHelper.fill(stack, frame.getX(), frame.getY() + offset, frame.getX() + frame.getWidth(), frame.getY() + offset + 12, isHovered ? ColorUtils.getGuiColor().getRGB() : new Color(0, 0, 0, 70).getRGB());
         else
-            DrawableHelper.fill(stack, frame.getX(), frame.getY() + offset, frame.getX() + frame.getWidth(), frame.getY() + offset + 12, isHovered ? ColorUtils.withTransparency(ColorUtils.Colors.PRIMARY_DARKER, 180) : new Color(0, 0, 0, 70).getRGB());
+            DrawableHelper.fill(stack, frame.getX(), frame.getY() + offset, frame.getX() + frame.getWidth(), frame.getY() + offset + 12, isHovered ? ColorUtils.getGuiColor().darker().getRGB() : new Color(0, 0, 0, 70).getRGB());
 
-//        if (this.module.settings.size() > 1) {
-//            DrawableHelper.fill(mc.getTickDelta(), frame.getX() + 107, frame.getY() + offset + 2, frame.getX() + 110, frame.getY() + offset + 10, ColorUtils.Colors.PRIMARY.getRGB());
-//        }
+        if (this.module.settings.size() > 1) {
+            DrawableHelper.fill(stack, frame.getX() + 107, frame.getY() + offset + 2, frame.getX() + 110, frame.getY() + offset + 10, ColorUtils.getGuiColor().getRGB());
+        }
 
-        Bloomware.sFontRenderer.drawString(module.getName(), frame.getX() + 3, frame.getY() + offset + 2, module.isEnabled() ? ColorUtils.Colors.PRIMARY.brighter().getRGB() : ColorUtils.Colors.WHITE.getRGB(), true);
+        Bloomware.sFontRenderer.drawString(module.getName(), frame.getX() + 3, frame.getY() + offset + 2, module.isEnabled() ? ColorUtils.getTextColor().getRGB() : ColorUtils.Colors.WHITE.getRGB(), true);
         if(open) components.forEach(Component::render);
     }
 

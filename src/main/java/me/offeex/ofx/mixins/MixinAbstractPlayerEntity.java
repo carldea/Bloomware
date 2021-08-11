@@ -22,7 +22,7 @@ import java.util.UUID;
 @Mixin(AbstractClientPlayerEntity.class)
 abstract class MixinAbstractPlayerEntity extends PlayerEntity {
 
-    Identifier jex_cape = new Identifier("ofx", "maincape.png");
+    Identifier cape = new Identifier("ofx", "maincape.png");
     private final MinecraftClient mc = MinecraftClient.getInstance();
 
     private boolean enabled() {
@@ -43,7 +43,7 @@ abstract class MixinAbstractPlayerEntity extends PlayerEntity {
             }
             //if (uuid != null && uuid.toString().equals("ab47040f-6bcb-4c00-9424-238be6eec731")) {
                 //String uuid = ((AbstractClientPlayerEntity) (Object) this).getUuidAsString().replace("-", "");
-                cir.setReturnValue(jex_cape);
+                cir.setReturnValue(cape);
             //}
         }
     }

@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Server extends Module {
     public Server() {
-        super("Current server", "Shows current server you playing", KEY_UNBOUND, Category.HUD, false);
+        super("Current server", "Shows current server you playing", KEY_UNBOUND, Category.HUD, true);
     }
 
     String server = "s";
@@ -25,7 +25,7 @@ public class Server extends Module {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("Server: " + server, Bloomware.sFontRenderer.getFontsize()) + 8;
 
-            Bloomware.sFontRenderer.drawString("Server: " + server, x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString("Server: " + server, x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         }
     }
 }

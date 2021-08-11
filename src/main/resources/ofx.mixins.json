@@ -15,7 +15,8 @@
     "MixinIngameHud",
     "MixinMinecraftClient",
     "MixinPlayerTab",
-    "IMixinSession"
+    "IMixinSession",
+    "MixinAbstractPlayerEntity"
   ],
   "injectors": {
     "defaultRequire": 1

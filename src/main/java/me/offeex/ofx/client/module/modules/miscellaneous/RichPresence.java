@@ -8,7 +8,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class RichPresence extends Module {
     public RichPresence() {
-        super("Rich Presence", "Shows your in-game activity in Discord rich presence", GLFW.GLFW_KEY_UNKNOWN, Category.MISCELLANEOUS, false);
+        super("RichPresence", "Shows your in-game activity in Discord rich presence", GLFW.GLFW_KEY_UNKNOWN, Category.MISCELLANEOUS, false);
     }
 
     public static final DiscordRichPresence rpc = new DiscordRichPresence();

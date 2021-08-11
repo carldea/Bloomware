@@ -9,7 +9,7 @@ import net.minecraft.client.util.math.MatrixStack;
 public class Ping extends Module {
 
     public Ping() {
-        super("Ping", "Shows your ping", KEY_UNBOUND, Category.HUD, false);
+        super("Ping", "Shows your ping", KEY_UNBOUND, Category.HUD, true);
     }
 
     @Override
@@ -22,11 +22,11 @@ public class Ping extends Module {
             try {
                 width = Bloomware.sFontRenderer.getStringWidth("Ping: " + playerListEntry.getLatency() + "ms", Bloomware.sFontRenderer.getFontsize()) + 8;
 
-                Bloomware.sFontRenderer.drawString("Ping: " + playerListEntry.getLatency() + "ms", x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+                Bloomware.sFontRenderer.drawString("Ping: " + playerListEntry.getLatency() + "ms", x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
             } catch (NullPointerException nullPointerException) {
                 width = Bloomware.sFontRenderer.getStringWidth("Ping: 0ms", Bloomware.sFontRenderer.getFontsize()) + 8;
 
-                Bloomware.sFontRenderer.drawString("Ping: 0ms", x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+                Bloomware.sFontRenderer.drawString("Ping: 0ms", x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
             }
         }
     }

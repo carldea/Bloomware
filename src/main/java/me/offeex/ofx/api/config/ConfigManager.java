@@ -93,11 +93,15 @@ public class ConfigManager {
             String settingName = entry.getKey();
             JsonElement value = entry.getValue();
 
-//            if (settingName.equals("enabled")) {
-//                module.setEnabled(value.getAsBoolean());
-//                if (value.getAsBoolean())
-//                    module.enable();
-//            }
+            if (settingName.equals("enabled")) {
+                try {
+                    if (value.getAsBoolean()) {
+                        module.enable();
+                    } else {
+                        module.disable();
+                    }
+                } catch (Exception ignored) {}
+            }
 
             module.getSettings().forEach(setting -> {
                 if (settingName.equals(setting.getName()))

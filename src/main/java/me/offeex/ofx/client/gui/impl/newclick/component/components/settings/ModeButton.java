@@ -1,5 +1,6 @@
 package me.offeex.ofx.client.gui.impl.newclick.component.components.settings;
 
+import me.offeex.ofx.api.util.ColorUtils;
 import me.offeex.ofx.client.gui.impl.newclick.component.Component;
 import me.offeex.ofx.client.gui.impl.newclick.component.components.ModuleButton;
 import me.offeex.ofx.client.setting.Setting;
@@ -67,8 +68,8 @@ public class ModeButton extends Component {
     @Override
     public void render() {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX(), button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
-        mc.textRenderer.draw(new MatrixStack(), setting.getName(), button.frame.getX() + 5, button.frame.getY() + offset + 3, -1);
-        mc.textRenderer.draw(new MatrixStack(), setting.getMode(), button.frame.getX() + button.frame.getWidth() - 5 - mc.textRenderer.getWidth(setting.getMode()), button.frame.getY() + offset + 3, -1);
+        mc.textRenderer.draw(new MatrixStack(), setting.getName(), button.frame.getX() + 5, button.frame.getY() + offset + 3,  ColorUtils.getGuiColor().getRGB());
+        mc.textRenderer.draw(new MatrixStack(), setting.getMode(), button.frame.getX() + button.frame.getWidth() - 5 - mc.textRenderer.getWidth(setting.getMode()), button.frame.getY() + offset + 3,  ColorUtils.getGuiColor().getRGB());
     }
 
     public boolean isHovered(final double x, final double y) {

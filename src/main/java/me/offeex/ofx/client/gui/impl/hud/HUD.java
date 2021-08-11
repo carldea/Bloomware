@@ -25,7 +25,7 @@ public class HUD {
 
 		for (Module module : ModuleManager.getModules()) {
 			if (module.isEnabled() && !module.isHidden()) {
-				fontRenderer.drawString(module.getName(), windowX - fontRenderer.getStringWidth(module.getName(), 23) - 3, windowY, module.getCategory().getColor().getRGB(), true);
+				mc.textRenderer.drawWithShadow(e.matrix, module.getName(), windowX - mc.textRenderer.getWidth(module.getName()) - 3, windowY, module.getCategory().getColor().getRGB(), true);
 				windowY += -10;
 			}
 		}

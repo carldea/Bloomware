@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public class MixinPlayerTab {
     @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I", ordinal = 0), index = 1)
     private int modifyCount(int count) {
-        Module module = Bloomware.moduleManager.getModule("Extra Tab");
+        Module module = Bloomware.moduleManager.getModule("ExtraTab");
         if (module.isEnabled()) {
             return (int) ((NumberSetting) module.getSetting(0)).getValue();
         } else {

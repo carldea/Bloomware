@@ -26,7 +26,7 @@ public abstract class TitleScreenMixin extends Screen {
     }
 
     private boolean enabled() {
-        return Bloomware.moduleManager.getModule("Bloomware Menu").isEnabled();
+        return Bloomware.moduleManager.getModule("BloomwareMenu").isEnabled();
     }
 
     MinecraftClient mc = MinecraftClient.getInstance();

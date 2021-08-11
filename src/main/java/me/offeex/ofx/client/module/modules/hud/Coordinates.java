@@ -8,7 +8,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Coordinates extends Module {
     public Coordinates() {
-        super("Coords", "Shows current coords", KEY_UNBOUND, Category.HUD, false);
+        super("Coords", "Shows current coords", KEY_UNBOUND, Category.HUD, true);
     }
 
     String stringXN, stringZN;
@@ -38,9 +38,9 @@ public class Coordinates extends Module {
         }
 
         if (getDimension() == 2)
-            Bloomware.sFontRenderer.drawString("XYZ: " + stringX + ", " + stringY + ", " + stringZ, x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString("XYZ: " + stringX + ", " + stringY + ", " + stringZ, x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         else
-            Bloomware.sFontRenderer.drawString("XYZ: " + stringX + ", " + stringY + ", " + stringZ + " (" + stringXN + ", " + stringZN + ")", x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString("XYZ: " + stringX + ", " + stringY + ", " + stringZ + " (" + stringXN + ", " + stringZN + ")", x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
     }
 
     public static int getDimension() {

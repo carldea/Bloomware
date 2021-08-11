@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Watermark extends Module {
     public Watermark() {
-        super("WaterMark", "Shows logo", KEY_UNBOUND, Category.HUD, false);
+        super("WaterMark", "Shows logo", KEY_UNBOUND, Category.HUD, true);
     }
 
     @Override
@@ -15,7 +15,7 @@ public class Watermark extends Module {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth(Bloomware.name + " v" + Bloomware.version, Bloomware.sFontRenderer.getFontsize()) + 8;
 
-            Bloomware.sFontRenderer.drawString(Bloomware.name + " v" + Bloomware.version, x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString(Bloomware.name + " v" + Bloomware.version, x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         }
     }
 }

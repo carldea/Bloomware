@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Welcomer extends Module {
     public Welcomer() {
-        super("Welcomer", "Welcomes you", KEY_UNBOUND, Category.HUD, false);
+        super("Welcomer", "Welcomes you", KEY_UNBOUND, Category.HUD, true);
     }
 
     @Override
@@ -15,7 +15,7 @@ public class Welcomer extends Module {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("Looking cute today, " + mc.getSession().getUsername() + "! :^)", Bloomware.sFontRenderer.getFontsize()) + 8;
 
-            Bloomware.sFontRenderer.drawString("Looking cute today, " + mc.getSession().getUsername() + "! :^)", x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString("Looking cute today, " + mc.getSession().getUsername() + "! :^)", x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         }
     }
 }

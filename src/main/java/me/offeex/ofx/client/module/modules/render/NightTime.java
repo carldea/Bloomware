@@ -8,7 +8,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class NightTime extends Module {
     public NightTime() {
-        super("Night Time", "Changes world time to night", GLFW.GLFW_KEY_UNKNOWN, Category.RENDER, false);
+        super("NightTime", "Changes world time to night", GLFW.GLFW_KEY_UNKNOWN, Category.RENDER, false);
     }
 
     private long oldTime = 0;

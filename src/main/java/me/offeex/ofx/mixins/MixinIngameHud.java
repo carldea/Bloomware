@@ -20,6 +20,7 @@ public class MixinIngameHud {
 		/**
 		 * FIXED BY https://github.com/fuckyouthinkimboogieman
 		 * Пиздатый евентбус от гугла, рендер не работает, заебись
+		 * PS. А не, работает, я рукожоп просто XDDDD
 		 */
 //		ModuleManager.getModules().forEach(module -> {
 //			if (module.isEnabled())

@@ -69,7 +69,7 @@ public class SliderButton extends Component {
     @Override
     public void render() {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX() + 1, button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
-        DrawableHelper.fill(new MatrixStack(), button.frame.getX() + 1, button.frame.getY() + offset, (int) (button.frame.getX() + renderWidth), button.frame.getY() + offset + 12,  isHovered ? ColorUtils.Colors.PRIMARY_DARKER.getRGB() : ColorUtils.Colors.PRIMARY.getRGB());
+        DrawableHelper.fill(new MatrixStack(), button.frame.getX() + 1, button.frame.getY() + offset, (int) (button.frame.getX() + renderWidth), button.frame.getY() + offset + 12,  isHovered ? ColorUtils.getSliderColor().darker().getRGB() : ColorUtils.getSliderColor().getRGB());
         mc.textRenderer.draw(new MatrixStack(), setting.getName(),  button.frame.getX() + 5, button.frame.getY() + offset + 3, isHovered ? new Color(170, 170, 170).getRGB() : -1);
         mc.textRenderer.draw(new MatrixStack(), String.valueOf(round(setting.getValue(), 1)),
                 button.frame.getX() + button.frame.getWidth() - 2 - mc.textRenderer.getWidth(String.valueOf(round(setting.getValue(), 1))),

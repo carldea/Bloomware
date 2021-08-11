@@ -7,14 +7,14 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Fps extends Module {
     public Fps() {
-        super("FPS", "Shows the current fps value", KEY_UNBOUND, Category.HUD, false);
+        super("FPS", "Shows the current fps value", KEY_UNBOUND, Category.HUD, true);
     }
 
     @Override
     public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("FPS: " + mc.fpsDebugString.split(" ")[0], Bloomware.sFontRenderer.getFontsize()) + 8;
-            Bloomware.sFontRenderer.drawString(mc.fpsDebugString.split(" ")[0], x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString(mc.fpsDebugString.split(" ")[0], x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         }
     }
 }

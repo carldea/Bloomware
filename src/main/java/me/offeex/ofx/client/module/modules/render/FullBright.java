@@ -9,13 +9,11 @@ import org.lwjgl.glfw.GLFW;
 public class FullBright extends Module {
 
     public FullBright() {
-        super("Full Bright",
+        super("FullBright",
                 "Boosts your brightness",
                 GLFW.GLFW_KEY_B,
                 Category.RENDER,
                 false,
-                new ModeSetting("Mode", "nigger1", "nigger1", "nigger2", "nigger3"),
-                new BooleanSetting("Bypass", false),
                 new NumberSetting("Gamma", 16, 1, 16, 1));
     }
 
@@ -24,7 +22,7 @@ public class FullBright extends Module {
     @Override
     public void onEnable() {
         oldBrightness = mc.options.gamma;
-        mc.options.gamma = 300;
+        mc.options.gamma = ((NumberSetting) this.getSetting(0)).getValue();
     }
 
     @Override

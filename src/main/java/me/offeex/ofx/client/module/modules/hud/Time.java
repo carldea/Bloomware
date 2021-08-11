@@ -10,7 +10,7 @@ import java.util.Calendar;
 
 public class Time extends Module {
     public Time() {
-        super("Time", "Shows current time", KEY_UNBOUND, Category.HUD, false);
+        super("Time", "Shows current time", KEY_UNBOUND, Category.HUD, true);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class Time extends Module {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("Time: " + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()), Bloomware.sFontRenderer.getFontsize()) + 8;
 
-            Bloomware.sFontRenderer.drawString("Time: " + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()), x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString("Time: " + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()), x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         }
     }
 }

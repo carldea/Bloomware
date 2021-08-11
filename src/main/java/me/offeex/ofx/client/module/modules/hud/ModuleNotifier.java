@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class ModuleNotifier extends Module {
     public ModuleNotifier() {
-        super("Module Notifier", "Adds the window with the notifications about toggling modules", KEY_UNBOUND, Category.HUD, false);
+        super("Module Notifier", "Adds the window with the notifications about toggling modules", KEY_UNBOUND, Category.HUD, true);
     }
 
     String message = "";
@@ -34,7 +34,7 @@ public class ModuleNotifier extends Module {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth(Bloomware.moduleNotifier.getMessage(), Bloomware.sFontRenderer.getFontsize()) + 8;
 
-            Bloomware.sFontRenderer.drawString(Bloomware.moduleNotifier.getMessage(), x + 4, y + 4, ColorUtils.Colors.PRIMARY.getRGB(), true);
+            Bloomware.sFontRenderer.drawString(Bloomware.moduleNotifier.getMessage(), x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         }
     }
 }

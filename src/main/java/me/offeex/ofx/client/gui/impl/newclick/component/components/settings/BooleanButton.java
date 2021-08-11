@@ -49,7 +49,7 @@ public class BooleanButton extends Component {
     @Override
     public void render() {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX(), button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
-        mc.textRenderer.draw(new MatrixStack(), setting.getName(), button.frame.getX() + 5, button.frame.getY() + offset + 3, setting.isEnabled()  ? ColorUtils.Colors.PRIMARY.getRGB() : -1);
+        mc.textRenderer.draw(new MatrixStack(), setting.getName(), button.frame.getX() + 5, button.frame.getY() + offset + 3, setting.isEnabled()  ?  ColorUtils.getGuiColor().getRGB() : -1);
     }
 
     public boolean isHovered(final double x, final double y) {
