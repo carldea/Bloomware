@@ -1,4 +1,4 @@
-# Bloomware
+# Bloomware Public Test
 A free minecraft utility mod for 1.16 and newer versions, designed for anarchy servers.
 
 ## How To Use
