@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "ofx",
+  "id": "bloomware",
   "version": "0.0.1",
 
-  "name": "OFX",
+  "name": "Bloomware",
   "description": "It's OFX",
   "authors": [
     "OffeeX, lots of bullshit fixed by https://github.com/fuckyouthinkimboogieman"
@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "me.offeex.ofx.Bloomware"
+      "me.offeex.bloomware.Bloomware"
     ]
   },
   "mixins": [
-    "ofx.mixins.json"
+    "bloomware.mixins.json"
   ]
 }
