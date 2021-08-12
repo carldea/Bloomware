@@ -1,8 +1,9 @@
-package me.offeex.ofx.client.gui.impl.newclick.component.components.settings;
+package me.offeex.ofx.client.gui.impl.clickgui.component.components.settings;
 
+import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.util.ColorUtils;
-import me.offeex.ofx.client.gui.impl.newclick.component.Component;
-import me.offeex.ofx.client.gui.impl.newclick.component.components.ModuleButton;
+import me.offeex.ofx.client.gui.impl.clickgui.component.Component;
+import me.offeex.ofx.client.gui.impl.clickgui.component.components.ModuleButton;
 import me.offeex.ofx.client.setting.Setting;
 import me.offeex.ofx.client.setting.settings.NumberSetting;
 import net.minecraft.client.gui.DrawableHelper;
@@ -70,10 +71,11 @@ public class SliderButton extends Component {
     public void render() {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX() + 1, button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
         DrawableHelper.fill(new MatrixStack(), button.frame.getX() + 1, button.frame.getY() + offset, (int) (button.frame.getX() + renderWidth), button.frame.getY() + offset + 12,  isHovered ? ColorUtils.getSliderColor().darker().getRGB() : ColorUtils.getSliderColor().getRGB());
-        mc.textRenderer.draw(new MatrixStack(), setting.getName(),  button.frame.getX() + 5, button.frame.getY() + offset + 3, isHovered ? new Color(170, 170, 170).getRGB() : -1);
-        mc.textRenderer.draw(new MatrixStack(), String.valueOf(round(setting.getValue(), 1)),
-                button.frame.getX() + button.frame.getWidth() - 2 - mc.textRenderer.getWidth(String.valueOf(round(setting.getValue(), 1))),
-                button.frame.getY() + offset + 3, isHovered ? new Color(170, 170, 170).getRGB() : -1);
+        Bloomware.sFontRenderer.drawString(setting.getName(), button.frame.getX() + 3, button.frame.getY() + offset + 2, isHovered ? new Color(170, 170, 170).getRGB() : -1, true);
+        Bloomware.sFontRenderer.drawString(String.valueOf(round(setting.getValue(), 1)),
+                button.frame.getX() + button.frame.getWidth() - 2 - Bloomware.sFontRenderer.getStringWidth(String.valueOf(round(setting.getValue(), 1)), Bloomware.sFontRenderer.getFontsize()),
+                button.frame.getY() + offset + 2,
+                isHovered ? new Color(170, 170, 170).getRGB() : -1, true);
     }
 
     private static double round(final double value, final int places) {

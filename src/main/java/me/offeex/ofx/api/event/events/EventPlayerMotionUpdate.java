@@ -2,7 +2,6 @@ package me.offeex.ofx.api.event.events;
 
 import java.util.function.Consumer;
 
-import javafx.stage.Stage;
 import me.offeex.ofx.api.event.Event;
 import net.minecraft.client.network.ClientPlayerEntity;
 

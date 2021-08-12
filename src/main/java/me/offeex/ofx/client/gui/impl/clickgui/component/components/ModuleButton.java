@@ -1,13 +1,13 @@
-package me.offeex.ofx.client.gui.impl.newclick.component.components;
+package me.offeex.ofx.client.gui.impl.clickgui.component.components;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.util.ColorUtils;
-import me.offeex.ofx.client.gui.impl.newclick.component.Component;
-import me.offeex.ofx.client.gui.impl.newclick.Frame;
-import me.offeex.ofx.client.gui.impl.newclick.component.components.settings.BooleanButton;
-import me.offeex.ofx.client.gui.impl.newclick.component.components.settings.KeyButton;
-import me.offeex.ofx.client.gui.impl.newclick.component.components.settings.ModeButton;
-import me.offeex.ofx.client.gui.impl.newclick.component.components.settings.SliderButton;
+import me.offeex.ofx.client.gui.impl.clickgui.component.Component;
+import me.offeex.ofx.client.gui.impl.clickgui.Frame;
+import me.offeex.ofx.client.gui.impl.clickgui.component.components.settings.BooleanButton;
+import me.offeex.ofx.client.gui.impl.clickgui.component.components.settings.KeyButton;
+import me.offeex.ofx.client.gui.impl.clickgui.component.components.settings.ModeButton;
+import me.offeex.ofx.client.gui.impl.clickgui.component.components.settings.SliderButton;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.setting.Setting;
 import me.offeex.ofx.client.setting.settings.BooleanSetting;

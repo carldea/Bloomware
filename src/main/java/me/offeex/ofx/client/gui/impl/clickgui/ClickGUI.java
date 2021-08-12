@@ -1,6 +1,6 @@
-package me.offeex.ofx.client.gui.impl.newclick;
+package me.offeex.ofx.client.gui.impl.clickgui;
 
-import me.offeex.ofx.client.gui.impl.newclick.component.Component;
+import me.offeex.ofx.client.gui.impl.clickgui.component.Component;
 import me.offeex.ofx.client.module.Module;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;

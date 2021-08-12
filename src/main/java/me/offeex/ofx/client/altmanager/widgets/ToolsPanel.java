@@ -24,7 +24,7 @@ public class ToolsPanel extends AbstractDraggable {
         int offsetY = 13;
         tools.add(new AddCrackedAccountWidget(x, offsetY, 150, 17));
         tools.add(new AddMojangAccountWidget(x, offsetY, 150, 17));
-        tools.add(new AddTokenAccountWidget(x, offsetY, 150, 17));
+        // tools.add(new AddTokenAccountWidget(x, offsetY, 150, 17));
         this.height = tools.size() * 17 + 13;
     }
 
@@ -33,10 +33,7 @@ public class ToolsPanel extends AbstractDraggable {
         int totalHeight = this.height;
         if (isMinimized)
             totalHeight = 13;
-//        if (Bloomware.oldGui.getDragging() == this)
-//            Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(80, 80, 80, 200).getRGB());
-//        else
-//            Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(0, 0, 0, 150).getRGB());
+        Screen.fill(stack, x, y, x + width, y + totalHeight, new Color(0, 0, 0, 150).getRGB());
 
         Screen.fill(stack, x, y, x + width, y + 14, ColorUtils.withTransparency(ColorUtils.Colors.SECONDARY, 200));
         Screen.fill(stack, x, y + 13, x + width, y + 14, ColorUtils.withTransparency(ColorUtils.Colors.PRIMARY, 120));
@@ -81,7 +78,7 @@ public class ToolsPanel extends AbstractDraggable {
                 switch (tool.getClass().getName()) {
                     case "AddCrackedAccountWidget": ((AddCrackedAccountWidget) tool).isPressed = false;
                     case "AddMojangAccountWidget": ((AddMojangAccountWidget) tool).isPressed = false;
-                    case "AddTokenAccountWidget": ((AddTokenAccountWidget) tool).isPressed = false;
+                    //case "AddTokenAccountWidget": ((AddTokenAccountWidget) tool).isPressed = false;
                 }
             }
         }

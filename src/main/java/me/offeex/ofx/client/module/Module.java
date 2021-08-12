@@ -136,9 +136,13 @@ public class Module {
 		return settings.get(s);
 	}
 
-	public int getCountOfSettings() {
-		return settings.size() + 1;
+	public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {}
+
+	public void setX(int x) {
+		this.x = x;
 	}
 
-	public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {}
+	public void setY(int y) {
+		this.y = y;
+	}
 }
