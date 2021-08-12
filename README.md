@@ -2,7 +2,7 @@
 A free minecraft utility mod for 1.16 and newer versions, designed for anarchy servers.
 
 ## How To Use
-1) Download mod from [**here**](https://github.com/TheFishDevs/Bloomware/releases)
+1) Download latest mod version [**there**](https://github.com/TheFishDevs/Bloomware/releases)
 2) Drag it to following directory: *\AppData\Roaming\.minecraft\mods*
 
 ## Setuping dev environment
