@@ -3,7 +3,7 @@ Bloomware is a free minecraft anarchy utility mod for 1.16+
 
 We have a discord server - [Discord](https://discord.gg/D4G7JN5d7m)
 
-⚠️ Currently is in development, fixing bugs and other issue and adding new features. ⚠️
+⚠️ Currently is in development, fixing bugs and other issues and adding new features. ⚠️
 
 ## How to install
 1) Download latest mod .jar from repo's releases
