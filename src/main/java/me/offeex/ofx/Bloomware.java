@@ -9,8 +9,8 @@ import me.offeex.ofx.client.altmanager.AccountManager;
 import me.offeex.ofx.api.config.ConfigManager;
 import me.offeex.ofx.api.friends.FriendManager;
 import me.offeex.ofx.client.gui.api.RenderHelper;
-import me.offeex.ofx.client.gui.impl.newclick.ClickGUI;
-import me.offeex.ofx.client.gui.impl.newclick.HudEditor;
+import me.offeex.ofx.client.gui.impl.clickgui.ClickGUI;
+import me.offeex.ofx.client.gui.impl.clickgui.HudEditor;
 import me.offeex.ofx.client.gui.impl.hud.HUD;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.modules.hud.ModuleNotifier;
@@ -24,8 +24,6 @@ import org.apache.logging.log4j.Logger;
 
 import me.offeex.ofx.client.command.CommandManager;
 import me.offeex.ofx.client.module.ModuleManager;
-
-import java.io.IOException;
 
 public class Bloomware implements ClientModInitializer {
 

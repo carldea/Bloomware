@@ -1,7 +1,7 @@
-package me.offeex.ofx.client.gui.impl.newclick;
+package me.offeex.ofx.client.gui.impl.clickgui;
 
 import me.offeex.ofx.client.gui.impl.hud.element.Element;
-import me.offeex.ofx.client.gui.impl.newclick.component.Component;
+import me.offeex.ofx.client.gui.impl.clickgui.component.Component;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
@@ -48,6 +48,15 @@ public class HudEditor extends Screen {
                 element.updatePosition(mouseX, mouseY);
             }
         });
+    }
+
+    public Element getElementByModule(Module module) {
+        for (Element element : elements) {
+            if (element.getModule().equals(module)) {
+                return element;
+            }
+        }
+        return null;
     }
 
     @Override

@@ -2,6 +2,7 @@ package me.offeex.ofx.api.config;
 
 import com.google.gson.*;
 import me.offeex.ofx.Bloomware;
+import me.offeex.ofx.client.gui.impl.hud.element.Element;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.setting.Setting;
 import me.offeex.ofx.client.setting.settings.BooleanSetting;
@@ -72,6 +73,10 @@ public class ConfigManager {
                 object.add(setting.getName(), new JsonPrimitive(((KeybindSetting) setting).getKeyCode()));
             }
         }
+        if (module.getCategory().equals(Module.Category.HUD)) {
+            object.add("x", new JsonPrimitive(module.x));
+            object.add("y", new JsonPrimitive(module.y));
+        }
         object.add("enabled", new JsonPrimitive(module.isEnabled()));
         return object;
     }
@@ -103,9 +108,22 @@ public class ConfigManager {
                 } catch (Exception ignored) {}
             }
 
+            if (module.getCategory().equals(Module.Category.HUD)) {
+                Element element = Bloomware.hudEditor.getElementByModule(module);
+                if (element != null) {
+                    if (settingName.equals("x")) {
+                        element.setX(value.getAsInt());
+                    }
+                    if (settingName.equals("y")) {
+                        element.setY(value.getAsInt());
+                    }
+                }
+            }
+
             module.getSettings().forEach(setting -> {
-                if (settingName.equals(setting.getName()))
+                if (settingName.equals(setting.getName())) {
                     valueLoader(setting, value);
+                }
             });
         }
     }

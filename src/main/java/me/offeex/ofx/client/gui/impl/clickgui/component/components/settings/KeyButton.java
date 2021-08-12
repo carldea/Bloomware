@@ -1,8 +1,9 @@
-package me.offeex.ofx.client.gui.impl.newclick.component.components.settings;
+package me.offeex.ofx.client.gui.impl.clickgui.component.components.settings;
 
+import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.util.ColorUtils;
-import me.offeex.ofx.client.gui.impl.newclick.component.Component;
-import me.offeex.ofx.client.gui.impl.newclick.component.components.ModuleButton;
+import me.offeex.ofx.client.gui.impl.clickgui.component.Component;
+import me.offeex.ofx.client.gui.impl.clickgui.component.components.ModuleButton;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
@@ -59,9 +60,9 @@ public class KeyButton extends Component {
     @Override
     public void render() {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX(), button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
-        mc.textRenderer.draw(new MatrixStack(), "Key", button.frame.getX() + 5, button.frame.getY() + offset + 3,  ColorUtils.getGuiColor().getRGB());
+        Bloomware.sFontRenderer.drawString("Key", button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
         if(binding) {
-            mc.textRenderer.draw(new MatrixStack(), "...", button.frame.getX() + button.frame.getWidth() - 5 - mc.textRenderer.getWidth("..."), button.frame.getY() + offset + 3,  ColorUtils.getGuiColor().getRGB());
+            Bloomware.sFontRenderer.drawString("...", button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
         } else {
             Text keyString;
             switch (button.module.getKey()) {
@@ -80,7 +81,7 @@ public class KeyButton extends Component {
                 default:
                     keyString = InputUtil.fromKeyCode(button.module.getKey(), -1).getLocalizedText();
             }
-            mc.textRenderer.draw(new MatrixStack(), keyString,  button.frame.getX() + button.frame.getWidth() - 5 - mc.textRenderer.getWidth(keyString), button.frame.getY() + offset + 3, -1);
+            Bloomware.sFontRenderer.drawString(keyString.toString(), button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.Colors.WHITE.getRGB(), true);
         }
     }
 

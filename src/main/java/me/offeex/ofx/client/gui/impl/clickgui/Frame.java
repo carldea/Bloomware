@@ -1,14 +1,13 @@
-package me.offeex.ofx.client.gui.impl.newclick;
+package me.offeex.ofx.client.gui.impl.clickgui;
 
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.util.ColorUtils;
-import me.offeex.ofx.client.gui.impl.newclick.component.Component;
-import me.offeex.ofx.client.gui.impl.newclick.component.components.ModuleButton;
+import me.offeex.ofx.client.gui.impl.clickgui.component.Component;
+import me.offeex.ofx.client.gui.impl.clickgui.component.components.ModuleButton;
 import me.offeex.ofx.client.module.Module;
 import me.offeex.ofx.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;

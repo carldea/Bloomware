@@ -1,4 +1,4 @@
-package me.offeex.ofx.client.gui.impl.newclick.component;
+package me.offeex.ofx.client.gui.impl.clickgui.component;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;

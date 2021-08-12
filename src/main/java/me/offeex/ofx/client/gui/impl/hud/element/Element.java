@@ -4,8 +4,8 @@ import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventDrawOverlay;
 import me.offeex.ofx.api.util.ColorUtils;
-import me.offeex.ofx.client.gui.impl.newclick.ClickGUI;
-import me.offeex.ofx.client.gui.impl.newclick.IDraggable;
+import me.offeex.ofx.client.gui.impl.clickgui.ClickGUI;
+import me.offeex.ofx.client.gui.impl.clickgui.IDraggable;
 import me.offeex.ofx.client.module.Module;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
@@ -27,7 +27,7 @@ public class Element implements IDraggable {
 		this.isDragging = false;
 		Bloomware.EVENTBUS.register(this);
 	}
-//
+
 	@Subscribe
 	public void onDrawOverlay(EventDrawOverlay e) {
 		this.draw(e.matrix, (int) MinecraftClient.getInstance().mouse.getX(), (int) MinecraftClient.getInstance().mouse.getY(), MinecraftClient.getInstance().getTickDelta());
