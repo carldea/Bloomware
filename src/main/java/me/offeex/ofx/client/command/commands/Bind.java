@@ -27,14 +27,14 @@ public class Bind extends Command {
                 try {
                     if (args[1].equalsIgnoreCase("null") || args[1].equalsIgnoreCase("delete") || args[1].equalsIgnoreCase("unbind")) {
                         m.setKey(-1);
-                        CommandManager.addChatMessage(Formatting.GREEN + m.getName() + " was unbinded!");
+                        CommandManager.addChatMessage(Formatting.GREEN + m.getName() + " was unbound");
                     } else {
                         m.setKey(InputUtil.fromTranslationKey("key.keyboard." + args[1].toLowerCase()).getCode());
-                        CommandManager.addChatMessage(Formatting.GREEN + m.getName() + " was bound to " + args[1].toUpperCase() + "!");
+                        CommandManager.addChatMessage(Formatting.GREEN + m.getName() + " was bound to " + args[1].toUpperCase() + "");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    CommandManager.addChatMessage(Formatting.RED + "Invalid Synatax. Usage: " + CommandManager.prefix + "bind <Module> <Key>");
+                    CommandManager.addChatMessage(Formatting.RED + "Invalid Syntax. Usage: " + CommandManager.prefix + "bind <Module> <Key>");
                 }
 
                 break;
@@ -43,7 +43,6 @@ public class Bind extends Command {
 
         if (!found) {
             CommandManager.addChatMessage(Formatting.RED + "Module not found.");
-            return;
         }
     }
 }

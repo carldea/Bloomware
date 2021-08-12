@@ -21,7 +21,6 @@ import com.mojang.authlib.GameProfile;
 import me.offeex.ofx.Bloomware;
 import me.offeex.ofx.api.event.events.EventPlayerMotionUpdate;
 import me.offeex.ofx.api.event.events.EventPlayerMove;
-import me.offeex.ofx.api.event.events.EventPlayerUpdate;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -43,7 +42,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
     @Inject(at = @At("HEAD"), method = "move", cancellable = true)
     public void move(final MovementType movementType, final Vec3d vec3d, final CallbackInfo info) {
-        /**
+        /*
          * FIXED BY https://github.com/fuckyouthinkimboogieman
          * upd: sniff the bebra
          */
@@ -52,13 +51,6 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
         if (event.isCancelled()) {
             super.move(event.type, event.getVec3d());
             info.cancel();
-        }
-    }
-
-    @Inject(method = "move", at = @At("RETURN"))
-    public void movePost(MovementType type, Vec3d movement, CallbackInfo ci) {
-        if ((ClientPlayerEntity)(Object) this  == MinecraftClient.getInstance().player) {
-            Bloomware.EVENTBUS.post(new EventPlayerMove(type, movement));
         }
     }
 
@@ -96,10 +88,5 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     public void OnPostUpdateWalkingPlayer(CallbackInfo info)
     {
         postWalkingUpdate();
-    }
-
-    @Inject(method = "tick", at = @At("HEAD"))
-    public void onUpdate(CallbackInfo info) {
-        Bloomware.EVENTBUS.post(new EventPlayerUpdate());
     }
 }

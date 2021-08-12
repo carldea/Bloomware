@@ -30,13 +30,7 @@ public class ModuleManager {
 
 	}
 	
-	public static boolean isModuleEnabled(String name) {
-		Module m = modules.stream().filter(mm->mm.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
-		assert m != null;
-		return m.isEnabled();
-	}
-	
-	public Module getModule(String name) {
+	public static Module getModule(String name) {
 		return modules.stream().filter(s -> s.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}
 	
@@ -45,7 +39,7 @@ public class ModuleManager {
 	}
 	
 	public static List<Module> getModulesByCategory(Module.Category c) {
-		List<Module> moduless = new ArrayList<Module>();
+		List<Module> moduless = new ArrayList<>();
 
 		modules.forEach(module -> {
 			if (module.getCategory() == c) moduless.add(module);
@@ -66,7 +60,6 @@ public class ModuleManager {
 	public void onKey(EventKeyPress e) {
 		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), GLFW.GLFW_KEY_F3))
 			return;
-
 		modules.stream().filter(m -> m.getKey() == e.getKey()).forEach(Module::toggle);
 	}
 	

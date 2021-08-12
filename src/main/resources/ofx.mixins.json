@@ -3,22 +3,21 @@
   "minVersion": "0.8",
   "package": "me.offeex.ofx.mixins",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-  ],
-  "client": [
-    "MixinGameRenderer",
-    "MixinKeyboard",
-    "ScreenMixin",
-    "TitleScreenMixin",
-    "MixinClientConnection",
-    "MixinClientPlayerEntity",
-    "MixinIngameHud",
-    "MixinMinecraftClient",
-    "MixinPlayerTab",
-    "IMixinSession",
-    "MixinAbstractPlayerEntity"
-  ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "mixins": [
+    "MixinMovementInput",
+    "IMixinSession",
+    "MixinAbstractPlayerEntity",
+    "MixinClientConnection",
+    "MixinClientPlayerEntity",
+    "MixinGameRenderer",
+    "MixinIngameHud",
+    "MixinKeyboard",
+    "MixinMinecraftClient",
+    "MixinPlayerTab",
+    "ScreenMixin",
+    "TitleScreenMixin"
+  ]
 }

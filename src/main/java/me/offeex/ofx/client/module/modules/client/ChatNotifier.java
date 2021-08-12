@@ -11,7 +11,7 @@ public class ChatNotifier extends Module {
     }
 
     public void sendMsg(String msg) {
-        if (ModuleManager.isModuleEnabled("ChatNotifier")) {
+        if (ModuleManager.getModule("ChatNotifier").isEnabled()) {
             CommandManager.addChatMessage(msg);
         }
     }

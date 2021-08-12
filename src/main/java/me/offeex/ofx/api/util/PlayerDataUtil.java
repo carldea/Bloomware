@@ -1,6 +1,5 @@
 package me.offeex.ofx.api.util;
 
-import me.offeex.ofx.mixins.Vector3D;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.Vec3d;
 

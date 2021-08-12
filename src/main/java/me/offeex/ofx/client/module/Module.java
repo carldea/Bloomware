@@ -15,14 +15,13 @@ import net.minecraft.client.util.math.MatrixStack;
 public class Module {
 	
 	protected static final MinecraftClient mc = MinecraftClient.getInstance();
-	public final static int KEY_UNBOUND = -2;
-
 	public String name, description;
 	public double version;
 	public KeybindSetting key = new KeybindSetting(0);
 	public BooleanSetting shown;
 	private final Category category;
-	private boolean enabled, hidden;
+	private boolean enabled;
+	private final boolean hidden;
 	public List<Setting> settings;
 	private final Component component = null;
 	public int x = 10, y = 100, width, height = 15;
