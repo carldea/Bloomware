@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Server extends Module {
     public Server() {
-        super("Current server", "Shows current server you playing", KEY_UNBOUND, Category.HUD, true);
+        super("Current server", "Shows current server you playing", Category.HUD, true);
     }
 
     String server = "s";

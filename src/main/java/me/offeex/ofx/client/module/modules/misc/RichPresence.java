@@ -1,4 +1,4 @@
-package me.offeex.ofx.client.module.modules.miscellaneous;
+package me.offeex.ofx.client.module.modules.misc;
 
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
@@ -8,7 +8,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class RichPresence extends Module {
     public RichPresence() {
-        super("RichPresence", "Shows your in-game activity in Discord rich presence", GLFW.GLFW_KEY_UNKNOWN, Category.MISCELLANEOUS, false);
+        super("RichPresence", "Shows your in-game activity in Discord rich presence", Category.MISC, false);
     }
 
     public static final DiscordRichPresence rpc = new DiscordRichPresence();

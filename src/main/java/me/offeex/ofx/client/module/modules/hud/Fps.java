@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Fps extends Module {
     public Fps() {
-        super("FPS", "Shows the current fps value", KEY_UNBOUND, Category.HUD, true);
+        super("FPS", "Shows the current fps value", Category.HUD, true);
     }
 
     @Override

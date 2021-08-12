@@ -10,7 +10,7 @@ import org.lwjgl.glfw.GLFW;
 public class Sprint extends Module {
 
     public Sprint() {
-        super("Sprint", "Sprinting you", GLFW.GLFW_KEY_X, Category.MOVEMENT, false);
+        super("Sprint", "Sprinting you", Category.MOVEMENT, false);
     }
 
     public void onDisable() {

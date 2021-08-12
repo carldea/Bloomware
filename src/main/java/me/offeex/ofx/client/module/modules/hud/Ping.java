@@ -9,7 +9,7 @@ import net.minecraft.client.util.math.MatrixStack;
 public class Ping extends Module {
 
     public Ping() {
-        super("Ping", "Shows your ping", KEY_UNBOUND, Category.HUD, true);
+        super("Ping", "Shows your ping", Category.HUD, true);
     }
 
     @Override

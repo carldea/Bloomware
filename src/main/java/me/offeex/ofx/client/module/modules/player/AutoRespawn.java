@@ -6,7 +6,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class AutoRespawn extends Module {
     public AutoRespawn() {
-        super("AutoRespawn", "Allows you to respawn automatically", GLFW.GLFW_KEY_UNKNOWN, Category.PLAYER, false);
+        super("AutoRespawn", "Allows you to respawn automatically", Category.PLAYER, false);
     }
 
     @Override

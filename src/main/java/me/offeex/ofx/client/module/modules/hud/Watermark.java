@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Watermark extends Module {
     public Watermark() {
-        super("WaterMark", "Shows logo", KEY_UNBOUND, Category.HUD, true);
+        super("WaterMark", "Shows logo", Category.HUD, true);
     }
 
     @Override

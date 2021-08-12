@@ -32,7 +32,7 @@ public class ModuleList extends Command {
 					case RENDER:
 						list.append(Formatting.AQUA).append(module.getName()).append(", ");
 						break;
-					case MISCELLANEOUS:
+					case MISC:
 						list.append(Formatting.BLUE).append(module.getName()).append(", ");
 						break;
 					case CLIENT:

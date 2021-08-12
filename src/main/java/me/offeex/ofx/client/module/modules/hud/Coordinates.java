@@ -8,7 +8,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Coordinates extends Module {
     public Coordinates() {
-        super("Coords", "Shows current coords", KEY_UNBOUND, Category.HUD, true);
+        super("Coords", "Shows current coords", Category.HUD, true);
     }
 
     String stringXN, stringZN;

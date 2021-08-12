@@ -2,7 +2,6 @@ package me.offeex.ofx.client.module;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class Module {
 
 	public String name, description;
 	public double version;
-	public KeybindSetting keyCode = new KeybindSetting(0);
+	public KeybindSetting key = new KeybindSetting(0);
 	public BooleanSetting shown;
 	private final Category category;
 	private boolean enabled, hidden;
@@ -28,11 +27,10 @@ public class Module {
 	private final Component component = null;
 	public int x = 10, y = 100, width, height = 15;
 
-	public Module(String name, String description, int key, Category category, boolean hidden, Setting... s) {
+	public Module(String name, String description, Category category, boolean hidden, Setting... s) {
 		this.name = name;
 		this.shown = new BooleanSetting("Show in arraylist", true);
 		this.description = description;
-		keyCode.code = key;
 		settings = Arrays.asList(s);
 		this.category = category;
 		this.enabled = false;
@@ -40,30 +38,26 @@ public class Module {
 	}
 
 	public enum Category {
-		COMBAT("Combat", Color.decode("#ff2e2e"), 0),
-		MOVEMENT("Movement", Color.decode("#edd628"),1),
-		PLAYER("Player", Color.decode("#23e823"),2),
-		RENDER("Render", Color.decode("#23e1e8"),3),
-		MISCELLANEOUS("Misc", Color.decode("#526cff"),4),
-		CLIENT("Client", Color.white, 5),
-		HUD("HUD", Color.white, 6);
+		COMBAT("Combat", Color.decode("#ff2e2e")),
+		MOVEMENT("Movement", Color.decode("#edd628")),
+		PLAYER("Player", Color.decode("#23e823")),
+		RENDER("Render", Color.decode("#23e1e8")),
+		EXPLOIT("Exploit", Color.decode("#df3beb")),
+		WORLD("World", Color.decode("#58eb3b")),
+		MISC("Misc", Color.decode("#526cff")),
+		CLIENT("Client", Color.white),
+		HUD("HUD", Color.white);
 
 		private final String name;
-		private final int categoryIndex;
 		private final Color color;
 
-		Category(String name, Color color, int index) {
+		Category(String name, Color color) {
 			this.name = name;
 			this.color = color;
-			this.categoryIndex = index;
 		}
 
 		public String getName() {
 			return name;
-		}
-
-		public int getCategoryIndex() {
-			return categoryIndex;
 		}
 
 		public Color getColor() {
@@ -82,25 +76,17 @@ public class Module {
 	public String getDescription() {
 		return description;
 	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public boolean isHidden() {
 		return hidden;
 	}
-
-	public void setHidden(boolean hidden) {
-		this.hidden = hidden;
-	}
 	
 	public int getKey() {
-		return keyCode.code;
+		return key.code;
 	}
 	
 	public void setKey(int key) {
-		this.keyCode.code = key;
+		this.key.code = key;
 	}
 
 	public void toggle() {

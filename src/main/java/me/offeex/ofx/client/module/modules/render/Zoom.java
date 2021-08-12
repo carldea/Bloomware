@@ -5,7 +5,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class Zoom extends Module {
     public Zoom() {
-        super("Zoom", "Increases your fov", GLFW.GLFW_KEY_UNKNOWN, Category.RENDER, false);
+        super("Zoom", "Increases your fov", Category.RENDER, false);
     }
 
     private double oldFov;

@@ -15,7 +15,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class StorageESP extends Module {
     public StorageESP() {
-        super("StorageESP", "Allows you to see storages", GLFW.GLFW_KEY_UNKNOWN, Category.RENDER, false,
+        super("StorageESP", "Allows you to see storages", Category.RENDER, false,
                 new BooleanSetting("Chest", false),
                 new BooleanSetting("E-Chest", false),
                 new BooleanSetting("Shulker", false),

@@ -8,7 +8,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class AntiItemLag extends Module {
     public AntiItemLag() {
-        super("AntiItemLag", "Allows you to bypass lags with too long item name", GLFW.GLFW_KEY_UNKNOWN, Category.PLAYER, false,
+        super("AntiItemLag", "Allows you to bypass lags with too long item name", Category.PLAYER, false,
                 new NumberSetting("Max Length", 28, 1, 100, 1),
                 new BooleanSetting("Notify", true));
     }

@@ -7,7 +7,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class ChatNotifier extends Module {
     public ChatNotifier() {
-        super("ChatNotifier", "Sends information about toggling modules to chat", GLFW.GLFW_KEY_UNKNOWN, Category.CLIENT, false);
+        super("ChatNotifier", "Sends information about toggling modules to chat", Category.CLIENT, false);
     }
 
     public void sendMsg(String msg) {

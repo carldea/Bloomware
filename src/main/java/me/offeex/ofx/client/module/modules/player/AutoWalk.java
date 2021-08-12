@@ -5,7 +5,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class AutoWalk extends Module {
     public AutoWalk() {
-        super("AutoWalk", "Allows you to go automatically", GLFW.GLFW_KEY_UNKNOWN, Category.PLAYER, false);
+        super("AutoWalk", "Allows you to go automatically", Category.PLAYER, false);
     }
 
     @Override

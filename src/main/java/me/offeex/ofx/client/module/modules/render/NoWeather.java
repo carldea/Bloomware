@@ -4,7 +4,7 @@ import me.offeex.ofx.client.module.Module;
 
 public class NoWeather extends Module {
     public NoWeather() {
-        super("NoWeather", "Disables the rain", -1, Category.RENDER, true);
+        super("NoWeather", "Disables the rain", Category.RENDER, true);
     }
     
     @Override

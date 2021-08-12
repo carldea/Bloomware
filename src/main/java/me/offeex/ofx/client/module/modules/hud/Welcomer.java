@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class Welcomer extends Module {
     public Welcomer() {
-        super("Welcomer", "Welcomes you", KEY_UNBOUND, Category.HUD, true);
+        super("Welcomer", "Welcomes you", Category.HUD, true);
     }
 
     @Override

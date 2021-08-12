@@ -8,7 +8,7 @@ import org.lwjgl.glfw.GLFW;
 public class HudEditor extends Module {
 
     public HudEditor() {
-        super("HudEditor", "Edit your HUD", GLFW.GLFW_KEY_RIGHT_CONTROL, Category.CLIENT, true);
+        super("HudEditor", "Edit your HUD", Category.CLIENT, true);
     }
 
     @Override

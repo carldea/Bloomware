@@ -7,7 +7,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class ModuleNotifier extends Module {
     public ModuleNotifier() {
-        super("Module Notifier", "Adds the window with the notifications about toggling modules", KEY_UNBOUND, Category.HUD, true);
+        super("Module Notifier", "Adds the window with the notifications about toggling modules", Category.HUD, true);
     }
 
     String message = "";

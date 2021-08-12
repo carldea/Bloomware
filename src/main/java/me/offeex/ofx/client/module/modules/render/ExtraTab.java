@@ -6,7 +6,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class ExtraTab extends Module {
     public ExtraTab() {
-        super("ExtraTab", "Allows you to see more players in tab", GLFW.GLFW_KEY_UNKNOWN, Category.RENDER, false,
+        super("ExtraTab", "Allows you to see more players in tab", Category.RENDER, false,
                 new NumberSetting("Count", 80, 80, 1000, 1));
     }
 }

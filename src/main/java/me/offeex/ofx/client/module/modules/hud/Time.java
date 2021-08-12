@@ -10,7 +10,7 @@ import java.util.Calendar;
 
 public class Time extends Module {
     public Time() {
-        super("Time", "Shows current time", KEY_UNBOUND, Category.HUD, true);
+        super("Time", "Shows current time", Category.HUD, true);
     }
 
     @Override

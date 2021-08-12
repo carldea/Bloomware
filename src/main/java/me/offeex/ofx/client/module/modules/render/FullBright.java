@@ -9,11 +9,7 @@ import org.lwjgl.glfw.GLFW;
 public class FullBright extends Module {
 
     public FullBright() {
-        super("FullBright",
-                "Boosts your brightness",
-                GLFW.GLFW_KEY_B,
-                Category.RENDER,
-                false,
+        super("FullBright", "Boosts your brightness", Category.RENDER, false,
                 new NumberSetting("Gamma", 16, 1, 16, 1));
     }
 

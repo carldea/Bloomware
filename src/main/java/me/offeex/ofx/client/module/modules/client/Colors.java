@@ -5,7 +5,7 @@ import me.offeex.ofx.client.setting.settings.NumberSetting;
 
 public class Colors extends Module {
     public Colors() {
-        super("Colors", "Configures colors", -1, Category.CLIENT, true,
+        super("Colors", "Configures colors", Category.CLIENT, true,
                 new NumberSetting("TextRed", 153, 1, 255, 1),
                 new NumberSetting("TextGreen", 11, 1, 255, 1),
                 new NumberSetting("TextBlue", 87, 1, 255, 1),
