@@ -1,5 +1,6 @@
 # Bloomware Public Test
 A free minecraft utility mod for 1.16 and newer versions, designed for anarchy servers.
+Currently for testing, finding out issues, and adding new features
 
 ## How To Use
 1) Download latest mod version [**there**](https://github.com/TheFishDevs/Bloomware/releases)
