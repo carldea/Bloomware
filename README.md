@@ -8,17 +8,15 @@ We have a discord server - [Discord](https://discord.gg/D4G7JN5d7m)
 ## How to install
 1) Download latest mod .jar from repo's releases
 2) Drag it into `.minecraft/mods` directory.
-<br>Windows: C:\Users\<username>\AppData\Roaming\
-<br>Linux: ~/
 
 ## Prepare dev environment
 This is required only for contributors, not for normal users.
 ### Using gradle tools
-1) Clone the repo using "git clone"
+1) Clone the repo using `git clone`
 2) Open command line (terminal if you're on linux);
 3) Type "gradlew genSources" to command line;
-4) To generate project for IntelliJ IDEA, type "gradlew idea"
-5) To generate project for Eclipse, type "gradlew eclipse"
+4) To generate project for IntelliJ IDEA, run `gradlew idea`
+5) To generate project for Eclipse, run `gradlew eclipse`
 ### Using GUI (IntelliJ IDEA only)
 1) Clone the repo using "git clone"
 2) Import Project -> Bloomware direcory
