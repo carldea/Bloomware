@@ -3,12 +3,14 @@ package me.offeex.ofx.client.module.modules.render;
 import com.google.common.eventbus.Subscribe;
 import me.offeex.ofx.api.event.events.EventPacket;
 import me.offeex.ofx.client.module.Module;
+import me.offeex.ofx.client.setting.settings.NumberSetting;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 import org.lwjgl.glfw.GLFW;
 
-public class NightTime extends Module {
-    public NightTime() {
-        super("NightTime", "Changes world time to night", Category.RENDER, false);
+public class CustomTime extends Module {
+    public CustomTime() {
+        super("CustomTime", "Changes world time you want.", Category.RENDER, false,
+                new NumberSetting("Time", 18000, 0, 24000, 1));
     }
 
     private long oldTime = 0;
@@ -20,7 +22,7 @@ public class NightTime extends Module {
 
     @Override
     public void onTick() {
-        mc.world.setTimeOfDay(18000);
+        mc.world.setTimeOfDay((int) ((NumberSetting) this.getSetting(0)).getValue());
     }
 
     @Override
