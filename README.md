@@ -35,7 +35,7 @@ A free minecraft utility mod for 1.16.5+ versions, designed for anarchy servers,
 - [X] Alt Manager
 - [ ] Capes
 - [ ] Animations
-- [ ] Friends
+- [X] Friends
 - [X] JSON configs
 - [X] Settings
   - [ ] using Commands
