@@ -9,7 +9,7 @@ We have a discord server - [Discord](https://discord.gg/D4G7JN5d7m)
 1) Download latest mod .jar from repo's releases
 2) Drag it into `.minecraft/mods` directory.
 <br>Windows: C:\Users\<username>\AppData\Roaming\
-<br>Linux: /home/<username>/
+<br>Linux: //home//<username>//
 
 ## Prepare dev environment
 This is required only for contributors, not for normal users.
