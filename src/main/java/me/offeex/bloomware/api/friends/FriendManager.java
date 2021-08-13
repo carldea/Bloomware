@@ -17,9 +17,7 @@ public class FriendManager {
             try {
                 dataFile.createNewFile();
             } catch (IOException e) {
-                Bloomware.LOGGER.error(Bloomware.prefix + "Failed to create friends.txt!");
-                Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
-                Bloomware.LOGGER.warn(Bloomware.prefix + "FriendManager may not work and crahs your game!");
+                e.printStackTrace();
             }
         }
         friends = new ArrayList<>();
@@ -59,9 +57,10 @@ public class FriendManager {
 
     public ArrayList<String> convert() {
         ArrayList<String> friendsText = new ArrayList<>();
-        for (Friend friend : friends) {
-            friendsText.add(friend.getNickname());
-        }
+//        for (Friend friend : friends) {
+//            friendsText.add(friend.getNickname());
+//        }
+        friends.forEach(friend -> friendsText.add(friend.getNickname()));
         return friendsText;
     }
 
@@ -70,13 +69,10 @@ public class FriendManager {
             BufferedReader reader = new BufferedReader(new FileReader(dataFile));
             String line = reader.readLine();
             while (line != null) {
-                line = reader.readLine();
-                friends.add(new Friend(line));
+                friends.add(new Friend(reader.readLine()));
             }
         } catch (IOException e) {
-            Bloomware.LOGGER.error(Bloomware.prefix + "Failed to read friends.txt!");
-            Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
-            Bloomware.LOGGER.warn(Bloomware.prefix + "FriendManager may not work and crash your game!");
+            e.printStackTrace();
         }
     }
 }

@@ -9,7 +9,7 @@ public class ItemDurability extends Module {
     private String text;
 
     public ItemDurability() {
-        super("Item Durability", "Allows you to see durability of item on your screen.", Module.Category.HUD, true);
+        super("Item Durability", "Allows you to see durability of item on your screen.", Category.HUD, true);
     }
 
     @Override

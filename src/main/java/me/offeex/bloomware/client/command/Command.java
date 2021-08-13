@@ -29,10 +29,6 @@ public abstract class Command {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public List<String> getAliases() {
 		return aliases;
 	}

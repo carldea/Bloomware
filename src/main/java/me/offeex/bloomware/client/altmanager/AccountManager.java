@@ -2,6 +2,7 @@ package me.offeex.bloomware.client.altmanager;
 
 import com.google.gson.*;
 import me.offeex.bloomware.Bloomware;
+
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
@@ -16,9 +17,7 @@ public class AccountManager {
             try {
                 Files.createFile(output);
             } catch (IOException e) {
-                Bloomware.LOGGER.error(Bloomware.prefix + "Failed to create accounts.json!");
-                Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
-                Bloomware.LOGGER.warn(Bloomware.prefix + "AccountManager may not work and crash your game!");
+                e.printStackTrace();
             }
         }
 
@@ -29,24 +28,18 @@ public class AccountManager {
             while(in.hasNext())
                 s += in.nextLine() + "\r\n";
             in.close();
-        } catch (Exception e) {
-            Bloomware.LOGGER.error(Bloomware.prefix + "Failed to add newlines in accounts.json!");
-            Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
-            Bloomware.LOGGER.warn(Bloomware.prefix + "AccountManager may not work and crash your game!");
-        }
+        } catch (Exception ignored) {}
+
+        // ПРОВЕРКА ЕСЛИ БЛЯ АККАУНТОВ НЕТ НИХУЯ
 
         try {
             array = (JsonArray) new JsonParser().parse(s);
             converter(array);
         } catch (Exception e) {
-            Bloomware.LOGGER.info("accounts.json is corrupted! Recreating...");
+            Bloomware.LOGGER.info("Found bad account config! Repairing...");
             try {
                 fileRepair();
-            } catch (Exception ignored) {
-                Bloomware.LOGGER.error(Bloomware.prefix + "Couldn't recreate accounts.json!");
-                Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
-                Bloomware.LOGGER.warn(Bloomware.prefix + "AccountManager may not work and crash your game!");
-            }
+            } catch (Exception ignored) {}
         }
     }
 
@@ -95,6 +88,7 @@ public class AccountManager {
     }
 
     public void converter() {
+
         System.out.print(array.size());
 
         for (int i = array.size() - 1; i >= 0; i--) {
@@ -121,8 +115,20 @@ public class AccountManager {
                 data[i] = entry.getValue().toString();
                 i++;
             }
-
-            accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.valueOf(data[0])));
+            switch (data[0]) {
+                case "\"Mojang\"": {
+                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Mojang));
+                    break;
+                }
+                case "\"Cracked\"": {
+                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Cracked));
+                    break;
+                }
+                case "\"Token\"": {
+                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Token));
+                    break;
+                }
+            }
         }
     }
 

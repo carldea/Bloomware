@@ -1,6 +1,5 @@
 package me.offeex.bloomware.client.gui.impl.clickgui;
 
-import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.gui.impl.hud.element.Element;
 import me.offeex.bloomware.client.gui.impl.clickgui.component.Component;
 import me.offeex.bloomware.client.module.Module;
@@ -22,8 +21,7 @@ public class HudEditor extends Screen {
     final Frame frame;
 
     public HudEditor() {
-        super(new LiteralText("Bloomware GUI"));
-        Bloomware.LOGGER.error(Bloomware.prefix + "Initializing HUD Editor...");
+        super(new LiteralText("Bloomware Gui"));
         int frameX = 10;
         frame = new Frame(Module.Category.HUD);
         frame.setX(frameX);

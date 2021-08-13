@@ -5,7 +5,7 @@
 package me.offeex.bloomware;
 
 import com.google.common.eventbus.EventBus;
-import me.offeex.bloomware.client.setting.SettingManager;
+import me.offeex.bloomware.api.setting.SettingManager;
 import me.offeex.bloomware.client.altmanager.AccountManager;
 import me.offeex.bloomware.api.config.ConfigManager;
 import me.offeex.bloomware.api.friends.FriendManager;
@@ -28,7 +28,6 @@ import me.offeex.bloomware.client.module.ModuleManager;
 
 public class Bloomware implements ClientModInitializer {
 
-    public static final String prefix = "[Bloomware] ";
     public static final String name = "Bloomware";
     public static final String version = "0.11";
     public static String FontMain = "Comfortaa";
@@ -49,7 +48,7 @@ public class Bloomware implements ClientModInitializer {
     public static CommandManager commandManager;
     public static ConfigManager configManager;
     public static HUD hud;
-    public static ClickGUI clickGUI;
+    public static ClickGUI newGui;
     public static HudEditor hudEditor;
     public static SettingManager settingManager;
 
@@ -57,14 +56,30 @@ public class Bloomware implements ClientModInitializer {
 
     public final Object synchronize = new Object();
 
+    public void printLog(String text) {
+        synchronized (synchronize) {
+            LOGGER.info(text);
+        }
+    }
+
     @Override
     public void onInitializeClient() {
-        LOGGER.info(Bloomware.prefix + "Initializing...");
+        printLog("Bloomware started ratting you!");
+
+        printLog(
+                "__________.__                                                      \n" +
+                        "\\______   \\  |   ____   ____   _______  _  _______ _______   ____  \n" +
+                        " |    |  _/  |  /  _ \\ /  _ \\ /     \\ \\/ \\/ /\\__  \\\\_  __ \\_/ __ \\ \n" +
+                        " |    |   \\  |_(  <_> |  <_> )  Y Y  \\     /  / __ \\|  | \\/\\  ___/ \n" +
+                        " |______  /____/\\____/ \\____/|__|_|  /\\/\\_/  (____  /__|    \\___  >\n" +
+                        "        \\/                         \\/             \\/            \\/ ");
 
         commandManager = new CommandManager();
         settingManager = new SettingManager();
         moduleManager = new ModuleManager();
-        clickGUI = new ClickGUI();
+        moduleNotifier = new ModuleNotifier();
+        chatNotifier = new ChatNotifier();
+        newGui = new ClickGUI();
         hudEditor = new HudEditor();
         accountManager = new AccountManager();
         configManager = new ConfigManager();
@@ -75,21 +90,17 @@ public class Bloomware implements ClientModInitializer {
         for (Module module : ModuleManager.getModules()) {
             try {
                 configManager.loadConfig(module);
-            } catch (Exception e) {
-                LOGGER.error(Bloomware.prefix + "Failed to load module: " + module.name);
-                LOGGER.error(Bloomware.prefix + e.toString());
+            } catch (Exception ignored) {
             }
         }
 
-        LOGGER.info(Bloomware.prefix + "Initialization done!");
+        printLog(Bloomware.name + " finished ratting you!");
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             for (Module module : ModuleManager.getModules()) {
                 try {
                     configManager.saveConfig(module);
-                } catch (Exception e) {
-                    LOGGER.error(Bloomware.prefix + "Failed to save module: " + module.name);
-                    LOGGER.error(Bloomware.prefix + e.toString());
+                } catch (Exception ignored) {
                 }
             }
         }));
