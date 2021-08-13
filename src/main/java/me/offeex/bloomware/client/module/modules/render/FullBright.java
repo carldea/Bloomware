@@ -1,7 +1,7 @@
 package me.offeex.bloomware.client.module.modules.render;
 
 import me.offeex.bloomware.client.module.Module;
-import me.offeex.bloomware.client.setting.settings.NumberSetting;
+import me.offeex.bloomware.client.setting.Setting;
 
 public class FullBright extends Module {
 
