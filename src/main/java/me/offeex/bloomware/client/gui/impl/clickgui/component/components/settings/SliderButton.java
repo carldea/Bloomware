@@ -5,7 +5,6 @@ import me.offeex.bloomware.api.util.ColorUtils;
 import me.offeex.bloomware.client.gui.impl.clickgui.component.Component;
 import me.offeex.bloomware.client.gui.impl.clickgui.component.components.ModuleButton;
 import me.offeex.bloomware.client.setting.Setting;
-import me.offeex.bloomware.client.setting.settings.NumberSetting;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -15,7 +14,7 @@ import java.math.RoundingMode;
 
 public class SliderButton extends Component {
 
-    private final NumberSetting setting;
+    private final Setting<Number> setting;
     private final ModuleButton button;
     private boolean isHovered;
     private int offset;
@@ -25,7 +24,7 @@ public class SliderButton extends Component {
     private double renderWidth;
 
     public SliderButton(final Setting setting, final ModuleButton button, final int offset) {
-        this.setting = (NumberSetting) setting;
+        this.setting = setting;
         this.button = button;
         this.x = button.frame.getX() + button.frame.getWidth();
         this.y = button.frame.getY() + button.offset;
@@ -55,14 +54,15 @@ public class SliderButton extends Component {
         y = button.frame.getY() + offset;
         x = button.frame.getX();
         final double diff = Math.min(110, Math.max(0, mouseX - x));
-        final double min = setting.minimum;
-        final double max = setting.maximum;
-        renderWidth = 110 * (setting.getValue() - min) / (max - min);
+        final double min = setting.getMin().doubleValue();
+        final double max = setting.getMax().doubleValue();
+        renderWidth = 110 * (setting.getValue().doubleValue() - min) / (max - min);
         if (dragging) {
-            if (diff == 0) setting.setValue(setting.minimum);
+            if (diff == 0) setting.setValue(setting.getMin());
             else {
                 final double newValue = round(diff / 110 * (max - min) + min, 1);
-                setting.setValue(newValue);
+                double precision = 1.0D / setting.getInc();
+                setting.setValue(Math.round(Math.max(min, Math.min(max, newValue)) * precision) / precision);
             }
         }
     }
@@ -72,8 +72,8 @@ public class SliderButton extends Component {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX() + 1, button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
         DrawableHelper.fill(new MatrixStack(), button.frame.getX() + 1, button.frame.getY() + offset, (int) (button.frame.getX() + renderWidth), button.frame.getY() + offset + 12,  isHovered ? ColorUtils.getSliderColor().darker().getRGB() : ColorUtils.getSliderColor().getRGB());
         Bloomware.sFontRenderer.drawString(setting.getName(), button.frame.getX() + 3, button.frame.getY() + offset + 2, isHovered ? new Color(170, 170, 170).getRGB() : -1, true);
-        Bloomware.sFontRenderer.drawString(String.valueOf(round(setting.getValue(), 1)),
-                button.frame.getX() + button.frame.getWidth() - 2 - Bloomware.sFontRenderer.getStringWidth(String.valueOf(round(setting.getValue(), 1)), Bloomware.sFontRenderer.getFontsize()),
+        Bloomware.sFontRenderer.drawString(String.valueOf(round(setting.getValue().doubleValue(), 1)),
+                button.frame.getX() + button.frame.getWidth() - 2 - Bloomware.sFontRenderer.getStringWidth(String.valueOf(round(setting.getValue().doubleValue(), 1)), Bloomware.sFontRenderer.getFontsize()),
                 button.frame.getY() + offset + 2,
                 isHovered ? new Color(170, 170, 170).getRGB() : -1, true);
     }

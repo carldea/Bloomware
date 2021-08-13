@@ -1,7 +1,7 @@
 package me.offeex.bloomware.api.util;
 
-import me.offeex.bloomware.Bloomware;
-import me.offeex.bloomware.client.setting.settings.NumberSetting;
+import me.offeex.bloomware.client.module.ModuleManager;
+import me.offeex.bloomware.client.module.modules.client.ClickGui;
 
 import java.awt.*;
 
@@ -20,30 +20,30 @@ public class ColorUtils {
     }
 
     public static Color getGuiColor() {
-        int r = (int) ((NumberSetting) Bloomware.moduleManager.getModule("ClickGUI").getSetting(0)).getValue();
-        int g = (int) ((NumberSetting) Bloomware.moduleManager.getModule("ClickGUI").getSetting(1)).getValue();
-        int b = (int) ((NumberSetting) Bloomware.moduleManager.getModule("ClickGUI").getSetting(2)).getValue();
+        int r = ((ClickGui) ModuleManager.getModule("ClickGUI")).r.getValue().intValue();
+        int g = ((ClickGui) ModuleManager.getModule("ClickGUI")).g.getValue().intValue();
+        int b = ((ClickGui) ModuleManager.getModule("ClickGUI")).b.getValue().intValue();
         return new Color(r, g, b, 190);
     }
 
     public static Color getTextColor() {
-        int r = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(0)).getValue();
-        int g = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(1)).getValue();
-        int b = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(2)).getValue();
+        int r = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().textR.getValue().intValue();
+        int g = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().textG.getValue().intValue();
+        int b = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().textB.getValue().intValue();
         return new Color(r, g, b, 255);
     }
 
     public static Color getSliderColor() {
-        int r = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(3)).getValue();
-        int g = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(4)).getValue();
-        int b = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(5)).getValue();
+        int r = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().sliderR.getValue().intValue();
+        int g = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().sliderG.getValue().intValue();
+        int b = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().sliderB.getValue().intValue();
         return new Color(r, g, b, 255);
     }
 
     public static Color getHudColor() {
-        int r = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(6)).getValue();
-        int g = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(7)).getValue();
-        int b = (int) ((NumberSetting) Bloomware.moduleManager.getModule("Colors").getSetting(8)).getValue();
+        int r = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().hudR.getValue().intValue();
+        int g = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().hudG.getValue().intValue();
+        int b = me.offeex.bloomware.client.module.modules.client.Colors.getInstance().hudB.getValue().intValue();
         return new Color(r, g, b, 255);
     }
 

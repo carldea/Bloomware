@@ -3,13 +3,15 @@ package me.offeex.bloomware.client.module.modules.render;
 import com.google.common.eventbus.Subscribe;
 import me.offeex.bloomware.api.event.events.EventPacket;
 import me.offeex.bloomware.client.module.Module;
-import me.offeex.bloomware.client.setting.settings.NumberSetting;
+import me.offeex.bloomware.client.setting.Setting;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 
 public class CustomTime extends Module {
+
+    private final Setting<Number> time = register("Time", 18000, 0, 24000, 1);
+
     public CustomTime() {
-        super("CustomTime", "Changes world time you want.", Category.RENDER, false,
-                new NumberSetting("Time", 18000, 0, 24000, 1));
+        super("CustomTime", "Changes world time you want.", Category.RENDER, false);
     }
 
     private long oldTime = 0;
@@ -21,7 +23,7 @@ public class CustomTime extends Module {
 
     @Override
     public void onTick() {
-        mc.world.setTimeOfDay((int) ((NumberSetting) this.getSetting(0)).getValue());
+        mc.world.setTimeOfDay((int) time.getValue().intValue());
     }
 
     @Override

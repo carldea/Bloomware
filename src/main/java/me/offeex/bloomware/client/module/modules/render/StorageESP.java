@@ -4,8 +4,7 @@ import com.google.common.eventbus.Subscribe;
 import me.offeex.bloomware.api.event.events.EventWorldRender;
 import me.offeex.bloomware.api.util.RenderUtil;
 import me.offeex.bloomware.client.module.Module;
-import me.offeex.bloomware.client.setting.settings.BooleanSetting;
-import me.offeex.bloomware.client.setting.settings.NumberSetting;
+import me.offeex.bloomware.client.setting.Setting;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.block.entity.EnderChestBlockEntity;
@@ -13,20 +12,22 @@ import net.minecraft.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.util.math.Box;
 
 public class StorageESP extends Module {
+
+    private final Setting<Boolean> chests = register("Chest", false);
+    private final Setting<Boolean> echests = register("E-Chest", false);
+    private final Setting<Boolean> shulkers = register("Shulkers", false);
+    private final Setting<Number> chestRed = register("Chest (R)", 100, 1, 255, 1);
+    private final Setting<Number> chestGreen = register("Chest (G)", 5, 1, 255, 1);
+    private final Setting<Number> chestBlue = register("Chest (B)", 100, 1, 255, 1);
+    private final Setting<Number> echestsRed = register("E-Chest (R)", 100, 1, 255, 1);
+    private final Setting<Number> echestsGreen = register("E-Chest (G)", 5, 1, 255, 1);
+    private final Setting<Number> echestsBlue = register("E-Chest (B)", 100, 1, 255, 1);
+    private final Setting<Number> shulkersRed = register("Shulker (R)", 100, 1, 255, 1);
+    private final Setting<Number> shulkersGreen = register("Shulker (G)", 5, 1, 255, 1);
+    private final Setting<Number> shulkersBlue = register("Shulker (B)", 100, 1, 255, 1);
+
     public StorageESP() {
-        super("StorageESP", "Allows you to see storages", Category.RENDER, false,
-                new BooleanSetting("Chest", false),
-                new BooleanSetting("E-Chest", false),
-                new BooleanSetting("Shulker", false),
-                new NumberSetting("Chest (R)", 100, 1, 255, 1),
-                new NumberSetting("Chest (G)", 5, 1, 255, 1),
-                new NumberSetting("Chest (B)", 100, 1, 255, 1),
-                new NumberSetting("E-Chest (R)", 100, 1, 255, 1),
-                new NumberSetting("E-Chest (G)", 5, 1, 255, 1),
-                new NumberSetting("E-Chest (B)", 100, 1, 255, 1),
-                new NumberSetting("Shulker (R)", 100, 1, 255, 1),
-                new NumberSetting("Shulker (G)", 5, 1, 255, 1),
-                new NumberSetting("Shulker (B)", 100, 1, 255, 1));
+        super("StorageESP", "Allows you to see storages", Category.RENDER, false);
     }
 
     @Subscribe
@@ -36,20 +37,20 @@ public class StorageESP extends Module {
 
             for (BlockEntity block : mc.world.blockEntities) {
                 if (mc.options.getPerspective().isFirstPerson()) {
-                    if (block instanceof ChestBlockEntity && ((BooleanSetting) this.getSetting(0)).isEnabled()) {
+                    if (block instanceof ChestBlockEntity && chests.getValue()) {
                         RenderUtil.drawFilledBox(new Box(
                                 block.getPos().getX() + 0.06, block.getPos().getY(), block.getPos().getZ() + 0.06,
-                                block.getPos().getX() + 0.94, block.getPos().getY() + 0.875, block.getPos().getZ() + 0.94), 255 - (float) ((NumberSetting) this.getSetting(3)).getValue(), 255 - (float) ((NumberSetting) this.getSetting(4)).getValue(), 255 - (float) ((NumberSetting) this.getSetting(5)).getValue(), 0.7F);
+                                block.getPos().getX() + 0.94, block.getPos().getY() + 0.875, block.getPos().getZ() + 0.94), 255 - chestRed.getValue().floatValue(), 255 - chestGreen.getValue().floatValue(), 255 - chestBlue.getValue().floatValue(), 0.7F);
                     }
-                    if (block instanceof EnderChestBlockEntity && ((BooleanSetting) this.getSetting(1)).isEnabled()) {
+                    if (block instanceof EnderChestBlockEntity && echests.getValue()) {
                         RenderUtil.drawFilledBox(new Box(
                                 block.getPos().getX() + 0.06, block.getPos().getY(), block.getPos().getZ() + 0.06,
-                                block.getPos().getX() + 0.94, block.getPos().getY() + 0.875, block.getPos().getZ() + 0.94), 255 - (float) ((NumberSetting) this.getSetting(6)).getValue(), 255 - (float) ((NumberSetting) this.getSetting(7)).getValue(), 255 - (float) ((NumberSetting) this.getSetting(8)).getValue(), 0.7F);
+                                block.getPos().getX() + 0.94, block.getPos().getY() + 0.875, block.getPos().getZ() + 0.94), 255 - echestsRed.getValue().floatValue(), 255 - echestsGreen.getValue().floatValue(), 255 - echestsBlue.getValue().floatValue(), 0.7F);
                     }
-                    if (block instanceof ShulkerBoxBlockEntity && ((BooleanSetting) this.getSetting(2)).isEnabled()) {
+                    if (block instanceof ShulkerBoxBlockEntity && shulkers.getValue()) {
                         RenderUtil.drawFilledBox(new Box(
                                 block.getPos().getX() + 0.06, block.getPos().getY(), block.getPos().getZ() + 0.06,
-                                block.getPos().getX() + 0.94, block.getPos().getY() + 0.875, block.getPos().getZ() + 0.94), 255 - (float) ((NumberSetting) this.getSetting(9)).getValue(), 255 - (float) ((NumberSetting) this.getSetting(10)).getValue(), 255 - (float) ((NumberSetting) this.getSetting(11)).getValue(), 0.7F);
+                                block.getPos().getX() + 0.94, block.getPos().getY() + 0.875, block.getPos().getZ() + 0.94), 255 - shulkersRed.getValue().floatValue(), 255 - shulkersGreen.getValue().floatValue(), 255 - shulkersBlue.getValue().floatValue(), 0.7F);
                     }
                 }
             }

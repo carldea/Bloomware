@@ -5,7 +5,6 @@ import me.offeex.bloomware.api.util.ColorUtils;
 import me.offeex.bloomware.client.gui.impl.clickgui.component.Component;
 import me.offeex.bloomware.client.gui.impl.clickgui.component.components.ModuleButton;
 import me.offeex.bloomware.client.setting.Setting;
-import me.offeex.bloomware.client.setting.settings.ModeSetting;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -13,7 +12,7 @@ import java.awt.*;
 
 public class ModeButton extends Component {
 
-    private final ModeSetting setting;
+    private final Setting<String> setting;
     private final ModuleButton button;
     private boolean isHovered;
     private int offset;
@@ -22,7 +21,7 @@ public class ModeButton extends Component {
     private int modeIndex;
 
     public ModeButton(final Setting setting, final ModuleButton button, final int offset) {
-        this.setting = (ModeSetting) setting;
+        this.setting = setting;
         this.button = button;
         this.x = button.frame.getX() + button.frame.getWidth();
         this.y = button.frame.getY() + button.offset;
@@ -38,14 +37,14 @@ public class ModeButton extends Component {
     @Override
     public void mouseClicked(final double mouseX, final double mouseY, final int button) {
         if (isHovered(mouseX, mouseY) && this.button.open) {
-            final int maxIndex = setting.modes.size() - 1;
+            final int maxIndex = setting.getModes().size() - 1;
             if (button == 0) {
                 ++modeIndex;
                 if (modeIndex > maxIndex) {
                     modeIndex = 0;
                 }
-                
-                setting.setMode(setting.modes.get(modeIndex));
+
+                setting.setValue(setting.getModes().get(modeIndex));
             }
             
             if (button == 1) {
@@ -53,8 +52,8 @@ public class ModeButton extends Component {
                 if (modeIndex < 0) {
                     modeIndex = maxIndex;
                 }
-                
-                setting.setMode(setting.modes.get(modeIndex));
+
+                setting.setValue(setting.getModes().get(modeIndex));
             }
         }
     }
@@ -70,7 +69,7 @@ public class ModeButton extends Component {
     public void render() {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX(), button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
         Bloomware.sFontRenderer.drawString(setting.getName(), button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
-        Bloomware.sFontRenderer.drawString(setting.getMode(), button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
+        Bloomware.sFontRenderer.drawString(setting.getValue(), button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
     }
 
     public boolean isHovered(final double x, final double y) {

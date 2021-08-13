@@ -5,6 +5,7 @@
 package me.offeex.bloomware;
 
 import com.google.common.eventbus.EventBus;
+import me.offeex.bloomware.api.setting.SettingManager;
 import me.offeex.bloomware.client.altmanager.AccountManager;
 import me.offeex.bloomware.api.config.ConfigManager;
 import me.offeex.bloomware.api.friends.FriendManager;
@@ -49,6 +50,7 @@ public class Bloomware implements ClientModInitializer {
     public static HUD hud;
     public static ClickGUI newGui;
     public static HudEditor hudEditor;
+    public static SettingManager settingManager;
 
     public static ModuleNotifier moduleNotifier;
 
@@ -73,6 +75,7 @@ public class Bloomware implements ClientModInitializer {
                         "        \\/                         \\/             \\/            \\/ ");
 
         commandManager = new CommandManager();
+        settingManager = new SettingManager();
         moduleManager = new ModuleManager();
         moduleNotifier = new ModuleNotifier();
         chatNotifier = new ChatNotifier();
