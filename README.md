@@ -14,11 +14,11 @@ This is required only for contributors, not for normal users.
 ### Using gradle tools
 1) Clone the repo using `git clone`
 2) Open command line (terminal if you're on linux);
-3) Type "gradlew genSources" to command line;
+3) Type `gradlew genSources` to command line;
 4) To generate project for IntelliJ IDEA, run `gradlew idea`
 5) To generate project for Eclipse, run `gradlew eclipse`
 ### Using GUI (IntelliJ IDEA only)
-1) Clone the repo using "git clone"
+1) Clone the repo using `git clone`
 2) Import Project -> Bloomware direcory
 3) Select the build.gradle in mod's directory file, and import the project
 <br>Note: If gradle did it's tasks and project's configuration files aren't showing up, try to restart IDEA.
@@ -30,7 +30,7 @@ This is required only for contributors, not for normal users.
 
 ## Contributors
 - **yoursleep** (Code cleanup, switching event system to google event system, helping with GUI and renderers)
-- **cattyn** (Code cleanup)
+- **cattyn** (Code cleanup, normal settings)
 - **Rikonardo** (FontRenderer, moral support, tips, etc.)
 - **srgantmoomoo** (client base "bedroom")
 - **ronmamo** (java lib - Reflections)
