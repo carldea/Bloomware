@@ -1,4 +1,4 @@
-package me.offeex.bloomware.api.setting;
+package me.offeex.bloomware.client.setting;
 
 import me.offeex.bloomware.client.setting.Setting;
 import me.offeex.bloomware.client.module.Module;

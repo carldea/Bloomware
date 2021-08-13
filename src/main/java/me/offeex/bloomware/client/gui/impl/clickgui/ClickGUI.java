@@ -1,5 +1,6 @@
 package me.offeex.bloomware.client.gui.impl.clickgui;
 
+import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.gui.impl.clickgui.component.Component;
 import me.offeex.bloomware.client.module.Module;
 import net.minecraft.client.MinecraftClient;
@@ -20,7 +21,8 @@ public class ClickGUI extends Screen {
     public static List<Frame> frames;
 
     public ClickGUI() {
-        super(new LiteralText("Bloomware Gui"));
+        super(new LiteralText("Bloomware GUI"));
+        Bloomware.LOGGER.error(Bloomware.prefix + "Initializing GUI...");
         frames = new ArrayList<>();
         int frameX = 10;
         for (final Module.Category category : Module.Category.values()) {

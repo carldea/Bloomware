@@ -52,9 +52,16 @@ public class ConfigManager {
         InputStream stream = Files.newInputStream(settings);
         try {
             Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse((Reader) new InputStreamReader(stream)).getAsJsonObject(), module);
-        } catch (Exception exception) {
-            Bloomware.LOGGER.info("Found bad config for " + module.getName() + "! Repairing...");
-            fileRepairer(module);
+        } catch (Exception e) {
+            Bloomware.LOGGER.error(Bloomware.prefix + "Failed to load settings! Recreating...");
+            Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
+            try {
+                fileRepairer(module);
+            } catch (Exception e1) {
+                Bloomware.LOGGER.error(Bloomware.prefix + "Recreation failed!");
+                Bloomware.LOGGER.error(Bloomware.prefix + e1.toString());
+                Bloomware.LOGGER.warn(Bloomware.prefix + "ConfigManager may not work and crash your game!");
+            }
         }
     }
 
@@ -99,7 +106,10 @@ public class ConfigManager {
                     } else {
                         module.disable();
                     }
-                } catch (Exception ignored) {
+                } catch (Exception e) {
+                    module.disable();
+                    Bloomware.LOGGER.error(Bloomware.prefix + "Could not get enabled state of module: " + module.name);
+                    Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
                 }
             }
 
