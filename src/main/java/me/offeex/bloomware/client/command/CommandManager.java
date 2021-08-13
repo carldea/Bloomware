@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.command.commands.ModuleList;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.LiteralText;
@@ -25,20 +26,21 @@ public class CommandManager {
 	}
 
 	public void register() {
-		// Iterating every command and adding it to array
+		Bloomware.LOGGER.info("Registering commands...");
 		Set<Class<? extends Command>> reflections = new Reflections("me.offeex.bloomware.client.command.commands").getSubTypesOf(Command.class);
 		reflections.forEach(aClass -> {
 			try {
 				CommandManager.commands.add(aClass.newInstance());
 			} catch (InstantiationException | IllegalAccessException e) {
-				e.printStackTrace();
+				Bloomware.LOGGER.info(Bloomware.prefix + "Could not register command: " + aClass.getName());
+				Bloomware.LOGGER.info(Bloomware.prefix + e.toString());
 			}
 		});
 	}
 
 	public static void addChatMessage(String message) {
 		Text textComponentString = new LiteralText(message);
-		String prefix = "" + Formatting.BLACK + Formatting.BOLD + "<" + Formatting.LIGHT_PURPLE + Formatting.BOLD + "Bloomware" + Formatting.BLACK + Formatting.BOLD + "> ";
+		String prefix = "" + Formatting.BLACK + Formatting.BOLD + "<" + Formatting.LIGHT_PURPLE + Formatting.BOLD + Bloomware.name + Formatting.BLACK + Formatting.BOLD + "> ";
 		MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(new LiteralText( prefix + Formatting.GRAY + Formatting.BOLD + "▸ ").append(textComponentString));
 	}
 	
@@ -60,7 +62,7 @@ public class CommandManager {
         		}
         	}
         	if(!commandFound) {
-        		addChatMessage(Formatting.DARK_RED + "command doesn't exist. Type " + Formatting.RED + Formatting.ITALIC + prefix + "help " + Formatting.RESET + "" + Formatting.DARK_RED + "to see all commands.");
+        		addChatMessage(Formatting.DARK_RED + "Unknown command! Type " + Formatting.RED + Formatting.ITALIC + prefix + "help " + Formatting.RESET + "" + Formatting.DARK_RED + "to see all commands.");
         	}
         }
     }

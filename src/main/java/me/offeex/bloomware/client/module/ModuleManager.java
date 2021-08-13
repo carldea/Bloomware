@@ -3,6 +3,7 @@ package me.offeex.bloomware.client.module;
 import java.util.*;
 
 import com.google.common.eventbus.Subscribe;
+import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.api.event.events.EventKeyPress;
 import org.lwjgl.glfw.GLFW;
 
@@ -15,6 +16,7 @@ public class ModuleManager {
 	public static ArrayList<Module> modules;
 
 	public ModuleManager() {
+		Bloomware.LOGGER.error(Bloomware.prefix + "Registering modules...");
 		modules = new ArrayList<>();
 
 		// Iterating every module and adding it in "modules" list
@@ -24,7 +26,8 @@ public class ModuleManager {
 				Module m = aClass.newInstance();
 				modules.add(m);
 			} catch (InstantiationException | IllegalAccessException e) {
-				e.printStackTrace();
+				Bloomware.LOGGER.error(Bloomware.prefix + "Failed to add module: " + aClass.getName());
+				Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
 			}
 		});
 
@@ -62,5 +65,4 @@ public class ModuleManager {
 			return;
 		modules.stream().filter(m -> m.getKey() == e.getKey()).forEach(Module::toggle);
 	}
-	
 }

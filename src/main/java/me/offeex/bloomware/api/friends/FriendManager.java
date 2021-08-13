@@ -17,7 +17,9 @@ public class FriendManager {
             try {
                 dataFile.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();
+                Bloomware.LOGGER.error(Bloomware.prefix + "Failed to create friends.txt!");
+                Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
+                Bloomware.LOGGER.warn(Bloomware.prefix + "FriendManager may not work and crahs your game!");
             }
         }
         friends = new ArrayList<>();
@@ -72,7 +74,9 @@ public class FriendManager {
                 friends.add(new Friend(line));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Bloomware.LOGGER.error(Bloomware.prefix + "Failed to read friends.txt!");
+            Bloomware.LOGGER.error(Bloomware.prefix + e.toString());
+            Bloomware.LOGGER.warn(Bloomware.prefix + "FriendManager may not work and crash your game!");
         }
     }
 }
