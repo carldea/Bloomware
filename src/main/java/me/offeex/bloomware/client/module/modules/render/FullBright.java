@@ -1,7 +1,7 @@
 package me.offeex.bloomware.client.module.modules.render;
 
 import me.offeex.bloomware.client.module.Module;
-import me.offeex.bloomware.client.setting.Setting;
+import me.offeex.bloomware.client.setting.settings.NumberSetting;
 
 public class FullBright extends Module {
 
@@ -12,6 +12,7 @@ public class FullBright extends Module {
     }
 
     private double oldBrightness;
+    private double newBrightness;
 
     @Override
     public void onEnable() {
@@ -22,5 +23,15 @@ public class FullBright extends Module {
     @Override
     public void onDisable() {
         mc.options.gamma = oldBrightness;
+    }
+
+    @Override
+    public void onTick() {
+        if(this.isEnabled()) {
+            newBrightness = gamma.getValue().intValue();
+            if (mc.options.gamma != newBrightness) {
+                mc.options.gamma = newBrightness;
+            }
+        }
     }
 }

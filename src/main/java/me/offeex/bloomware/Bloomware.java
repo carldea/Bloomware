@@ -66,7 +66,7 @@ public class Bloomware implements ClientModInitializer {
     public void onInitializeClient() {
         printLog("Bloomware started ratting you!");
 
-        System.out.println(
+        printLog(
                 "__________.__                                                      \n" +
                         "\\______   \\  |   ____   ____   _______  _  _______ _______   ____  \n" +
                         " |    |  _/  |  /  _ \\ /  _ \\ /     \\ \\/ \\/ /\\__  \\\\_  __ \\_/ __ \\ \n" +
