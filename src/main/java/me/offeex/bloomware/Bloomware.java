@@ -29,7 +29,7 @@ import me.offeex.bloomware.client.module.ModuleManager;
 public class Bloomware implements ClientModInitializer {
 
     public static final String name = "Bloomware";
-    public static final String version = "1.0-ALPHA";
+    public static final String version = "0.11";
     public static String FontMain = "Comfortaa";
 
     public static final Logger LOGGER = LogManager.getLogger("bloomware");
