@@ -1,20 +1,7 @@
-buildscript {
-	repositories {
-		maven {
-			url "https://plugins.gradle.org/m2/"
-		}
-	}
-	dependencies {
-		classpath "com.github.jengelman.gradle.plugins:shadow:6.1.0"
-	}
-}
-
 plugins {
 	id 'fabric-loom' version '0.6-SNAPSHOT'
 	id 'maven-publish'
-//	id "com.github.johnrengelman.shadow" version "6.1.0"
 }
-apply plugin: "com.github.johnrengelman.shadow"
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -24,7 +11,7 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    maven {
+	maven {
 		name = "jitpack.io"
 		url = "https://jitpack.io"
 	}
@@ -38,9 +25,9 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	implementation 'org.reflections:reflections:0.9.12'
-	implementation 'javassist:javassist:3.12.1.GA'
-	implementation 'club.minnced:java-discord-rpc:2.0.2'
+	compile "com.github.ZeroMemes:Alpine:1.9"
+	compile group: 'org.reflections', name: 'reflections', version: '0.9.11'
+	compile 'club.minnced:java-discord-rpc:2.0.2'
 }
 
 processResources {
@@ -52,22 +39,16 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	options.encoding = "UTF-8"
-}
+	it.options.encoding = "UTF-8"
 
-shadowJar {
-	dependencies {
-		include(dependency('org.reflections:reflections:0.9.12'))
-		include(dependency('javassist:javassist:3.12.1.GA'))
-		include(dependency('club.minnced:java-discord-rpc:2.0.2'))
-		//include(dependency("org.joml:joml"))
+	def targetVersion = 8
+	if (JavaVersion.current().isJava9Compatible()) {
+		it.options.release = targetVersion
 	}
-//	classifier = "shadow"
 }
 
-remapJar {
-	dependsOn(shadowJar)
-	input.set(shadowJar.archiveFile)
+java {
+//	withSourcesJar()
 }
 
 jar {
