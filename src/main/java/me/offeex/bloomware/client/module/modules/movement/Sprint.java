@@ -19,9 +19,7 @@ public class Sprint extends Module {
     @Subscribe
     public void onPlayerMove(EventPlayerMove e) {
         if (isEnabled()) {
-            if(!mc.player.isSneaking() && mc.player.forwardSpeed > 0.0F) {
-                mc.player.setSprinting(true);
-            }
+            mc.options.keySprint.setPressed(true);
         }
     }
 }
