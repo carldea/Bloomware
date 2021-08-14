@@ -36,6 +36,11 @@ This is required only for contributors, not for normal users.
 - **ronmamo** (java lib - Reflections)
 - **Fabric Contributors** (for fabric)
 
+## FAQ
+- Default keybind for ClickGUI is Rshift
+- Default prefix for commands is "$"
+- Recommended version for Bloomware is 1.16.5 (FABRIC ONLY)
+
 ## To Do
 - [X] ClickGUI
 - [X] HudEditor
