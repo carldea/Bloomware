@@ -1,3 +1,8 @@
+<h1 align="center">Bloomware</h1>
+<div align="center">
+  <img src="https://img.shields.io/github/contributors/TheFishDevs/Bloomware" alt="GitHub contributors"/> <img src="https://img.shields.io/github/languages/code-size/TheFishDevs/Bloomware" alt="GitHub code size in bytes"/> <img src="https://tokei.rs/b1/github/TheFishDevs/Bloomware" alt="GitHub lines of code"/> <img src="https://img.shields.io/github/last-commit/TheFishDevs/Bloomware" alt="GitHub last commit"/>
+</div>
+
 # 🛠️ Bloomware
 Bloomware is a free minecraft anarchy utility mod for 1.16+
 
