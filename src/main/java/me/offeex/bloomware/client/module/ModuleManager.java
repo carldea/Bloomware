@@ -1,6 +1,7 @@
 package me.offeex.bloomware.client.module;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.google.common.eventbus.Subscribe;
 import me.offeex.bloomware.api.event.events.EventKeyPress;
@@ -39,13 +40,7 @@ public class ModuleManager {
 	}
 	
 	public static List<Module> getModulesByCategory(Module.Category c) {
-		List<Module> moduless = new ArrayList<>();
-
-		modules.forEach(module -> {
-			if (module.getCategory() == c) moduless.add(module);
-		});
-
-		return moduless;
+		return modules.stream().filter(m -> m.getCategory() == c).collect(Collectors.toList());
 	}
 
 	public static void onTick() {
