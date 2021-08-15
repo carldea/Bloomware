@@ -24,7 +24,6 @@ public class Server extends Module {
 
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("Server: " + server, Bloomware.sFontRenderer.getFontsize()) + 8;
-
             Bloomware.sFontRenderer.drawString("Server: " + server, x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         }
     }

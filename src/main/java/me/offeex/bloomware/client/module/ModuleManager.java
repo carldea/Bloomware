@@ -48,7 +48,7 @@ public class ModuleManager {
 		return moduless;
 	}
 
-	public static void onTick(){
+	public static void onTick() {
 		if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().world != null) {
 			modules.forEach(module -> {
 				if (module.isEnabled()) module.onTick();

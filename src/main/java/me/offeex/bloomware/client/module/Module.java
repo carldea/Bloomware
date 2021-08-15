@@ -124,14 +124,6 @@ public class Module {
 
 	public void onTick() {}
 
-	public List<Setting> getSettings() {
-		return settings;
-	}
-
-	public Setting getSetting(int s) {
-		return settings.get(s);
-	}
-
 	public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {}
 
 	public void setX(int x) {

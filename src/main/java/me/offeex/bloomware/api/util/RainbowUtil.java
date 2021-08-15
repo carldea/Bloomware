@@ -1,8 +1,5 @@
 package me.offeex.bloomware.api.util;
 
-import me.offeex.bloomware.api.util.ColorUtils;
-import me.offeex.bloomware.api.util.Timer;
-
 import java.util.ArrayList;
 
 public class RainbowUtil
