@@ -8,6 +8,9 @@ import me.offeex.bloomware.client.module.Module;
 import me.offeex.bloomware.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
 public class HUD {
 
     MinecraftClient mc = MinecraftClient.getInstance();
@@ -24,7 +27,7 @@ public class HUD {
         RainbowUtil Rainbow = new RainbowUtil();
         int l_I = 0;
         for (Module module : ModuleManager.getModules()) {
-            if (module.isEnabled() && !module.isHidden()) {
+            if (module.isEnabled() && !module.isHidden() && module.shown.getValue()) {
                 mc.textRenderer.drawWithShadow(e.matrix, module.getName(), windowX - mc.textRenderer.getWidth(module.getName()) - 3, windowY, Rainbow.GetRainbowColorAt(l_I), true);
                 windowY += -10;
                 l_I += 15;
