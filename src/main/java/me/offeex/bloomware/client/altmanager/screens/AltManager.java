@@ -37,9 +37,7 @@ public class AltManager extends Screen {
         mc.getTextureManager().bindTexture(background);
         DrawableHelper.drawTexture(matrices, 0, 0, 0, 0, 0, width, height, height, width);
         if (dragging != null) dragging.updateDragLogic(mouseX, mouseY);
-        for (AbstractDraggable ad : panels) {
-            ad.draw(matrices, mouseX, mouseY, delta);
-        }
+        panels.forEach(abstractDraggable -> { abstractDraggable.draw(matrices, mouseX, mouseY, delta);});
         super.render(matrices, mouseX, mouseY, delta);
     }
 

@@ -8,7 +8,6 @@
   },
   "mixins": [
     "MixinMovementInput",
-    "IMixinSession",
     "MixinAbstractPlayerEntity",
     "MixinClientConnection",
     "MixinClientPlayerEntity",
@@ -18,6 +17,7 @@
     "MixinMinecraftClient",
     "MixinPlayerTab",
     "ScreenMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "IMixinSession"
   ]
 }

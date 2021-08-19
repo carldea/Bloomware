@@ -13,7 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class CustomMainMenu extends Screen {
-    Identifier background = new Identifier("bloomware", "bg.mp4");
+    Identifier background = new Identifier("bloomware", "gui/coolbg.png");
     MinecraftClient mc = MinecraftClient.getInstance();
 
     public CustomMainMenu() {

@@ -17,7 +17,6 @@ public class Time extends Module {
     public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {
         if (isEnabled()) {
             width = Bloomware.sFontRenderer.getStringWidth("Time: " + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()), Bloomware.sFontRenderer.getFontsize()) + 8;
-
             Bloomware.sFontRenderer.drawString("Time: " + new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime()), x + 4, y + 4, ColorUtils.getHudColor().getRGB(), true);
         }
     }

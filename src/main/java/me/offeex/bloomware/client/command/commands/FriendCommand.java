@@ -23,17 +23,22 @@ public class FriendCommand extends Command {
                 e.printStackTrace();
             }
             if (removed) {
-                CommandManager.addChatMessage(Formatting.DARK_RED + args[1] + " removed from your friend list");
+                CommandManager.addChatMessage(Formatting.DARK_RED + args[1] + " removed from your friend list!");
             } else {
-                CommandManager.addChatMessage(Formatting.DARK_RED + args[1] + " not found");
+                CommandManager.addChatMessage(Formatting.DARK_RED + args[1] + " not found!");
             }
         } else if (args[0].equals("add")) {
+            boolean added = false;
             try {
-                Bloomware.friendManager.addFriend(new Friend(args[1]));
+                added = Bloomware.friendManager.addFriend(new Friend(args[1]));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            CommandManager.addChatMessage(Formatting.GREEN + args[1] + " added to your friend list");
+            if (added) {
+                CommandManager.addChatMessage(Formatting.GREEN + args[1] + " added to your friend list!");
+            } else {
+                CommandManager.addChatMessage(Formatting.DARK_RED + args[1] + " is already your friend!");
+            }
         }
     }
 }

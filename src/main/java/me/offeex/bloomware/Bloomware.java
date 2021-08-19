@@ -1,10 +1,11 @@
-/*
+/**
  * PROJECT FIXED AND CLEAN UPBY https://github.com/fuckyouthinkimboogieman
  */
 
 package me.offeex.bloomware;
 
 import com.google.common.eventbus.EventBus;
+import me.offeex.bloomware.client.setting.SettingManager;
 import me.offeex.bloomware.api.util.APIChecker;
 import me.offeex.bloomware.client.altmanager.AccountManager;
 import me.offeex.bloomware.api.config.ConfigManager;
@@ -31,7 +32,7 @@ import java.io.FileNotFoundException;
 public class Bloomware implements ClientModInitializer {
 
     public static final String name = "Bloomware";
-    public static final String version = "1.0-ALPHA";
+    public static final String version = "0.11";
     public static String FontMain = "Comfortaa";
 
     public static final Logger LOGGER = LogManager.getLogger("bloomware");
@@ -52,6 +53,8 @@ public class Bloomware implements ClientModInitializer {
     public static HUD hud;
     public static ClickGUI newGui;
     public static HudEditor hudEditor;
+    public static SettingManager settingManager;
+
     public static ModuleNotifier moduleNotifier;
 
     public static APIChecker apiChecker;
@@ -84,6 +87,7 @@ public class Bloomware implements ClientModInitializer {
             System.exit(1);
         }
         commandManager = new CommandManager();
+        settingManager = new SettingManager();
         moduleManager = new ModuleManager();
         moduleNotifier = new ModuleNotifier();
         chatNotifier = new ChatNotifier();
@@ -98,7 +102,8 @@ public class Bloomware implements ClientModInitializer {
         for (Module module : ModuleManager.getModules()) {
             try {
                 configManager.loadConfig(module);
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
 
         printLog(Bloomware.name + " finished ratting you!");

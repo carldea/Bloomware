@@ -3,6 +3,7 @@ package me.offeex.bloomware.mixins;
 import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.gui.api.font.StringRenderer;
 import me.offeex.bloomware.client.module.ModuleManager;
+import me.offeex.bloomware.api.traits.IMixinMinecraftClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.util.Session;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MinecraftClient.class)
-public class MixinMinecraftClient {
+public class MixinMinecraftClient implements IMixinMinecraftClient {
     @Inject(method = "<init>", at = @At("TAIL"))
     public void minecraftClient(CallbackInfo ci) {
         Bloomware.pFontRenderer = new StringRenderer(23, "/assets/fonts/" + Bloomware.FontMain + ".ttf");
@@ -37,6 +38,9 @@ public class MixinMinecraftClient {
     @Final
     private Session session;
 
+    @Shadow
+    private static int currentFps;
+
     @Inject(at = @At("INVOKE"), method = "tick", cancellable = true)
     public void tick(CallbackInfo callbackInfo) {
         if (player != null && world != null) ModuleManager.onTick();
@@ -46,4 +50,6 @@ public class MixinMinecraftClient {
     public void getWindowTitle(CallbackInfoReturnable<String> cir) {
         cir.setReturnValue(Bloomware.name + " v" + Bloomware.version);
     }
+
+    @Override public int fps() { return currentFps; }
 }

@@ -88,23 +88,10 @@ public class AccountManager {
     }
 
     public void converter() {
-
-        System.out.print(array.size());
-
         for (int i = array.size() - 1; i >= 0; i--) {
             array.remove(i);
         }
-
-        System.out.print(array.size());
-
-        for (Account account : accounts) {
-            if (account.getPassword().equals("")) {
-                array.add(writer(account.getLogin(), "", account.type));
-                System.out.print(array.size());
-            } else {
-                array.add(writer(account.getLogin(), account.getPassword(), account.type));
-            }
-        }
+        accounts.forEach(account -> { array.add(writer(account.getLogin(), account.getPassword(), account.type)); });
     }
 
     public void converter(JsonArray a) {
@@ -115,36 +102,17 @@ public class AccountManager {
                 data[i] = entry.getValue().toString();
                 i++;
             }
-            switch (data[0]) {
-                case "\"Mojang\"": {
-                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Mojang));
-                    break;
-                }
-                case "\"Cracked\"": {
-                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Cracked));
-                    break;
-                }
-                case "\"Token\"": {
-                    accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.Token));
-                    break;
-                }
-            }
+            accounts.add(new Account(data[1].replace("\"", ""), data[2].replace("\"", ""), AccountTypes.valueOf(data[0].replace("\"", ""))));
         }
     }
 
     public void deleteAccount(Account account) throws IOException {
         try {
-            System.out.print(accounts.size());
             accounts.remove(account);
-            System.out.print(accounts.size());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
-
-        System.out.print(array.size());
         converter();
-        System.out.print(array.size());
-
         writer();
     }
 

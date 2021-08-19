@@ -9,10 +9,6 @@ public final class MovementUtil
     public static double y = MinecraftClient.getInstance().player.getY();
     public static double z = MinecraftClient.getInstance().player.getZ();
 
-    public static String stringX = String.format("%.1f",x);
-    public static String stringY = String.format("%.1f",y);
-    public static String stringZ = String.format("%.1f",z);
-
     public static float getSpeed() {
         return (float)Math.sqrt(x * x + z * z);
     }

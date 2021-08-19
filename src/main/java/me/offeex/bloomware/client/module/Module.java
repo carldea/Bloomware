@@ -2,13 +2,10 @@ package me.offeex.bloomware.client.module;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.setting.Setting;
-import me.offeex.bloomware.client.setting.settings.BooleanSetting;
-import me.offeex.bloomware.client.setting.settings.KeybindSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 
@@ -17,8 +14,8 @@ public class Module {
 	protected static final MinecraftClient mc = MinecraftClient.getInstance();
 	public String name, description;
 	public double version;
-	public KeybindSetting key = new KeybindSetting(0);
-	public BooleanSetting shown;
+	public int key;
+	public Setting<Boolean> shown;
 	private final Category category;
 	private boolean enabled;
 	private final boolean hidden;
@@ -26,11 +23,10 @@ public class Module {
 	private final Component component = null;
 	public int x = 10, y = 100, width, height = 15;
 
-	public Module(String name, String description, Category category, boolean hidden, Setting... s) {
+	public Module(String name, String description, Category category, boolean hidden) {
 		this.name = name;
-		this.shown = new BooleanSetting("Show in arraylist", true);
+		this.shown = register("Drawn", true);
 		this.description = description;
-		settings = Arrays.asList(s);
 		this.category = category;
 		this.enabled = false;
 		this.hidden = hidden;
@@ -81,11 +77,11 @@ public class Module {
 	}
 	
 	public int getKey() {
-		return key.code;
+		return key;
 	}
 	
 	public void setKey(int key) {
-		this.key.code = key;
+		this.key = key;
 	}
 
 	public void toggle() {
@@ -128,14 +124,6 @@ public class Module {
 
 	public void onTick() {}
 
-	public List<Setting> getSettings() {
-		return settings;
-	}
-
-	public Setting getSetting(int s) {
-		return settings.get(s);
-	}
-
 	public void draw(MatrixStack stack, int mouseX, int mouseY, float tickDelta) {}
 
 	public void setX(int x) {
@@ -144,5 +132,23 @@ public class Module {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	protected Setting<Number> register(final String name, final double value, final double min, final double max, final double inc) {
+		final Setting<Number> s = new Setting<>(name, this, value, min, max, inc);
+		Bloomware.settingManager.add(s);
+		return s;
+	}
+
+	protected Setting<Boolean> register(final String name, final boolean value) {
+		final Setting<Boolean> s = new Setting<>(name, this, value);
+		Bloomware.settingManager.add(s);
+		return s;
+	}
+
+	protected Setting<String> register(final String name, final List<String> modes, final String value) {
+		final Setting<String> s = new Setting<>(name, this, modes, value);
+		Bloomware.settingManager.add(s);
+		return s;
 	}
 }

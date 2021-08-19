@@ -5,10 +5,6 @@ import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.gui.impl.hud.element.Element;
 import me.offeex.bloomware.client.module.Module;
 import me.offeex.bloomware.client.setting.Setting;
-import me.offeex.bloomware.client.setting.settings.BooleanSetting;
-import me.offeex.bloomware.client.setting.settings.KeybindSetting;
-import me.offeex.bloomware.client.setting.settings.ModeSetting;
-import me.offeex.bloomware.client.setting.settings.NumberSetting;
 import net.minecraft.client.MinecraftClient;
 
 import java.io.*;
@@ -30,11 +26,13 @@ public class ConfigManager {
             Files.createFile(output);
         }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        if (module.getSettings() != null) {
-            String json = gson.toJson(this.settingWriter(module));
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(Files.newOutputStream(output)));
-            writer.write(json);
-            writer.close();
+        if (Bloomware.settingManager.getSettings(module) != null && !Bloomware.settingManager.getSettings(module).isEmpty()) {
+            {
+                String json = gson.toJson(this.settingWriter(module));
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(Files.newOutputStream(output)));
+                writer.write(json);
+                writer.close();
+            }
         }
     }
 
@@ -62,15 +60,13 @@ public class ConfigManager {
 
     public JsonObject settingWriter(Module module) {
         JsonObject object = new JsonObject();
-        for (Setting setting : module.getSettings()) {
-            if (setting instanceof NumberSetting) {
-                object.add(setting.getName(), new JsonPrimitive(((NumberSetting) setting).getValue()));
-            } else if (setting instanceof BooleanSetting) {
-                object.add(setting.getName(), new JsonPrimitive(((BooleanSetting) setting).isEnabled()));
-            } else if (setting instanceof ModeSetting) {
-                object.add(setting.getName(), new JsonPrimitive(((ModeSetting) setting).getMode()));
-            } else if (setting instanceof KeybindSetting) {
-                object.add(setting.getName(), new JsonPrimitive(((KeybindSetting) setting).getKeyCode()));
+        for (Setting setting : Bloomware.settingManager.getSettings(module)) {
+            if (setting.getType().equalsIgnoreCase("Double")) {
+                object.add(setting.getName(), new JsonPrimitive(((Setting<Number>) setting).getValue()));
+            } else if (setting.getType().equalsIgnoreCase("Boolean")) {
+                object.add(setting.getName(), new JsonPrimitive(((Setting<Boolean>) setting).getValue()));
+            } else if (setting.getType().equalsIgnoreCase("String")) {
+                object.add(setting.getName(), new JsonPrimitive(((Setting<String>) setting).getValue()));
             }
         }
         if (module.getCategory().equals(Module.Category.HUD)) {
@@ -82,14 +78,12 @@ public class ConfigManager {
     }
 
     private void valueLoader(Setting setting, JsonElement element) {
-        if (setting instanceof BooleanSetting) {
-            ((BooleanSetting) setting).setEnabled(element.getAsBoolean());
-        } else if (setting instanceof NumberSetting) {
-            ((NumberSetting) setting).setValue(element.getAsDouble());
-        } else if (setting instanceof KeybindSetting) {
-            ((KeybindSetting) setting).setKeyCode(element.getAsInt());
-        } else if (setting instanceof ModeSetting) {
-            ((ModeSetting) setting).setMode(element.getAsString());
+        if (setting.getType().equalsIgnoreCase("Boolean")) {
+            ((Setting<Boolean>) setting).setValue(element.getAsBoolean());
+        } else if (setting.getType().equalsIgnoreCase("Double")) {
+            ((Setting<Number>) setting).setValue(element.getAsDouble());
+        } else if (setting.getType().equalsIgnoreCase("String")) {
+            ((Setting<String>) setting).setValue(element.getAsString());
         }
     }
 
@@ -105,7 +99,8 @@ public class ConfigManager {
                     } else {
                         module.disable();
                     }
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
 
             if (module.getCategory().equals(Module.Category.HUD)) {
@@ -120,7 +115,7 @@ public class ConfigManager {
                 }
             }
 
-            module.getSettings().forEach(setting -> {
+            Bloomware.settingManager.getSettings(module).forEach(setting -> {
                 if (settingName.equals(setting.getName())) {
                     valueLoader(setting, value);
                 }

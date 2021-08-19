@@ -1,4 +1,4 @@
-package me.offeex.bloomware.client.module.modules.render;
+package me.offeex.bloomware.client.module.modules.player;
 
 import me.offeex.bloomware.client.command.CommandManager;
 import me.offeex.bloomware.client.module.Module;
@@ -6,10 +6,12 @@ import me.offeex.bloomware.client.setting.settings.BooleanSetting;
 import me.offeex.bloomware.client.setting.settings.NumberSetting;
 
 public class AntiItemLag extends Module {
+
+    private final Setting<Number> maxLength = register("Max Length", 28, 1, 100, 1);
+    private final Setting<Boolean> notify = register("Notify", true);
+
     public AntiItemLag() {
-        super("AntiItemLag", "Allows you to bypass lags with too long item name", Category.RENDER, false,
-                new NumberSetting("Max Length", 28, 1, 100, 1),
-                new BooleanSetting("Notify", true));
+        super("AntiItemLag", "Allows you to bypass lags with too long item name", Category.PLAYER, false);
     }
 
     @Override

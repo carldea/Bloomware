@@ -57,9 +57,10 @@ public class FriendManager {
 
     public ArrayList<String> convert() {
         ArrayList<String> friendsText = new ArrayList<>();
-        for (Friend friend : friends) {
-            friendsText.add(friend.getNickname());
-        }
+//        for (Friend friend : friends) {
+//            friendsText.add(friend.getNickname());
+//        }
+        friends.forEach(friend -> friendsText.add(friend.getNickname()));
         return friendsText;
     }
 
@@ -68,8 +69,7 @@ public class FriendManager {
             BufferedReader reader = new BufferedReader(new FileReader(dataFile));
             String line = reader.readLine();
             while (line != null) {
-                line = reader.readLine();
-                friends.add(new Friend(line));
+                friends.add(new Friend(reader.readLine()));
             }
         } catch (IOException e) {
             e.printStackTrace();

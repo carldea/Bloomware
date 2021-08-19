@@ -9,7 +9,7 @@ public class ItemDurability extends Module {
     private String text;
 
     public ItemDurability() {
-        super("Item Durability", "Allows you to see durability of item on your screen.", Module.Category.HUD, true);
+        super("Item Durability", "Allows you to see durability of item on your screen.", Category.HUD, true);
     }
 
     @Override
@@ -17,10 +17,10 @@ public class ItemDurability extends Module {
         if (isEnabled()) {
             assert mc.player != null;
             if (!mc.player.getMainHandStack().isEmpty() || !mc.player.getMainHandStack().isDamageable()) {
-                width = (int) (Bloomware.sFontRenderer.getStringWidth("Durability: -", Bloomware.sFontRenderer.getFontsize()));
+                width = Bloomware.sFontRenderer.getStringWidth("Durability: -", Bloomware.sFontRenderer.getFontsize());
                 text = "Durability: -";
             } else {
-                width = (int) (Bloomware.sFontRenderer.getStringWidth("Durability: " + (mc.player.getMainHandStack().getMaxDamage() - mc.player.getMainHandStack().getDamage()), Bloomware.sFontRenderer.getFontsize()));
+                width = Bloomware.sFontRenderer.getStringWidth("Durability: " + (mc.player.getMainHandStack().getMaxDamage() - mc.player.getMainHandStack().getDamage()), Bloomware.sFontRenderer.getFontsize());
                 text = "Durability: " + (mc.player.getMainHandStack().getMaxDamage() - mc.player.getMainHandStack().getDamage());
             }
 //            if (ClickGui.getCurrentScreen() == 2) {
