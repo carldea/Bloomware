@@ -1,9 +1,11 @@
 package me.offeex.bloomware.api.config;
 
 import com.google.gson.*;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.gui.impl.hud.element.Element;
 import me.offeex.bloomware.client.module.Module;
+import me.offeex.bloomware.client.module.ModuleManager;
 import me.offeex.bloomware.client.setting.Setting;
 import net.minecraft.client.MinecraftClient;
 
@@ -25,6 +27,7 @@ public class ConfigManager {
         if (!Files.exists(output = Paths.get(Bloomware.name + "/" + module.getName() + ".json"))) {
             Files.createFile(output);
         }
+
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         if (Bloomware.settingManager.getSettings(module) != null && !Bloomware.settingManager.getSettings(module).isEmpty()) {
             {
@@ -34,6 +37,14 @@ public class ConfigManager {
                 writer.close();
             }
         }
+    }
+
+    public void saveConfig() {
+        ModuleManager.getModules().forEach(module -> {
+            try {
+                saveConfig(module);
+            } catch (IOException ignored) {}
+        });
     }
 
     public void fileRepairer(Module module) throws IOException {
@@ -53,9 +64,17 @@ public class ConfigManager {
         try {
             Bloomware.configManager.loadSettingsFromFile(new JsonParser().parse((Reader) new InputStreamReader(stream)).getAsJsonObject(), module);
         } catch (Exception exception) {
-            Bloomware.LOGGER.info("Found bad config for " + module.getName() + "! Repairing...");
+            Bloomware.logger.info("Found bad config for " + module.getName() + "! Repairing...");
             fileRepairer(module);
         }
+    }
+
+    public void loadConfig() {
+        ModuleManager.getModules().forEach(module -> {
+            try {
+                loadConfig(module);
+            } catch (IOException ignored) {}
+        });
     }
 
     public JsonObject settingWriter(Module module) {

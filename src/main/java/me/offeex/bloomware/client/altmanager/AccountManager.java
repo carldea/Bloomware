@@ -36,7 +36,7 @@ public class AccountManager {
             array = (JsonArray) new JsonParser().parse(s);
             converter(array);
         } catch (Exception e) {
-            Bloomware.LOGGER.info("Found bad account config! Repairing...");
+            Bloomware.logger.info("Found bad account config! Repairing...");
             try {
                 fileRepair();
             } catch (Exception ignored) {}

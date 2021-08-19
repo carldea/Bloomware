@@ -1,28 +1,33 @@
 package me.offeex.bloomware.api.util;
 
+import me.offeex.bloomware.Bloomware;
+import net.minecraft.client.MinecraftClient;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
+// Говнище класс
+@Deprecated
 public class APIChecker {
 
     public APIChecker() {
-    }
+        File path = new File(MinecraftClient.getInstance().runDirectory, "/mods");
 
-    //    Check if fabric api installed
-    File file = new File(System.getProperty("user.home") + "/AppData/Roaming/.minecraft/mods");
-
-    public void check() throws FileNotFoundException {
-        if (file.isDirectory()) {
+        if (path.isDirectory()) {
             boolean found = false;
-            for (File f : Objects.requireNonNull(file.listFiles())) {
+            for (File f : Objects.requireNonNull(path.listFiles())) {
                 if (f.getName().startsWith("fabric-api")) {
                     found = true;
                     break;
                 }
             }
+
             if (!found) {
-                throw new FileNotFoundException();
+                Bloomware.logger.info("Seems you have not installed Fabric-Api.");
+                Bloomware.logger.info("Drag Fabric-Api into /mods folder and try again.");
+
+                Runtime.getRuntime().exit(1);
             }
         }
     }

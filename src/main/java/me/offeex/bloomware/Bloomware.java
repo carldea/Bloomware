@@ -1,5 +1,5 @@
 /**
- * PROJECT FIXED AND CLEAN UPBY https://github.com/fuckyouthinkimboogieman
+ * PROJECT FIXED AND CLEAN UP BY https://github.com/fuckyouthinkimboogieman
  */
 
 package me.offeex.bloomware;
@@ -28,6 +28,7 @@ import me.offeex.bloomware.client.command.CommandManager;
 import me.offeex.bloomware.client.module.ModuleManager;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Bloomware implements ClientModInitializer {
 
@@ -35,7 +36,7 @@ public class Bloomware implements ClientModInitializer {
     public static final String version = "0.11";
     public static String FontMain = "Comfortaa";
 
-    public static final Logger LOGGER = LogManager.getLogger("bloomware");
+    public static final Logger logger = LogManager.getLogger("Bloomware");
     public static EventBus EVENTBUS = new EventBus();
 
     public static RenderHelper rh;
@@ -57,18 +58,9 @@ public class Bloomware implements ClientModInitializer {
 
     public static ModuleNotifier moduleNotifier;
 
-    public static APIChecker apiChecker;
-    public final Object synchronize = new Object();
-
-    public void printLog(String text) {
-        synchronized (synchronize) {
-            LOGGER.info(text);
-        }
-    }
-
     @Override
     public void onInitializeClient() {
-        printLog("Bloomware started ratting you!");
+        logger.info("Bloomware started ratting you!");
 
         System.out.println(
                 "__________.__                                                      \n" +
@@ -78,14 +70,8 @@ public class Bloomware implements ClientModInitializer {
                         " |______  /____/\\____/ \\____/|__|_|  /\\/\\_/  (____  /__|    \\___  >\n" +
                         "        \\/                         \\/             \\/            \\/ ");
 
-        apiChecker = new APIChecker();
-        try {
-            apiChecker.check();
-        } catch (FileNotFoundException e) {
-            System.out.println("Bloomware: Seems you have not installed Fabric-Api.");
-            System.out.println("Bloomware: Drag Fabric-Api into /mods folder and try again.");
-            System.exit(1);
-        }
+        new APIChecker();
+
         commandManager = new CommandManager();
         settingManager = new SettingManager();
         moduleManager = new ModuleManager();
@@ -99,22 +85,12 @@ public class Bloomware implements ClientModInitializer {
         friendManager = new FriendManager();
         hud = new HUD();
 
-        for (Module module : ModuleManager.getModules()) {
-            try {
-                configManager.loadConfig(module);
-            } catch (Exception ignored) {
-            }
-        }
+        configManager.loadConfig();
 
-        printLog(Bloomware.name + " finished ratting you!");
+        logger.info(Bloomware.name + " finished ratting you!");
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            for (Module module : ModuleManager.getModules()) {
-                try {
-                    configManager.saveConfig(module);
-                } catch (Exception ignored) {
-                }
-            }
+            configManager.saveConfig();
         }));
     }
 }
