@@ -1,9 +1,8 @@
-package me.offeex.bloomware.client.module.modules.player;
+package me.offeex.bloomware.client.module.modules.render;
 
 import me.offeex.bloomware.client.command.CommandManager;
 import me.offeex.bloomware.client.module.Module;
-import me.offeex.bloomware.client.setting.settings.BooleanSetting;
-import me.offeex.bloomware.client.setting.settings.NumberSetting;
+import me.offeex.bloomware.client.setting.Setting;
 
 public class AntiItemLag extends Module {
 
@@ -18,9 +17,9 @@ public class AntiItemLag extends Module {
     public void onTick() {
         assert mc.player != null;
         if (mc.player.getMainHandStack().hasCustomName()) {
-            if (mc.player.getMainHandStack().getName().asString().length() >= ((NumberSetting) this.getSetting(0)).getValue()) {
+            if (mc.player.getMainHandStack().getName().asString().length() >= maxLength.getValue().intValue()) {
                 mc.player.getMainHandStack().removeCustomName();
-                if (((BooleanSetting) this.getSetting(1)).isEnabled()) {
+                if (notify.getValue()) {
                     CommandManager.addChatMessage("Found lag item! Fixing...");
                 }
             }
