@@ -14,7 +14,7 @@ We have a discord server - [Discord](https://discord.gg/D4G7JN5d7m)
 1) Download latest mod .jar from repo's releases.
 2) Drag it into `.minecraft/mods` directory.
 3) Install [Fabric](https://fabricmc.net/).
-4) (Recommended) Install [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/files?sort=-name&__cf_chl_jschl_tk__=pmd_247af5374ad38c84fef2e144d9361c1f357f929b-1628948630-0-gqNtZGzNAk2jcnBszQdi) and drag it into `.minecraft/mods` directory.
+4) Install [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/files?sort=-name&__cf_chl_jschl_tk__=pmd_247af5374ad38c84fef2e144d9361c1f357f929b-1628948630-0-gqNtZGzNAk2jcnBszQdi) and drag it into `.minecraft/mods` directory.
 
 ## Prepare dev environment
 This is required only for contributors, not for normal users.
