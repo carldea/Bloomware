@@ -8,8 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Objects;
 
-// Говнище класс
-@Deprecated
+// Говнище класс был
 public class APIChecker {
 
     public APIChecker() {
