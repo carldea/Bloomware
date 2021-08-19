@@ -27,13 +27,7 @@ public class RichPresence extends Module {
         Thread t = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 lib.Discord_RunCallbacks();
-                if (mc.getCurrentServerEntry() != null) {
-                    rpc.details = "Playing on " + mc.getCurrentServerEntry().address;
-                } else if (mc.isInSingleplayer()) {
-                    rpc.details = "Playing on singleplayer";
-                } else {
-                    rpc.details = "On main menu";
-                }
+                rpc.details = mc.getCurrentServerEntry() != null ? "Playing on" + mc.getCurrentServerEntry().address : mc.isInSingleplayer() ? "On main menu" : "Playing on singleplayer";
                 lib.Discord_UpdatePresence(rpc);
 
                 try {
