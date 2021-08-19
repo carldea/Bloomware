@@ -1,4 +1,4 @@
-package me.offeex.bloomware.client.module.modules.render;
+package me.offeex.bloomware.client.module.modules.world;
 
 import com.google.common.eventbus.Subscribe;
 import me.offeex.bloomware.api.event.events.EventPacket;
@@ -8,7 +8,7 @@ import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 
 public class CustomTime extends Module {
     public CustomTime() {
-        super("CustomTime", "Changes world time you want.", Category.RENDER, false,
+        super("CustomTime", "Changes world time you want.", Category.WORLD, false,
                 new NumberSetting("Time", 18000, 0, 24000, 1));
     }
 

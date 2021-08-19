@@ -1,10 +1,10 @@
-package me.offeex.bloomware.client.module.modules.player;
+package me.offeex.bloomware.client.module.modules.movement;
 
 import me.offeex.bloomware.client.module.Module;
 
 public class AutoWalk extends Module {
     public AutoWalk() {
-        super("AutoWalk", "Allows you to go automatically", Category.PLAYER, false);
+        super("AutoWalk", "Allows you to go automatically", Category.MOVEMENT, false);
     }
 
     @Override

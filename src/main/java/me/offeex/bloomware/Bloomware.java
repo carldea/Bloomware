@@ -1,10 +1,11 @@
-/**
+/*
  * PROJECT FIXED AND CLEAN UPBY https://github.com/fuckyouthinkimboogieman
  */
 
 package me.offeex.bloomware;
 
 import com.google.common.eventbus.EventBus;
+import me.offeex.bloomware.api.util.APIChecker;
 import me.offeex.bloomware.client.altmanager.AccountManager;
 import me.offeex.bloomware.api.config.ConfigManager;
 import me.offeex.bloomware.api.friends.FriendManager;
@@ -24,6 +25,8 @@ import org.apache.logging.log4j.Logger;
 
 import me.offeex.bloomware.client.command.CommandManager;
 import me.offeex.bloomware.client.module.ModuleManager;
+
+import java.io.FileNotFoundException;
 
 public class Bloomware implements ClientModInitializer {
 
@@ -49,9 +52,9 @@ public class Bloomware implements ClientModInitializer {
     public static HUD hud;
     public static ClickGUI newGui;
     public static HudEditor hudEditor;
-
     public static ModuleNotifier moduleNotifier;
 
+    public static APIChecker apiChecker;
     public final Object synchronize = new Object();
 
     public void printLog(String text) {
@@ -72,6 +75,14 @@ public class Bloomware implements ClientModInitializer {
                         " |______  /____/\\____/ \\____/|__|_|  /\\/\\_/  (____  /__|    \\___  >\n" +
                         "        \\/                         \\/             \\/            \\/ ");
 
+        apiChecker = new APIChecker();
+        try {
+            apiChecker.check();
+        } catch (FileNotFoundException e) {
+            System.out.println("Bloomware: Seems you have not installed Fabric-Api.");
+            System.out.println("Bloomware: Drag Fabric-Api into /mods folder and try again.");
+            System.exit(1);
+        }
         commandManager = new CommandManager();
         moduleManager = new ModuleManager();
         moduleNotifier = new ModuleNotifier();
@@ -87,8 +98,7 @@ public class Bloomware implements ClientModInitializer {
         for (Module module : ModuleManager.getModules()) {
             try {
                 configManager.loadConfig(module);
-            } catch (Exception ignored) {
-            }
+            } catch (Exception ignored) {}
         }
 
         printLog(Bloomware.name + " finished ratting you!");

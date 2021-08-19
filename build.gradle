@@ -24,17 +24,14 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    maven {
-		name = "jitpack.io"
-		url = "https://jitpack.io"
-	}
-
+	mavenCentral()
 	jcenter()
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
@@ -57,16 +54,14 @@ tasks.withType(JavaCompile).configureEach {
 
 shadowJar {
 	dependencies {
-		include(dependency('org.reflections:reflections:0.9.12'))
-		include(dependency('javassist:javassist:3.12.1.GA'))
-		include(dependency('club.minnced:java-discord-rpc:2.0.2'))
-		//include(dependency("org.joml:joml"))
+		include(dependency("org.reflections:reflections:0.9.12"))
+		include(dependency("javassist:javassist:3.12.1.GA"))
+		include(dependency("club.minnced:java-discord-rpc:2.0.2"))
 	}
-//	classifier = "shadow"
+	archiveClassifier.set("shadow")
 }
 
 remapJar {
-	dependsOn(shadowJar)
 	input.set(shadowJar.archiveFile)
 }
 
