@@ -1,5 +1,5 @@
 /**
- * PROJECT FIXED AND CLEAN UP BY https://github.com/fuckyouthinkimboogieman
+ * PROJECT FIXED AND CLEAN UPBY https://github.com/fuckyouthinkimboogieman
  */
 
 package me.offeex.bloomware;
@@ -27,16 +27,13 @@ import org.apache.logging.log4j.Logger;
 import me.offeex.bloomware.client.command.CommandManager;
 import me.offeex.bloomware.client.module.ModuleManager;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 public class Bloomware implements ClientModInitializer {
 
     public static final String name = "Bloomware";
-    public static final String version = "0.11";
+    public static final String version = "0.2.0";
     public static String FontMain = "Comfortaa";
 
-    public static final Logger logger = LogManager.getLogger("Bloomware");
+    public static final Logger logger = LogManager.getLogger("bloomware");
     public static EventBus EVENTBUS = new EventBus();
 
     public static RenderHelper rh;
@@ -58,9 +55,18 @@ public class Bloomware implements ClientModInitializer {
 
     public static ModuleNotifier moduleNotifier;
 
+    public static APIChecker apiChecker;
+    public final Object synchronize = new Object();
+
+    public void printLog(String text) {
+        synchronized (synchronize) {
+            logger.info(text);
+        }
+    }
+
     @Override
     public void onInitializeClient() {
-        logger.info("Bloomware started ratting you!");
+        printLog("Bloomware started ratting you!");
 
         System.out.println(
                 "__________.__                                                      \n" +
@@ -70,8 +76,7 @@ public class Bloomware implements ClientModInitializer {
                         " |______  /____/\\____/ \\____/|__|_|  /\\/\\_/  (____  /__|    \\___  >\n" +
                         "        \\/                         \\/             \\/            \\/ ");
 
-        new APIChecker();
-
+        apiChecker = new APIChecker();
         commandManager = new CommandManager();
         settingManager = new SettingManager();
         moduleManager = new ModuleManager();
@@ -85,12 +90,23 @@ public class Bloomware implements ClientModInitializer {
         friendManager = new FriendManager();
         hud = new HUD();
 
-        configManager.loadConfig();
+        for (Module module : ModuleManager.getModules()) {
+            try {
+                configManager.loadConfig(module);
+            } catch (Exception ignored) {
+            }
+        }
 
-        logger.info(Bloomware.name + " finished ratting you!");
+        printLog(Bloomware.name + " finished ratting you!");
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            configManager.saveConfig();
+            for (Module module : ModuleManager.getModules()) {
+                try {
+                    configManager.saveConfig(module);
+                } catch (Exception ignored) {
+                }
+            }
+            ModuleManager.getModule("Freecam").disable();
         }));
     }
 }

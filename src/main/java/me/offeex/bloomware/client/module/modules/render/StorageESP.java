@@ -14,17 +14,17 @@ import net.minecraft.util.math.Box;
 public class StorageESP extends Module {
 
     private final Setting<Boolean> chests = register("Chest", false);
-    private final Setting<Boolean> echests = register("E-Chest", false);
+    private final Setting<Boolean> echests = register("EChest", false);
     private final Setting<Boolean> shulkers = register("Shulkers", false);
-    private final Setting<Number> chestRed = register("Chest (R)", 100, 1, 255, 1);
-    private final Setting<Number> chestGreen = register("Chest (G)", 5, 1, 255, 1);
-    private final Setting<Number> chestBlue = register("Chest (B)", 100, 1, 255, 1);
-    private final Setting<Number> echestsRed = register("E-Chest (R)", 100, 1, 255, 1);
-    private final Setting<Number> echestsGreen = register("E-Chest (G)", 5, 1, 255, 1);
-    private final Setting<Number> echestsBlue = register("E-Chest (B)", 100, 1, 255, 1);
-    private final Setting<Number> shulkersRed = register("Shulker (R)", 100, 1, 255, 1);
-    private final Setting<Number> shulkersGreen = register("Shulker (G)", 5, 1, 255, 1);
-    private final Setting<Number> shulkersBlue = register("Shulker (B)", 100, 1, 255, 1);
+    private final Setting<Number> chestRed = register("ChestR", 100, 1, 255, 1);
+    private final Setting<Number> chestGreen = register("ChestG", 5, 1, 255, 1);
+    private final Setting<Number> chestBlue = register("ChestB", 100, 1, 255, 1);
+    private final Setting<Number> echestsRed = register("EChestR", 100, 1, 255, 1);
+    private final Setting<Number> echestsGreen = register("EChestG", 5, 1, 255, 1);
+    private final Setting<Number> echestsBlue = register("EChestB", 100, 1, 255, 1);
+    private final Setting<Number> shulkersRed = register("ShulkerR", 100, 1, 255, 1);
+    private final Setting<Number> shulkersGreen = register("ShulkerG", 5, 1, 255, 1);
+    private final Setting<Number> shulkersBlue = register("ShulkerB", 100, 1, 255, 1);
 
     public StorageESP() {
         super("StorageESP", "Allows you to see storages", Category.RENDER, false);

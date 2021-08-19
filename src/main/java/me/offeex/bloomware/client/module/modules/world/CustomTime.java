@@ -11,7 +11,7 @@ public class CustomTime extends Module {
     private final Setting<Number> time = register("Time", 18000, 0, 24000, 1);
 
     public CustomTime() {
-        super("CustomTime", "Changes world time you want.", Category.RENDER, false);
+        super("CustomTime", "Changes world time you want.", Category.WORLD, false);
     }
 
     private long oldTime = 0;

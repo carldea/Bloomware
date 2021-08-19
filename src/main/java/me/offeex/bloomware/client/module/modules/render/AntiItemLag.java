@@ -6,7 +6,7 @@ import me.offeex.bloomware.client.setting.Setting;
 
 public class AntiItemLag extends Module {
 
-    private final Setting<Number> maxLength = register("Max Length", 28, 1, 100, 1);
+    private final Setting<Number> maxLength = register("MaxLength", 28, 1, 100, 1);
     private final Setting<Boolean> notify = register("Notify", true);
 
     public AntiItemLag() {

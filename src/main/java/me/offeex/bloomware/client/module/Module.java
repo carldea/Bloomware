@@ -18,18 +18,15 @@ public class Module {
 	public Setting<Boolean> shown;
 	private final Category category;
 	private boolean enabled;
-	private final boolean hidden;
 	public List<Setting> settings;
-	private final Component component = null;
 	public int x = 10, y = 100, width, height = 15;
 
 	public Module(String name, String description, Category category, boolean hidden) {
 		this.name = name;
-		this.shown = register("Drawn", true);
 		this.description = description;
 		this.category = category;
 		this.enabled = false;
-		this.hidden = hidden;
+		this.shown = register("Drawn", hidden);
 	}
 
 	public enum Category {
@@ -73,7 +70,7 @@ public class Module {
 	}
 
 	public boolean isHidden() {
-		return hidden;
+		return shown.getValue();
 	}
 	
 	public int getKey() {

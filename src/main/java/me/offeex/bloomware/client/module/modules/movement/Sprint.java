@@ -4,10 +4,14 @@ import com.google.common.eventbus.Subscribe;
 import me.offeex.bloomware.api.event.events.EventPlayerMove;
 import me.offeex.bloomware.api.util.MovementUtil;
 import me.offeex.bloomware.client.module.Module;
+import me.offeex.bloomware.client.setting.Setting;
 import net.minecraft.util.math.Vec3d;
 
-public class Sprint extends Module {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+public class Sprint extends Module {
     public Sprint() {
         super("Sprint", "Sprinting you", Category.MOVEMENT, false);
     }
@@ -18,9 +22,7 @@ public class Sprint extends Module {
 
     @Subscribe
     public void onPlayerMove(EventPlayerMove e) {
-        if (isEnabled()) {
-            mc.options.keySprint.setPressed(true);
-        }
+        mc.player.setSprinting(true);
     }
 }
 
