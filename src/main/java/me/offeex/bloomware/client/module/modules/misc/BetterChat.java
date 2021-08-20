@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class BetterChat extends Module {
     private final ArrayList<String> forbiddenSymbols = new ArrayList<>();
-    private final Setting<Boolean> greenChat = register("GreenChat", true);
+    private final Setting<Boolean> greenText = register("GreenText", false);
     private final Setting<Boolean> chatSuffix = register("ChatSuffix", true);
 
     public BetterChat() {
@@ -26,11 +26,11 @@ public class BetterChat extends Module {
         if (event.getPacket() instanceof ChatMessageC2SPacket) {
             IChatMessageC2SPacket packet = (IChatMessageC2SPacket) event.getPacket();
             String message = "";
-            if (!forbiddenSymbols.contains(packet.getChatMessage().substring(0, 0)) && greenChat.getValue()) {
+            if (!forbiddenSymbols.contains(packet.getChatMessage().substring(0, 0)) && greenText.getValue()) {
                 message += "> " + packet.getChatMessage();
             }
             if (chatSuffix.getValue()) {
-                if (greenChat.getValue()) {
+                if (greenText.getValue()) {
                     message += " : " + Bloomware.name;
                 } else {
                     message += packet.getChatMessage() + " : " + Bloomware.name;
