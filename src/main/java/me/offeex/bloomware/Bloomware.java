@@ -89,8 +89,6 @@ public class Bloomware implements ClientModInitializer {
 
         logger.info(Bloomware.name + " finished ratting you!");
 
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            configManager.saveConfig();
-        }));
+        Runtime.getRuntime().addShutdownHook(new Thread(configManager::saveConfig));
     }
 }
