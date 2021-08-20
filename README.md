@@ -59,5 +59,5 @@ This is required only for contributors, not for normal users.
 - [X] Friends
 - [X] JSON configs
 - [X] Settings
-  - [ ] using Commands
+  - [X] using Commands
   - [X] using ClickGUI
