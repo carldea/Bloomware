@@ -93,8 +93,7 @@ public class Bloomware implements ClientModInitializer {
         for (Module module : ModuleManager.getModules()) {
             try {
                 configManager.loadConfig(module);
-            } catch (Exception ignored) {
-            }
+            } catch (Exception ignored) {}
         }
 
         printLog(Bloomware.name + " finished ratting you!");
