@@ -18,6 +18,10 @@
     "MixinPlayerTab",
     "ScreenMixin",
     "TitleScreenMixin",
-    "IMixinSession"
+    "IMixinSession",
+    "MixinHeldItemRenderer",
+    "IEntityVelocityUpdateS2CPacket",
+    "IExplosionS2CPacket",
+    "IChatMessageC2SPacket"
   ]
 }

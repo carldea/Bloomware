@@ -1,6 +1,10 @@
 package me.offeex.bloomware.client.module.modules.movement;
 
 import me.offeex.bloomware.client.module.Module;
+import me.offeex.bloomware.client.setting.Setting;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AutoWalk extends Module {
     public AutoWalk() {

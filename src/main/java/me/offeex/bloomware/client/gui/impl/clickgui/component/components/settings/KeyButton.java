@@ -61,8 +61,8 @@ public class KeyButton extends Component {
     public void render() {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX(), button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
         Bloomware.sFontRenderer.drawString("Key", button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
-        if(binding) {
-            Bloomware.sFontRenderer.drawString("...", button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
+        if (binding) {
+            Bloomware.sFontRenderer.drawString("...", button.frame.getX() + button.frame.getWidth() - 2 - Bloomware.sFontRenderer.getStringWidth("...", Bloomware.sFontRenderer.getFontsize()), button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
         } else {
             Text keyString;
             switch (button.module.getKey()) {
@@ -81,11 +81,11 @@ public class KeyButton extends Component {
                 default:
                     keyString = InputUtil.fromKeyCode(button.module.getKey(), -1).getLocalizedText();
             }
-            Bloomware.sFontRenderer.drawString(keyString.toString(), button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.Colors.WHITE.getRGB(), true);
+            Bloomware.sFontRenderer.drawString(keyString.asString(), button.frame.getX() + button.frame.getWidth() - 2 - Bloomware.sFontRenderer.getStringWidth(keyString.asString(), Bloomware.sFontRenderer.getFontsize()), button.frame.getY() + offset + 2, ColorUtils.Colors.WHITE.getRGB(), true);
         }
     }
 
     public boolean isHovered(final double x, final double y) {
-        return x > this.x && x < this.x + 88 && y > this.y && y < this.y + 12;
+        return x > this.x && x < this.x + 110 && y > this.y && y < this.y + 12;
     }
 }

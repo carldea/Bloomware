@@ -1,7 +1,6 @@
 package me.offeex.bloomware.api.config;
 
 import com.google.gson.*;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.gui.impl.hud.element.Element;
 import me.offeex.bloomware.client.module.Module;
@@ -39,14 +38,6 @@ public class ConfigManager {
         }
     }
 
-    public void saveConfig() {
-        ModuleManager.getModules().forEach(module -> {
-            try {
-                saveConfig(module);
-            } catch (IOException ignored) {}
-        });
-    }
-
     public void fileRepairer(Module module) throws IOException {
         if (!Files.exists(output = Paths.get(Bloomware.name + "/" + module.getName() + ".json"))) {
             Files.createFile(output);
@@ -69,14 +60,6 @@ public class ConfigManager {
         }
     }
 
-    public void loadConfig() {
-        ModuleManager.getModules().forEach(module -> {
-            try {
-                loadConfig(module);
-            } catch (IOException ignored) {}
-        });
-    }
-
     public JsonObject settingWriter(Module module) {
         JsonObject object = new JsonObject();
         for (Setting setting : Bloomware.settingManager.getSettings(module)) {
@@ -93,6 +76,7 @@ public class ConfigManager {
             object.add("y", new JsonPrimitive(module.y));
         }
         object.add("enabled", new JsonPrimitive(module.isEnabled()));
+        object.add("bind", new JsonPrimitive(module.getKey()));
         return object;
     }
 
@@ -120,6 +104,14 @@ public class ConfigManager {
                     }
                 } catch (Exception ignored) {
                 }
+            }
+
+            if (settingName.equals("bind")) {
+                module.setKey(value.getAsInt());
+            }
+
+            if (settingName.equals("Drawn")) {
+                module.shown.setValue(value.getAsBoolean());
             }
 
             if (module.getCategory().equals(Module.Category.HUD)) {

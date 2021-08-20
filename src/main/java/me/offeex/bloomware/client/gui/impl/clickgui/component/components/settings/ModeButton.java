@@ -69,7 +69,7 @@ public class ModeButton extends Component {
     public void render() {
         DrawableHelper.fill(new MatrixStack(), button.frame.getX(), button.frame.getY() + offset, button.frame.getX() + button.frame.getWidth(), button.frame.getY() + offset + 12, isHovered ? new Color(0, 0, 0, 150).getRGB() : new Color(0, 0, 0, 130).getRGB());
         Bloomware.sFontRenderer.drawString(setting.getName(), button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
-        Bloomware.sFontRenderer.drawString(setting.getValue(), button.frame.getX() + 3, button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
+        Bloomware.sFontRenderer.drawString(setting.getValue(), button.frame.getX() + button.frame.getWidth() - 2 - Bloomware.sFontRenderer.getStringWidth(setting.getValue(), Bloomware.sFontRenderer.getFontsize()), button.frame.getY() + offset + 2, ColorUtils.getTextColor().getRGB(), true);
     }
 
     public boolean isHovered(final double x, final double y) {
