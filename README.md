@@ -41,6 +41,7 @@ This is required only for contributors, not for normal users.
 - **Rikonardo** (FontRenderer, moral support, tips, etc.)
 - **srgantmoomoo** (client base "bedroom")
 - **ronmamo** (java lib - Reflections)
+- **johnrengelman** (java lib - ShadowJar)
 - **Fabric Contributors** (for fabric)
 
 ## FAQ
