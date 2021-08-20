@@ -50,8 +50,8 @@ public class Element implements IDraggable {
 
 	public void updatePosition(final int mouseX, final int mouseY) {
 		if (this.isDragging) {
-			this.setX(mouseX - this.dragX);
-			this.setY(mouseY - this.dragY);
+			this.setX(Math.max(0, Math.min(mc.getWindow().getScaledWidth() - this.width, mouseX - dragX)));
+			this.setY(Math.max(0, Math.min(mc.getWindow().getScaledHeight() - this.height, mouseY - dragY)));
 		}
 	}
 
