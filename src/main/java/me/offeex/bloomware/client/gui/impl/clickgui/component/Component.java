@@ -22,7 +22,6 @@ public class Component {
 
     public int getHeight() { return 0; }
 
-
     static {
         mc = MinecraftClient.getInstance();
     }

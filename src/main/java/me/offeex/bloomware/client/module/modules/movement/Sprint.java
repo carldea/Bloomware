@@ -18,9 +18,7 @@ public class Sprint extends Module {
 
     @Subscribe
     public void onPlayerMove(EventPlayerMove e) {
-        if (isEnabled()) {
-            mc.options.keySprint.setPressed(true);
-        }
+        mc.options.keySprint.setPressed(true);
     }
 }
 

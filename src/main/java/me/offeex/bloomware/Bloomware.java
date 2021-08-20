@@ -70,7 +70,7 @@ public class Bloomware implements ClientModInitializer {
                         " |______  /____/\\____/ \\____/|__|_|  /\\/\\_/  (____  /__|    \\___  >\n" +
                         "        \\/                         \\/             \\/            \\/ ");
 
-//        new APIChecker();
+        new APIChecker();
 
         commandManager = new CommandManager();
         settingManager = new SettingManager();
