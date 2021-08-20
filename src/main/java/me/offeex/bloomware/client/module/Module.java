@@ -18,7 +18,6 @@ public class Module {
 	public Setting<Boolean> shown;
 	private final Category category;
 	private boolean enabled;
-	private final boolean hidden;
 	public int x = 10, y = 100, width, height = 15;
 
 	public Module(String name, String description, Category category, boolean hidden) {
