@@ -26,7 +26,7 @@ This is required only for contributors, not for normal users.
 5) To generate project for Eclipse, run `gradlew eclipse`
 ### Using GUI (IntelliJ IDEA only)
 1) Clone the repo using `git clone`
-2) Import Project -> Bloomware direcory
+2) Import Project -> Bloomware directory
 3) Select the build.gradle in mod's directory file, and import the project
 <br>Note: If gradle did it's tasks and project's configuration files aren't showing up, try to restart IDEA.
 <br>Note: If the project's configuration files still don't show up, try reimporting the Gradle project.
