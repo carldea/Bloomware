@@ -9,7 +9,6 @@ public class NoWeather extends Module {
     
     @Override
     public void onTick() {
-        assert mc.world != null;
         if (mc.world.isRaining()) {
             mc.world.setRainGradient(0);
         }

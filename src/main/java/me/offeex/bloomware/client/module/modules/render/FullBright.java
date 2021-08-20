@@ -26,11 +26,9 @@ public class FullBright extends Module {
 
     @Override
     public void onTick() {
-        if(this.isEnabled()) {
-            double newBrightness = gamma.getValue().intValue();
-            if (mc.options.gamma != newBrightness) {
-                mc.options.gamma = newBrightness;
-            }
+        double newBrightness = gamma.getValue().intValue();
+        if (mc.options.gamma != newBrightness) {
+            mc.options.gamma = newBrightness;
         }
     }
 }

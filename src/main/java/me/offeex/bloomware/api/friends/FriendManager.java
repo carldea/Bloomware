@@ -4,7 +4,9 @@ import me.offeex.bloomware.Bloomware;
 import net.minecraft.client.MinecraftClient;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FriendManager {
     private final File dataFile;
@@ -57,20 +59,13 @@ public class FriendManager {
 
     public ArrayList<String> convert() {
         ArrayList<String> friendsText = new ArrayList<>();
-//        for (Friend friend : friends) {
-//            friendsText.add(friend.getNickname());
-//        }
         friends.forEach(friend -> friendsText.add(friend.getNickname()));
         return friendsText;
     }
 
     public void loadFriends() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(dataFile));
-            String line = reader.readLine();
-            while (line != null) {
-                friends.add(new Friend(reader.readLine()));
-            }
+            Files.readAllLines(dataFile.toPath()).forEach(l -> friends.add(new Friend(l)));
         } catch (IOException e) {
             e.printStackTrace();
         }

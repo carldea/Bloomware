@@ -97,15 +97,7 @@ public class Bloomware implements ClientModInitializer {
         }
 
         printLog(Bloomware.name + " finished ratting you!");
-
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            for (Module module : ModuleManager.getModules()) {
-                try {
-                    configManager.saveConfig(module);
-                } catch (Exception ignored) {
-                }
-            }
-            ModuleManager.getModule("Freecam").disable();
-        }));
+      
+        Runtime.getRuntime().addShutdownHook(new Thread(configManager::saveConfig));
     }
 }

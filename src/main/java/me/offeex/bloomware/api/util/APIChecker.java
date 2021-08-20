@@ -14,7 +14,7 @@ public class APIChecker {
     public APIChecker() {
         File path = new File(MinecraftClient.getInstance().runDirectory, "/mods");
         if (path.isDirectory()) {
-            if (!Arrays.stream(path.listFiles()).filter(p -> p.getName().startsWith("fabric-api")).findAny().isPresent()) {
+            if (Arrays.stream(path.listFiles()).noneMatch(p -> p.getName().startsWith("fabric-api"))) {
                 Bloomware.logger.info("Seems you have not installed Fabric-Api.");
                 Bloomware.logger.info("Drag Fabric-Api into /mods folder and try again.");
 

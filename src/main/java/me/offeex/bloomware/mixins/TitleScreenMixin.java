@@ -3,6 +3,7 @@ package me.offeex.bloomware.mixins;
 import me.offeex.bloomware.client.altmanager.screens.AltManager;
 import me.offeex.bloomware.Bloomware;
 import me.offeex.bloomware.client.gui.CustomMainMenu;
+import me.offeex.bloomware.client.module.ModuleManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -21,7 +22,7 @@ public abstract class TitleScreenMixin extends Screen {
     }
 
     private boolean enabled() {
-        return Bloomware.moduleManager.getModule("BloomwareMenu").isEnabled();
+        return ModuleManager.getModule("BloomwareMenu").isEnabled();
     }
 
     MinecraftClient mc = MinecraftClient.getInstance();
